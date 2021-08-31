@@ -10,7 +10,6 @@ export default function EmotionPage(){
             아이디: <IdInput type="text" /><br />
             비밀번호: <PwInput type="password" /><br />
             <LoginButton>로그인</LoginButton>
-            {/* <img src="/lotto.png" /> 현재파일위치*/}
             <img src="/images/lotto.png" />
             {/* <MyDiv>안녕하세요~</MyDiv> */}
         </Wrapper>
