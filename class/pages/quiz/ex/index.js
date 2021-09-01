@@ -20,7 +20,7 @@ export default function HiPage(){
     const [number, setNumber] = useState("000000")
     
     function onClickNumber(){
-        const count = (Math.random())*1000000
+        const count = Math.floor(Math.random()*1000000)
         setNumber(109109)
     }
     return(

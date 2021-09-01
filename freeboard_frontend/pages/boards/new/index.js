@@ -1,53 +1,106 @@
+import styled from '@emotion/styled'
 import { useState } from 'react'
 import {
-    Wrapper, Title,
+    Wrapper1,Wrapper, Title,
     WriterPasswordBox, WriterBox, WriterName, WriterText,
     PasswordBox, PasswordName, PasswordText,
     TitleBox, TitleName, TitleText,
     ContentsBox, ContentsName, ContentsText,
-    PostBox, PostSearchBox, PostSearch, PostName, ButtonPost, PostText,
+    AddressBox, AddressSearchBox, AddressSearch, AddressName, ButtonAddress, AddressText,
     YoutubeBox, YoutubeName, YoutubeText,
     ImgBox, ImgTitle, ImgUploadBox, ImgUpload, ImgText,
     MainBox, MainName, MainCheck, ButtonEnrollent
 } from '../../../styles/BoardsNew.styles'
 
+const nameError = styled.input`
+    color: red;
+`
 export default function BoardsNewPage(){
+
+    const [ name, setName ] = useState()
+    const [ pw, setPw ] = useState()
+    const [ title, setTitle ] = useState()
+    const [ contents, setContents ] = useState()
+
+    const [ nameError, setNameError ] = useState()
+    const [ pwError, setPwError ] = useState()
+    const [ titleError, setTitleError ] = useState()
+    const [ contentsError, setContentsError ] = useState()
+
+    function onChangeName(event) {
+        setName(event.target.value)
+    }
+
+    function onChangePw(event) {
+        setPw(event.target.value)
+    }
+
+    function onChangeTitle(event) {
+        setTitle(event.target.value)
+    }
+
+    function onChangeContents(event) {
+        setContents(event.target.value)
+    }
+
+    function onClickSignup() {
+        if(name == ("")) {
+            setNameError("이름을 작성해 주세요.")
+        }
+
+        if(pw == ("")) {
+            setPwError("비밀번호를 작성해 주세요.")
+        }
+
+        if(title == ("")) {
+            setTitleError("제목을 작성해 주세요.")
+        }
+
+        if(contents == ("")) {
+            setContentsError("내용을 작성해 주세요.")
+        }
+    }
 
     //return 위쪽은 Javascript 쓰는 곳
     //return 아래는 HTML 쓰는 곳
     return(
+        <Wrapper1>
         <Wrapper>
             <Title>게시판 등록</Title>
             <WriterPasswordBox>
                 <WriterBox>
                     <WriterName>작성자</WriterName>
-                    <WriterText type="text" placeholder="이름을 적어주세요." />
+                    <WriterText type="text" placeholder="이름을 입력해 주세요." onChange={onChangeName} />
+                    {nameError}  
                 </WriterBox>
                 <PasswordBox>
                     <PasswordName>비밀번호</PasswordName>
-                    <PasswordText type="password" placeholder="비밀번호를 입력해주세요." />
+                    <PasswordText type="password" placeholder="비밀번호를 입력해 주세요." onChange={onChangePw} />
+                    {nameError}
                 </PasswordBox>
             </WriterPasswordBox>
             <TitleBox>
                 <TitleName>제목</TitleName>
-                <TitleText type="text" placeholder="제목을 작석해주세요." /><br/>
+                <TitleText type="text" placeholder="제목을 작석해 주세요." onChange={onChangeTitle} /><br/>
+                {nameError}
             </TitleBox>
             <ContentsBox>
                 <ContentsName>내용</ContentsName>
-                <ContentsText type="text" placeholder="내용을 작성해주세요." /><br/>
+                <ContentsText type="text" placeholder="내용을 작성해 주세요." onChange={onChangeContents} /><br/>
+                {nameError}
             </ContentsBox>
-            <PostBox>
-                <PostName>주소</PostName>
-                <PostSearchBox>
-                    <PostSearch type="text"></PostSearch>
-                    <ButtonPost>우편번호 검색</ButtonPost><br/>
-                </PostSearchBox>
-                <PostText type="text" /><br/>
-                <PostText type="text" /><br/>
-            </PostBox>
+            <AddressBox>
+                <AddressName>주소</AddressName>
+                <AddressSearchBox>
+                    <AddressSearch type="text"></AddressSearch>
+                    <ButtonAddress>우편번호 검색</ButtonAddress><br/>
+                </AddressSearchBox>
+                <AddressText type="text" /><br/>
+                <AddressText type="text" /><br/>
+            </AddressBox>
             <YoutubeBox>
                 <YoutubeName>유튜브</YoutubeName>
-                <YoutubeText type="text" placeholder="링크를 복사해주세요." /><br/>
+                <YoutubeText type="text" placeholder="링크를 복사해 주세요." /><br/>
             </YoutubeBox>
             <ImgBox>
                 <ImgTitle>사진첨부</ImgTitle>
@@ -68,10 +121,11 @@ export default function BoardsNewPage(){
             </ImgBox>
             <MainBox>
             <MainName>메인설정</MainName>
-            유튜브<MainCheck type="radio" />
-            사진<MainCheck type="radio" />
+            <MainCheck type="radio" />유튜브
+            <MainCheck type="radio" />사진
             </MainBox>
-            <ButtonEnrollent>등록하기</ButtonEnrollent>
+            <ButtonEnrollent onClick={onClickSignup} >등록하기</ButtonEnrollent>
         </Wrapper>
+        </Wrapper1>
     )
 }
