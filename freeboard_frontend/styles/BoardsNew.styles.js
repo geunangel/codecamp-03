@@ -1,13 +1,14 @@
 import styled from '@emotion/styled'
 
-export const Wrapper1 = styled.div`
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-`
+
+// export const Wrapper1 = styled.div`
+//     width: 100%;
+//     height: 100%;
+//     display: flex;
+//     flex-direction: column;
+//     justify-content: space-between;
+//     align-items: center;
+// `
 
 export const Wrapper = styled.div`
 	width: 1200px;
@@ -28,7 +29,6 @@ export const Title = styled.div`
     /* background-color: red; */
 `;
 
-
 export const WriterPasswordBox = styled.div`
     width: 996px;
     height: 100px;
@@ -41,6 +41,7 @@ export const WriterPasswordBox = styled.div`
 export const WriterBox = styled.div`
     width: 486px;
     height: 100px;
+    
     /* background-color: yellow;     */
 `
 export const WriterName = styled.div`
@@ -234,4 +235,8 @@ export const ButtonEnrollent = styled.button`
     width: 179px;
     height: 52px;
     background-color: #ffd600;
+`
+
+export const Error = styled.div`
+    color: red;
 `

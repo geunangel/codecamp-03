@@ -7,9 +7,6 @@ function MyApp({ Component, pageProps }) {
     cache: new InMemoryCache()
   })
 
-
-
-
   return (
     <ApolloProvider client={client}>
       <Component {...pageProps} />
