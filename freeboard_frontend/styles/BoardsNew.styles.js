@@ -108,7 +108,7 @@ export const ContentsName = styled.div`
     height: 24px;
     font-size: 16px;
 `
-export const ContentsText = styled.input`
+export const ContentsText = styled.textarea`
     width: 996px;
     height: 500px;
     border: 1px solid #bdbdbd;

@@ -24,6 +24,7 @@ export default function BoardsNewPage(){
 
     const [createBoard ] = useMutation(CREATE_BOARD)
 
+    const [ youtubeurl, setYoutubeurl ] = useState('')
     const [ writer, setWriter ] = useState('')
     const [ pw, setPw ] = useState('')
     const [ title, setTitle ] = useState('')
@@ -62,6 +63,14 @@ export default function BoardsNewPage(){
           }
     }
 
+    function onChangeYoutube(event) {
+        setYoutubeurl(event.target.value)
+        if(event.target.value !== ""){
+          }
+    }
+
+
+    //클릭시 실행
     async function onClickSubmit() {
         if(writer === ("")) {
             setWriterError("이름을 작성해 주세요.")
@@ -89,7 +98,10 @@ export default function BoardsNewPage(){
                     writer: writer,
                     password: pw,
                     title: title,
-                    contents: contents
+                    contents: contents,
+                    youtubeUrl: youtubeurl
+                    // boardAddress: boardaddress,
+                    // images: images
                 }
             }
         })
@@ -134,7 +146,7 @@ export default function BoardsNewPage(){
             </AddressBox>
             <YoutubeBox>
                 <YoutubeName>유튜브</YoutubeName>
-                <YoutubeText type="text" placeholder="링크를 복사해 주세요." /><br/>
+                <YoutubeText type="text" placeholder="링크를 복사해 주세요." onChange={onChangeYoutube}/><br/>
             </YoutubeBox>
             <ImgBox>
                 <ImgTitle>사진첨부</ImgTitle>
