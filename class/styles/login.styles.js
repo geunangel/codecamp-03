@@ -14,9 +14,12 @@ export const Wrapper = styled.div`
     width: 640px;
     height: 1000px;
     /* background-color: gray; */
-    
     background-image:url("/images/피자.png");
- 
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    
+    
 `
 
 export const Haeder = styled.div`
@@ -43,7 +46,7 @@ export const MainBox = styled.div`
     
 `
 export const MainIconBox = styled.div`
-    width: 540px;
+    width: 640px;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -64,21 +67,17 @@ export const IconText = styled.div`
 `
 
 export const TextBox = styled.div`
-    width: 540px;
+    width: 640px;
     height: 100px;
-`
-
-export const Footer = styled.div`
-    width: 540px;
-    height: 350px;
     display: flex;
     flex-direction: column;
-    
+    justify-content: center;
+    align-items: center;
 
 `
 
 export const TextEmailBox = styled.div`
-    width: 540px;
+    width: 640px;
     display: flex;
     align-content: space-between;
     /* background-color: red; */
@@ -93,7 +92,7 @@ export const TextIcon = styled.div`
 background-image:url("/images/엑스.svg");
 `
 
-export const TextError = styled.input`
+export const TextError = styled.div`
     background-color: transparent;
     width: 540px;
     height: 20px;
@@ -101,7 +100,6 @@ export const TextError = styled.input`
     color: red;
 `
 export const TextPasswordBox = styled.div`
-
     display: flex;
 `
 
@@ -117,6 +115,16 @@ export const ButtonLogin = styled.button`
     border-radius: 38px;
     background-color: #ff1b6d;
 `
+
+export const Footer = styled.div`
+    width: 540px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    
+
+`
+
 export const FindBox = styled.div`
     width: 540px;
     height: 200px;

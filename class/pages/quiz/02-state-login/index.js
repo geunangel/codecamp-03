@@ -31,7 +31,7 @@ export default function LoginState(){
             setEmailError("이메일을 확인해 주세요.")
         }
 
-        if(pw === "" || pw.length < 8) {
+        if(pw === "" || pw.length < 8 && pw.length >= 16) {
             setPwError("8~16자의 영문,숫자,특수문자만 사용가능합니다.")
         }
     }
@@ -53,16 +53,16 @@ export default function LoginState(){
             <TextBox>
                 <TextEmailBox>
                     <TextEmail type="text" placeholder="이메일" onChange={onChangeEmail} />
-                    <TextIcon></TextIcon>
+                    <TextIcon>x</TextIcon>
                 </TextEmailBox>
-                <TextError type="text" />{emailError}
+                <TextError>{emailError}</TextError>
             </TextBox>
             <TextBox>
                 <TextPasswordBox>
                     <TextPassword type="password" placeholder="패스워드" onChange={onChangePw} />
                     <TextIcon>x</TextIcon>
                 </TextPasswordBox>
-                <TextError type="text" />{pwError}
+                <TextError>{pwError}</TextError>
             </TextBox>
             <Footer>
             <ButtonLogin onClick={onClickSignup} >로그인</ButtonLogin>
