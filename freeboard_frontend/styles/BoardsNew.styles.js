@@ -1,15 +1,5 @@
 import styled from '@emotion/styled'
 
-
-// export const Wrapper1 = styled.div`
-//     width: 100%;
-//     height: 100%;
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-between;
-//     align-items: center;
-// `
-
 export const Wrapper = styled.div`
 	width: 1200px;
     height: 1847px;
@@ -53,7 +43,6 @@ export const WriterName = styled.div`
 export const WriterText = styled.input`
     width: 486px;
     height: 52px;
-    position: absolute;
     border: 1px solid #bdbdbd;
     /* background-color: green; */
 `
@@ -73,7 +62,6 @@ export const PasswordName = styled.div`
 export const PasswordText = styled.input`
     width: 486px;
     height: 52px;
-    position: absolute;
     border: 1px solid #bdbdbd;
     /* background-color: green; */
 `

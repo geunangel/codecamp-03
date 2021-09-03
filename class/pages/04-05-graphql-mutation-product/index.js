@@ -40,7 +40,7 @@ export default function GraphqlMutationProductPage(){
         //await createProduct()
         
         //변수에 저장
-        const result =await createProduct({
+        const result = await createProduct({
             variables: {
                 seller: myseller,
                 createProductInput: {

@@ -121,8 +121,6 @@ export const Footer = styled.div`
     height: 350px;
     display: flex;
     flex-direction: column;
-    
-
 `
 
 export const FindBox = styled.div`
