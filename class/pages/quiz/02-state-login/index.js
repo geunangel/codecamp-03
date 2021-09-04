@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {
-    Wrapper1,Wrapper, Haeder,
+    Wrapper, Haeder,
     HaederIcon, MainBox, Footer,
     MainIconBox, IconImg, IconText, 
     TextBox, TextEmailBox, TextEmail, TextIcon, TextError, 
@@ -37,7 +37,6 @@ export default function LoginState(){
     }
 
     return (
-        <Wrapper1>
         <Wrapper>
             <Haeder>
                 <HaederIcon>와이파이</HaederIcon>
@@ -46,40 +45,39 @@ export default function LoginState(){
                 <HaederIcon>시계</HaederIcon>
             </Haeder>
             <MainBox>
-            <MainIconBox>
-                <IconImg><img src="/images/위치모양.svg" /></IconImg>
-                <IconText>잇츠로드</IconText>
-            </MainIconBox>
-            <TextBox>
-                <TextEmailBox>
-                    <TextEmail type="text" placeholder="이메일" onChange={onChangeEmail} />
-                    <TextIcon>x</TextIcon>
-                </TextEmailBox>
-                <TextError>{emailError}</TextError>
-            </TextBox>
-            <TextBox>
-                <TextPasswordBox>
-                    <TextPassword type="password" placeholder="패스워드" onChange={onChangePw} />
-                    <TextIcon>x</TextIcon>
-                </TextPasswordBox>
-                <TextError>{pwError}</TextError>
-            </TextBox>
-            <Footer>
-            <ButtonLogin onClick={onClickSignup} >로그인</ButtonLogin>
-            <FindBox>
-                <Find>이메일 찾기</Find>
-                <Find>|</Find>
-                <Find>비밀번호 찾기</Find>
-                <Find>|</Find>
-                <Find>회원가입</Find>
-            </FindBox>
-            <CacaoBox>
-                <img src="" />
-                <ButtonCacao>카카오톡 로그인</ButtonCacao>
-            </CacaoBox>
-            </Footer>
+                <MainIconBox>
+                    <IconImg><img src="/images/위치모양.svg" /></IconImg>
+                    <IconText>잇츠로드</IconText>
+                </MainIconBox>
+                <TextBox>
+                    <TextEmailBox>
+                        <TextEmail type="text" placeholder="이메일" onChange={onChangeEmail} />
+                        <TextIcon>x</TextIcon>
+                    </TextEmailBox>
+                    <TextError>{emailError}</TextError>
+                </TextBox>
+                <TextBox>
+                    <TextPasswordBox>
+                        <TextPassword type="password" placeholder="패스워드" onChange={onChangePw} />
+                        <TextIcon>x</TextIcon>
+                    </TextPasswordBox>
+                    <TextError>{pwError}</TextError>
+                </TextBox>
+                <Footer>
+                <ButtonLogin onClick={onClickSignup} >로그인</ButtonLogin>
+                <FindBox>
+                    <Find>이메일 찾기</Find>
+                    <Find>|</Find>
+                    <Find>비밀번호 찾기</Find>
+                    <Find>|</Find>
+                    <Find>회원가입</Find>
+                </FindBox>
+                <CacaoBox>
+                    <img src="" />
+                    <ButtonCacao>카카오톡 로그인</ButtonCacao>
+                </CacaoBox>
+                </Footer>
             </MainBox>
         </Wrapper>
-        </Wrapper1>
     )
 }
