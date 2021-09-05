@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import {
-    Wrapper, Haeder,
+    Wrapper, Haeder,HaederIconBox,
     HaederIcon, MainBox, Footer,
-    MainIconBox, IconImg, IconText, 
-    TextBox, TextEmailBox, TextEmail, TextIcon, TextError, 
-    TextPasswordBox, TextPassword,
-    ButtonLogin, FindBox, Find,
-    CacaoBox, ButtonCacao
+    LogoBox, LogoImg, LogoText, 
+    EmailPwBox,TextBox, TextEmailBox, TextEmail, EmailError, TextIcon, TextLine,
+    TextPasswordBox, TextPassword, PwError,
+    ButtonLogin, FindBox, FindAnd, FindEmail, FindPw, FindJoin,
+    ButtonCacao, CacaoImg, Cacao
 } from '../../../styles/login.styles'
 
 export default function LoginState(){
@@ -38,44 +38,52 @@ export default function LoginState(){
 
     return (
         <Wrapper>
+            {/* 맨 위 아이콘 */}
             <Haeder>
-                <HaederIcon>와이파이</HaederIcon>
-                <HaederIcon>상태</HaederIcon>
-                <HaederIcon>배터리</HaederIcon>
-                <HaederIcon>시계</HaederIcon>
+                <HaederIconBox>
+                    <HaederIcon>와파</HaederIcon>
+                    <HaederIcon>상태</HaederIcon>
+                    <HaederIcon>배터리</HaederIcon>
+                    <HaederIcon>시계</HaederIcon>
+                </HaederIconBox>
             </Haeder>
+            {/* 아래 전체 */}
             <MainBox>
-                <MainIconBox>
-                    <IconImg><img src="/images/위치모양.svg" /></IconImg>
-                    <IconText>잇츠로드</IconText>
-                </MainIconBox>
-                <TextBox>
-                    <TextEmailBox>
-                        <TextEmail type="text" placeholder="이메일" onChange={onChangeEmail} />
-                        <TextIcon>x</TextIcon>
-                    </TextEmailBox>
-                    <TextError>{emailError}</TextError>
-                </TextBox>
-                <TextBox>
-                    <TextPasswordBox>
-                        <TextPassword type="password" placeholder="패스워드" onChange={onChangePw} />
-                        <TextIcon>x</TextIcon>
-                    </TextPasswordBox>
-                    <TextError>{pwError}</TextError>
-                </TextBox>
+                <LogoBox>
+                    <LogoImg><img src="/images/위치모양.svg" /></LogoImg>
+                    <LogoText>잇츠로드</LogoText>
+                </LogoBox>
+                <EmailPwBox>
+                    <TextBox>
+                        <TextEmailBox>
+                            <TextEmail type="text" placeholder="이메일" onChange={onChangeEmail} />
+                            <TextIcon />
+                        </TextEmailBox>
+                        <TextLine />
+                        <EmailError>{emailError}</EmailError>
+                    </TextBox>
+                    <TextBox>
+                        <TextPasswordBox>
+                            <TextPassword type="password" placeholder="패스워드" onChange={onChangePw} />
+                            <TextIcon />
+                        </TextPasswordBox>
+                        <TextLine />
+                        <PwError>{pwError}</PwError>
+                    </TextBox>
+                </EmailPwBox>
                 <Footer>
                 <ButtonLogin onClick={onClickSignup} >로그인</ButtonLogin>
                 <FindBox>
-                    <Find>이메일 찾기</Find>
-                    <Find>|</Find>
-                    <Find>비밀번호 찾기</Find>
-                    <Find>|</Find>
-                    <Find>회원가입</Find>
+                    <FindEmail>이메일 찾기</FindEmail>
+                    <FindAnd>|</FindAnd>
+                    <FindPw>비밀번호 찾기</FindPw>
+                    <FindAnd>|</FindAnd>
+                    <FindJoin>회원가입</FindJoin>
                 </FindBox>
-                <CacaoBox>
-                    <img src="" />
-                    <ButtonCacao>카카오톡 로그인</ButtonCacao>
-                </CacaoBox>
+                <ButtonCacao>
+                    <CacaoImg />
+                    <Cacao>카카오톡으로 로그인</Cacao>
+                </ButtonCacao>
                 </Footer>
             </MainBox>
         </Wrapper>

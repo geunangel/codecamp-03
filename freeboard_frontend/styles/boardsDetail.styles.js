@@ -50,7 +50,7 @@ export const Head2 = styled.div `
     
 `
 
-export const ImgTitle = styled.div`
+export const Title = styled.div`
     height: 36px;
     line-height: 53px;
     font-weight: bold;
@@ -67,7 +67,7 @@ export const Img = styled.div`
     margin-top: 40px;
 `
 
-export const ImgText = styled.div`
+export const Contents = styled.div`
     width: 996px;
     height: 96px;
     background-color: gray;

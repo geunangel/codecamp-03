@@ -1,12 +1,31 @@
+import { useRouter } from 'next/router'
+import { useQuery, gql } from '@apollo/client'
 import {
     Wrapper,Header,Footer,Head1,Head2,
-    ImgTitle,Img,ImgText,Youtube,
+    Title,Img,Contents,Youtube,
     Likedislike,Like,Likecount,Dislike,Dislikecount,Count,
     Box
 
 } from '../../../styles/boardsDetail.styles'
 
+const FETCH_BOARD = gql`
+    query fetchBoard($boardId:ID!) {
+        fetchBoard(boardId:$boardId) {
+            writer
+            title
+            contents
+            youtubeurl
+        }
+    }
+`
+
 export default function BoardsDetailPage(){
+
+    const router = useRouter()
+
+    const {data} = useQuery(FETCH_BOARD, {
+        variables: {boardId: router.query.detail}
+    })
 
     return(
         <Wrapper>
@@ -16,8 +35,8 @@ export default function BoardsDetailPage(){
                         <div>이미지</div>
                     </div>
                     <div>
-                        <div>이름</div>
-                        <div>작성날짜</div>
+                        <div>{data?.fetchBoard.writer}</div>
+                        <div>2021.02.18</div>
                     </div>
                 </Head1>
                 <Head2>
@@ -27,11 +46,11 @@ export default function BoardsDetailPage(){
                 </Head2>
             </Header>
             <Footer>
-                <ImgTitle>게시글 제목입니다.</ImgTitle>
+                <Title>{data?.fetchBoard.title}</Title>
                 <Box>
                     <Img>사진</Img>
-                    <ImgText>내용</ImgText>
-                    <Youtube></Youtube>
+                    <Contents>{data?.fetchBoard.contents}</Contents>
+                    <Youtube>{data?.fetchBoard.Youtube}</Youtube>
                     <Likedislike>
                         <Likecount>
                             <Like></Like>

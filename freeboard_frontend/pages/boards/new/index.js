@@ -1,5 +1,6 @@
 import {useMutation, gql} from '@apollo/client'
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import {
     Wrapper, Title,
     WriterPasswordBox, WriterBox, WriterName, WriterText,
@@ -21,6 +22,8 @@ const CREATE_BOARD = gql`
 `
 
 export default function BoardsNewPage(){
+
+    const router = useRouter()
 
     const [createBoard ] = useMutation(CREATE_BOARD)
 
@@ -100,12 +103,11 @@ export default function BoardsNewPage(){
                     title: title,
                     contents: contents,
                     youtubeUrl: youtubeurl
-                    // boardAddress: boardaddress,
-                    // images: images
                 }
             }
         })
-        console.log(result)
+        console.log(result.data.createBoard._id)
+        router.push(`/boards/datail/${result.data.createBoard._id}`)
     }
 
     //return 위쪽은 Javascript 쓰는 곳
