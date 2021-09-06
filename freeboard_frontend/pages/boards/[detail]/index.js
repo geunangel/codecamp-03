@@ -21,11 +21,11 @@ const FETCH_BOARD = gql`
 
 export default function BoardsDetailPage(){
 
-    const router = useRouter()
-
+    const router = useRouter();
+    //data로 응답
     const {data} = useQuery(FETCH_BOARD, {
         variables: {boardId: router.query.detail}
-    })
+    });
 
     return(
         <Wrapper>

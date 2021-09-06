@@ -107,7 +107,7 @@ export default function BoardsNewPage(){
             }
         })
         console.log(result.data.createBoard._id)
-        router.push(`/boards/datail/${result.data.createBoard._id}`)
+        router.push(`/boards/${result.data.createBoard._id}`)
     }
 
     //return 위쪽은 Javascript 쓰는 곳
