@@ -94,7 +94,8 @@ export default function BoardWriteContainer(){
             }
         })
         console.log(result.data.createBoard._id)
-        router.push(`/boards/${result.data.createBoard._id}`)
+        console.log(result)
+        //router.push(`/boards/${result.data.createBoard._id}`)
     }
 
     return(
