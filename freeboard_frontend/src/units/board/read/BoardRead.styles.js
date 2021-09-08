@@ -1,6 +1,10 @@
 import styled from '@emotion/styled'
 
 export const Wrapper = styled.div`
+    
+` ;
+
+export const Detail = styled.div`
     width: 1200px;
     height: 1602px;
     padding-left: 102px;
@@ -12,7 +16,7 @@ export const Wrapper = styled.div`
     /* background-color: blanchedalmond; */
     border: 1px solid black;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
-` ;
+`
 
 export const Header = styled.div`
     width: 100%;
@@ -137,3 +141,41 @@ export const Box = styled.div`
     align-items: center;
 `
 
+export const ButtonBox = styled.div`
+    width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: space-between;
+    margin-top: 60px;
+`
+
+export const ButtonList = styled.button`
+    width: 179px;
+    height: 52px;
+    border: 1px solid #BDBDBD;
+    background-color: white;
+    font-size: 16px;
+    font-weight: 24px;
+    
+`
+
+export const ButtonEdit = styled.button`
+    width: 179px;
+    height: 52px;
+    border: 1px solid #BDBDBD;
+    background-color: white;
+    font-size: 16px;
+    font-weight: 24px;
+    margin-left: 30px;
+    margin-right: 30px;
+`
+
+export const ButtonDelete = styled.button`
+    width: 179px;
+    height: 52px;
+    border: 1px solid #BDBDBD;
+    background-color: white;
+    font-size: 16px;
+    font-weight: 24px;
+`

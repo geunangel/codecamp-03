@@ -9,6 +9,6 @@ export const FETCH_BOARDS = gql`
         contents
         likeCount
         createdAt
+        }
     }
-}
 `

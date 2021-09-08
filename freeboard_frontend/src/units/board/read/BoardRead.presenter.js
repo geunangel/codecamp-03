@@ -1,8 +1,9 @@
 import {
-    Wrapper,Header,Footer,Head1,Head2,
+    Wrapper,Detail,Header,Footer,Head1,Head2,
     Title,Img,Contents,Youtube,
     Likedislike,Like,Likecount,Dislike,Dislikecount,Count,
-    Box,WriterImg
+    Box,WriterImg,
+    ButtonBox,ButtonList,ButtonEdit,ButtonDelete
 } from './BoardRead.styles'
 
 
@@ -10,6 +11,7 @@ export default function BoardReadPresenter(props){
 
     return(
         <Wrapper>
+            <Detail>
             <Header>
                 <Head1>
                     <WriterImg>
@@ -44,6 +46,12 @@ export default function BoardReadPresenter(props){
                     </Likedislike>
                 </Box>
             </Footer>
+            </Detail>
+            <ButtonBox>
+                <ButtonList onClick={props.onClickList}>목록으로</ButtonList>
+                <ButtonEdit onClick={props.onClickEdit}>수정하기</ButtonEdit>
+                <ButtonDelete onClick={props.onClickDelete}>삭제하기</ButtonDelete>
+            </ButtonBox>
         </Wrapper>
     )
 }
