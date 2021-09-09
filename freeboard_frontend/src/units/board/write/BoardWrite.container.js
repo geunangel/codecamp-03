@@ -2,14 +2,15 @@ import {useMutation} from '@apollo/client'
 import {useState} from 'react'
 import {useRouter} from 'next/router'
 import BoardWritePresenter from './BoardWrite.presenter'
-import {CREATE_BOARD} from './BoardWrite.queries'
+import {CREATE_BOARD, UPDATE_BOARD} from './BoardWrite.queries'
 
-export default function BoardWriteContainer(){
+export default function BoardWriteContainer(props){
     const router = useRouter()
 
     const [ buttoncolor, setButtoncolor ] = useState()
 
     const [createBoard ] = useMutation(CREATE_BOARD)
+    const [ updateBoard ] = useMutation(UPDATE_BOARD)
 
     const [ writer, setWriter ] = useState('')
     const [ pw, setPw ] = useState('')
@@ -61,6 +62,24 @@ export default function BoardWriteContainer(){
         }
     }
 
+    async function onClickEdit(){
+        try {
+            const result = await updateBoard({
+              variables: {
+                boardId: router.query.detail,
+                password: pw,
+                updateBoardInput: {
+                  title: title,
+                  contents: contents
+                }
+              }
+            })
+            router.push(`/boards/${result.data.updateBoard._id}`)
+          } catch(error){
+            console.log(error)
+          }
+    }
+
     //클릭시 실행
     async function onClickSubmit() {
         if(writer === ("")) {
@@ -83,6 +102,7 @@ export default function BoardWriteContainer(){
         }
         //alert("버튼클릭확인")
 
+        //등록
         const result = await createBoard({
             variables:{
                 createBoardInput: {
@@ -95,6 +115,7 @@ export default function BoardWriteContainer(){
         })
         console.log(result.data.createBoard._id)
         console.log(result)
+        // 
         router.push(`/boards/${result.data.createBoard._id}`)
     }
 
@@ -105,11 +126,13 @@ export default function BoardWriteContainer(){
             onChangeTitle={onChangeTitle}
             onChangeContents={onChangeContents}
             onClickSubmit={onClickSubmit}
+            onClickEdit={onClickEdit}
             writerError={writerError}
             pwError={pwError}
             titleError={titleError}
             contentsError={contentsError}
             buttoncolor={buttoncolor}
+            isEdit={props.isEdit}
         />
     )
 }

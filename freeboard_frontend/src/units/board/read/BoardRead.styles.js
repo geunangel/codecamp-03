@@ -179,3 +179,53 @@ export const ButtonDelete = styled.button`
     font-size: 16px;
     font-weight: 24px;
 `
+
+export const CommentBox = styled.div`
+
+`
+
+export const CommentIcon = styled.div`
+
+`
+
+export const CommentText = styled.div`
+
+`
+
+export const CommentData = styled.div`
+
+`
+
+export const CommentWriter = styled.input`
+    width: 180px;
+    height: 52px;
+`
+
+export const CommentPw = styled.input`
+    width: 180px;
+    height: 52px;
+`
+
+export const CommentStarbox = styled.div`
+    display: flex;
+`
+
+export const CommentStar = styled.div`
+
+`
+
+export const CommentContentsBox = styled.div`
+    width: 1200px;
+    height: 161px;
+`
+
+export const CommentContents = styled.textarea`
+    width: 1200px;
+    height: 108px;
+`
+
+export const ButtonComment = styled.button`
+
+`
+
+

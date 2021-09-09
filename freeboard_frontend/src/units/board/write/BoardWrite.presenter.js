@@ -14,7 +14,7 @@ export default function BoardWritePresenter(props){
     
     return(
         <Wrapper>
-            <Title>게시판 등록</Title>
+            <Title>{props.isEdit ? "게시판 수정" : "게시판 등록"}</Title>
             <WriterPasswordBox>
                 <WriterBox>
                     <WriterName>작성자</WriterName>
@@ -72,7 +72,12 @@ export default function BoardWritePresenter(props){
             <MainCheck type="radio" />유튜브
             <MainCheck type="radio" />사진
             </MainBox>
+            {!props.isEdit && (
             <ButtonEnrollent onClick={props.onClickSubmit} buttoncolor={props.buttoncolor}>등록하기</ButtonEnrollent>
+            )}
+            {props.isEdit && (
+            <ButtonEnrollent onClick={props.onClickEdit}>수정하기</ButtonEnrollent>
+            )}
         </Wrapper>
     )
 }

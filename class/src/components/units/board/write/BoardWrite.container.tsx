@@ -52,13 +52,28 @@ export default function BoardWrite(props){
 
     async function onClickEdit(){
         try{
+            //수정시킬때 수정할 내용을 보내주기
+            //첫번째 방법: state의 초기값에도 defaultValue 를 넣어주는 방법
+            //두번째 방법: 실제로 변경이 일어난 값만 수정하라고 Backend에 요청하는 방법 <-좋은 방법
+            const myVariables = {
+                number: Number(router.query.number)
+            }
+
+            //if()안에 내용이 있으면 {}생략가능
+            if(myWriter) myVariables.writer = myWriter 
+            if(myTitle) myVariables.title = myTitle 
+            if(myContents) myVariables.contents = myContents 
+
             await updateBoard({
-                variables: {
-                    number: Number(router.query.number),
-                    writer: myWriter,
-                    title: myTitle,
-                    contents: myContents
-                }
+                variables: myVariables
+                // state적었을때만 보내줌(변경값을 적어야만! 보내줌)
+                // variables: {
+                //     number: Number(router.query.number),
+                //     writer: myWriter,
+                //     title: myTitle,
+                //     contents: myContents
+                
+                // }
             })
             router.push(`/08-04-board-detail/${router.query.number}`)
         }catch{
@@ -76,6 +91,7 @@ export default function BoardWrite(props){
             qqq={qqq}
             isEdit={props.isEdit}
             onClickEdit={onClickEdit}
+            data={props.data}
         />
         
     )
