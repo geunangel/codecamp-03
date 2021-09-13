@@ -52,6 +52,8 @@ export const BoardListBox = styled.div`
   display: flex;
   flex-direction: column;
   border: none;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
 `;
 
 export const BoardListTop = styled.div`
@@ -59,13 +61,7 @@ export const BoardListTop = styled.div`
   line-height: 52px;
   display: flex;
   flex-direction: row;
-`;
-
-export const BoardListBottom = styled.div`
-  width: 1200px;
-  height: 530px;
-  display: flex;
-  flex-direction: column;
+  border-bottom: 1px solid #bdbdbdbd;
 `;
 
 export const BoardListNumber = styled.div`
@@ -98,4 +94,55 @@ export const BoardLisDay = styled.div`
   height: 27px;
   font-weight: 500;
   font-size: 18px;
+`;
+
+export const BoardListBottom = styled.div`
+  width: 1200px;
+  height: 530px;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const BoardListBottom2 = styled.div`
+  width: 1200px;
+  height: 53px;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #bdbdbdbd;
+`;
+
+export const BoardListNumber2 = styled.div`
+  text-align: center;
+  width: 120px;
+  height: 27px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #4f4f4f;
+`;
+
+export const BoardListTitle2 = styled.div`
+  text-align: center;
+  width: 600px;
+  height: 27px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #4f4f4f;
+`;
+
+export const BoardListwriter2 = styled.div`
+  text-align: center;
+  width: 200px;
+  height: 27px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #4f4f4f;
+`;
+
+export const BoardLisDay2 = styled.div`
+  text-align: center;
+  width: 300px;
+  height: 27px;
+  font-weight: 400;
+  font-size: 16px;
+  color: #4f4f4f;
 `;

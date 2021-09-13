@@ -10,11 +10,16 @@ import {
   WriterName,
   BoardListBox,
   BoardListTop,
-  BoardListBottom,
   BoardListNumber,
   BoardListTitle,
   BoardListwriter,
   BoardLisDay,
+  BoardListBottom,
+  BoardListBottom2,
+  BoardListNumber2,
+  BoardListTitle2,
+  BoardListwriter2,
+  BoardLisDay2,
 } from "./BoardList.styles";
 
 export default function BoardListPresenter(props) {
@@ -55,10 +60,14 @@ export default function BoardListPresenter(props) {
         <BoardListBottom>
           {props.data?.fetchBoards.map((el, index) => (
             <div key={el._id}>
-              <BoardListNumber>{index + 1}</BoardListNumber>
-              <BoardListTitle>{el.title}</BoardListTitle>
-              <BoardListwriter>{el.writer}</BoardListwriter>
-              <BoardLisDay>{el.createdAt}</BoardLisDay>
+              <BoardListBottom2>
+                <BoardListNumber2>{10 - index}</BoardListNumber2>
+                <BoardListTitle2 onClick={props.onClickRead}>
+                  {el.title}
+                </BoardListTitle2>
+                <BoardListwriter2>{el.writer}</BoardListwriter2>
+                <BoardLisDay2>{el.createdAt}</BoardLisDay2>
+              </BoardListBottom2>
             </div>
           ))}
         </BoardListBottom>
@@ -71,7 +80,7 @@ export default function BoardListPresenter(props) {
         </div>
         <div>
           <img />
-          <div>게시물 등록하기</div>
+          <button onClick={props.onClickNew}>게시물 등록하기</button>
         </div>
       </div>
     </Wrapper>
