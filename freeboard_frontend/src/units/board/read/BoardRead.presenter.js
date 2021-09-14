@@ -50,11 +50,12 @@ export default function BoardReadPresenter(props) {
             <Contents>{props.data?.fetchBoard.contents}</Contents>
             <Youtube>
               <ReactPlayer
-                url="https://www.youtube.com/watch?v=ysz5S6PUM-U"
+                url={props.data?.fetchBoard.youtubeUrl}
                 width={486}
                 height={240}
               />
             </Youtube>
+
             <Likedislike>
               <Likecount>
                 <Like></Like>

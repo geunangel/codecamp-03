@@ -62,7 +62,7 @@ export default function BoardListPresenter(props) {
             <div key={el._id}>
               <BoardListBottom2>
                 <BoardListNumber2>{10 - index}</BoardListNumber2>
-                <BoardListTitle2 onClick={props.onClickRead}>
+                <BoardListTitle2 id={el._id} onClick={props.onClickRead}>
                   {el.title}
                 </BoardListTitle2>
                 <BoardListwriter2>{el.writer}</BoardListwriter2>

@@ -16,6 +16,7 @@ export default function BoardWriteContainer(props) {
   const [pw, setPw] = useState("");
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
+  const [youtube, setYoutobe] = useState("");
 
   const [writerError, setWriterError] = useState("");
   const [pwError, setPwError] = useState("");
@@ -82,6 +83,10 @@ export default function BoardWriteContainer(props) {
     }
   }
 
+  function onChangeYoutobe(event) {
+    setYoutobe(event.target.value);
+  }
+
   //수정
   async function onClickEdit() {
     try {
@@ -92,6 +97,7 @@ export default function BoardWriteContainer(props) {
           updateBoardInput: {
             title: title,
             contents: contents,
+            youtubeUrl: youtube,
           },
         },
       });
@@ -129,6 +135,7 @@ export default function BoardWriteContainer(props) {
               password: pw,
               title: title,
               contents: contents,
+              youtubeUrl: youtube,
             },
           },
         });
@@ -149,6 +156,7 @@ export default function BoardWriteContainer(props) {
       onChangePw={onChangePw}
       onChangeTitle={onChangeTitle}
       onChangeContents={onChangeContents}
+      onChangeYoutobe={onChangeYoutobe}
       onClickSubmit={onClickSubmit}
       onClickEdit={onClickEdit}
       writerError={writerError}

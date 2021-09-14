@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import BoardCommentWriter from "../writer/BoardCommentWriter.container";
 
 import {
@@ -12,9 +13,37 @@ import {
   CommentContents,
   CommentDate,
 } from "./BoardCommentList.styles";
-// import { FETCH_BOARD_COMMENTS } from "./BoardCommentList.queries";
+import {
+  FETCH_BOARD_COMMENTS,
+  DELETE_BOARD_COMMENT,
+} from "./BoardCommentList.queries";
+import { useMutation } from "@apollo/client";
 
 export default function ListPresenterItem(props) {
+  const router = useRouter();
+
+  const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
+
+  async function onClickCommentDelete() {
+    const pw = prompt("비밀번호를 입력해 주세요.");
+    try {
+      await deleteBoardComment({
+        variables: {
+          password: pw,
+          boardCommentId: props.el?._id,
+        },
+        refetchQueries: [
+          {
+            query: FETCH_BOARD_COMMENTS,
+            variables: { boardId: router.query.detail },
+          },
+        ],
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <CommentWrapeer>
       <CommentBox>
@@ -25,7 +54,7 @@ export default function ListPresenterItem(props) {
         </CommentDtailBox>
         <CommentStar>별</CommentStar>
         <UpdateIcon src="/연필.png" />
-        <DeleteIcon src="/연필세트엑스.png" />
+        <DeleteIcon src="/연필세트엑스.png" onClick={onClickCommentDelete} />
       </CommentBox>
       <CommentDate>{props.el?.createdAt}</CommentDate>
       <br />

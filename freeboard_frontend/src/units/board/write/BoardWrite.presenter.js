@@ -93,7 +93,11 @@ export default function BoardWritePresenter(props) {
       </AddressBox>
       <YoutubeBox>
         <YoutubeName>유튜브</YoutubeName>
-        <YoutubeText type="text" placeholder="링크를 복사해 주세요." />
+        <YoutubeText
+          type="text"
+          placeholder="링크를 복사해 주세요."
+          onChange={props.onChangeYoutobe}
+        />
         <br />
       </YoutubeBox>
       <ImgBox>
