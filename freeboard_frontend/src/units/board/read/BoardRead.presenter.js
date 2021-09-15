@@ -55,7 +55,6 @@ export default function BoardReadPresenter(props) {
                 height={240}
               />
             </Youtube>
-
             <Likedislike>
               <Likecount>
                 <Like></Like>
