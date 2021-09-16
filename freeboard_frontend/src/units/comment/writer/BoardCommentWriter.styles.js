@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Rate } from "antd";
 
 export const Wrapper = styled.div``;
 
@@ -23,7 +24,7 @@ export const CommentPw = styled.input`
   height: 52px;
 `;
 
-export const CommentStar = styled.span``;
+export const CommentStar = styled(Rate)``;
 
 export const CommentContentsBox = styled.div`
   width: 1200px;

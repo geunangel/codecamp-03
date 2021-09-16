@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { Rate } from "antd";
 
 export const CommentWrapeer = styled.div`
   width: 1200px;
@@ -24,7 +25,7 @@ export const CommentDtailBox = styled.div`
   padding-left: 10px;
 `;
 export const CommentStarBox = styled.div``;
-export const CommentStar = styled.div``;
+export const CommentStar = styled(Rate)``;
 export const UpdateIcon = styled.img`
   width: 24px;
   height: 24px;

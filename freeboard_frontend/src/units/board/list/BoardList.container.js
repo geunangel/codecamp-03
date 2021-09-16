@@ -1,12 +1,47 @@
 import { useQuery } from "@apollo/client";
 import BoardListPresenter from "./BoardList.presenter";
-import { FETCH_BOARDS } from "./BoardList.queries";
+import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./BoardList.queries";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export default function BoardListContainer() {
   const router = useRouter();
 
-  const { data } = useQuery(FETCH_BOARDS);
+  const [startPage, setStartPage] = useState(1);
+
+  //첫페이지 기준으로 설정함
+  const { data, refetch } = useQuery(FETCH_BOARDS, {
+    vareables: { page: startPage },
+  });
+
+  // 전체 게시글 갯수을 이용해서 만듬
+  const { data: databoardsCount } = useQuery(FETCH_BOARDS_COUNT);
+  const lastPage = Math.ceil(databoardsCount?.fetchBoardsCount / 10);
+
+  function onClickPage(event) {
+    refetch({ page: Number(event.target.id) });
+  }
+
+  function onClickPrevPage() {
+    if (startPage === 1) return;
+    setStartPage((prev) => prev - 10);
+  }
+
+  function onClickNextPage() {
+    if (startPage + 10 > lastPage) return;
+    setStartPage((prev) => prev + 10);
+  }
+
+  function onClickStartPage() {
+    //시작페이지로 이동
+    //setStartPage(1);
+  }
+
+  function onClickEndPage() {
+    //끝페이지로 이동
+    //const lastPage = Math.ceil(databoardsCount?.fetchBoardsCount / 10);
+    //setStartPage(lastPage);
+  }
 
   //상세페이지로 이동
   function onClickRead(event) {
@@ -24,6 +59,13 @@ export default function BoardListContainer() {
       data={data}
       onClickRead={onClickRead}
       onClickNew={onClickNew}
+      onClickPage={onClickPage}
+      onClickPrevPage={onClickPrevPage}
+      onClickNextPage={onClickNextPage}
+      onClickStartPage={onClickStartPage}
+      onClickEndPage={onClickEndPage}
+      startPage={startPage}
+      lastPage={lastPage}
     />
   );
 }

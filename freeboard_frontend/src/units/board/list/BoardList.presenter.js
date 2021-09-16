@@ -20,6 +20,12 @@ import {
   BoardListTitle2,
   BoardListwriter2,
   BoardLisDay2,
+  PageIconBox,
+  LeftPageIcon,
+  RightPageIcon,
+  LeftLeftPageIcon,
+  RightRightPageIcon,
+  Page,
 } from "./BoardList.styles";
 
 export default function BoardListPresenter(props) {
@@ -73,11 +79,24 @@ export default function BoardListPresenter(props) {
         </BoardListBottom>
       </BoardListBox>
       <div>
-        <div>
-          <div>앞</div>
-          <div>1</div>
-          <div>뒤</div>
-        </div>
+        <PageIconBox>
+          <LeftLeftPageIcon onClick={props.onClickStartPage} />
+          <LeftPageIcon onClick={props.onClickPrevPage} />
+          {new Array(10).fill(1).map(
+            (_, index) =>
+              props.startPage + index <= props.lastPage && (
+                <Page
+                  key={props.startPage + index}
+                  onClick={props.onClickPage}
+                  id={String(props.startPage + index)}
+                >
+                  {props.startPage + index}
+                </Page>
+              )
+          )}
+          <RightPageIcon onClick={props.onClickNextPage} />
+          <RightRightPageIcon onClick={props.onClickEndPage} />
+        </PageIconBox>
         <div>
           <img />
           <button onClick={props.onClickNew}>게시물 등록하기</button>

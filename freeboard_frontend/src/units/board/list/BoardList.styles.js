@@ -1,5 +1,21 @@
 import styled from "@emotion/styled";
+import {
+  LeftOutlined,
+  RightOutlined,
+  DoubleLeftOutlined,
+  DoubleRightOutlined,
+} from "@ant-design/icons";
 
+export const PageIconBox = styled.div`
+  display: flex;
+`;
+export const LeftPageIcon = styled(LeftOutlined)``;
+export const RightPageIcon = styled(RightOutlined)``;
+export const LeftLeftPageIcon = styled(DoubleLeftOutlined)``;
+export const RightRightPageIcon = styled(DoubleRightOutlined)``;
+export const Page = styled.div`
+  margin: 10px;
+`;
 export const Wrapper = styled.div`
   width: 1200px;
   display: flex;

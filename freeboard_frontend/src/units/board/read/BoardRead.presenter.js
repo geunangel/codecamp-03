@@ -1,4 +1,5 @@
 import ReactPlayer from "react-player";
+import { Tooltip } from "antd";
 import {
   Wrapper,
   Detail,

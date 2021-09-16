@@ -32,7 +32,7 @@ export default function BoardCommentPresenter(props) {
             placeholder="비밀번호"
             onChange={props.onChangePassword}
           />
-          <CommentStar>별</CommentStar>
+          <CommentStar onChange={props.onChangeSrat}>별</CommentStar>
         </CommentData>
         <CommentContentsBox>
           <CommentContents

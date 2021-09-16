@@ -13,6 +13,7 @@ export default function BoardCommentContainer(props) {
   const [writer, setWriter] = useState("");
   const [pw, setPw] = useState("");
   const [contents, setContents] = useState("");
+  const [star, setStar] = useState(0);
 
   function onChangeWriter(event) {
     setWriter(event.target.value);
@@ -24,6 +25,10 @@ export default function BoardCommentContainer(props) {
     setContents(event.target.value);
   }
 
+  function onChangeStar(value) {
+    setStar(value);
+  }
+
   //댓글등록
   async function onClickComment() {
     try {
@@ -33,7 +38,7 @@ export default function BoardCommentContainer(props) {
             writer: writer,
             password: pw,
             contents: contents,
-            rating: 0,
+            rating: star,
           },
           boardId: String(router.query.detail),
         },
@@ -57,6 +62,7 @@ export default function BoardCommentContainer(props) {
       onChangeWriter={onChangeWriter}
       onChangePassword={onChangePassword}
       onChangeContents={onChangeContents}
+      onChangeStar={onChangeStar}
     />
   );
 }

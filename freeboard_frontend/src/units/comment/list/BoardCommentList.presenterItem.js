@@ -52,7 +52,7 @@ export default function ListPresenterItem(props) {
           <CommentName>{props.el?.writer}</CommentName>
           <CommentContents>{props.el?.contents}</CommentContents>
         </CommentDtailBox>
-        <CommentStar>별</CommentStar>
+        <CommentStar value={props.el?.rating} />
         <UpdateIcon src="/연필.png" />
         <DeleteIcon src="/연필세트엑스.png" onClick={onClickCommentDelete} />
       </CommentBox>
