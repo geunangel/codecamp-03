@@ -2,7 +2,6 @@ import LayoutHeader from "./header/LayoutHeader.container";
 import LayoutFooter from "./footer/LayoutFooter.container";
 import LayoutBanner from "./banner/LayoutBanner.container";
 import LayoutNavigition from "./navigation/LayoutNavigaition.container";
-
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
 
@@ -28,7 +27,7 @@ export default function Layout(props) {
     <Wrapper>
       <LayoutHeader />
       <LayoutBanner />
-      <LayoutNavigition></LayoutNavigition>
+      <LayoutNavigition />
       <SidebarWrapper>
         <Body>{props.children}</Body>
       </SidebarWrapper>
