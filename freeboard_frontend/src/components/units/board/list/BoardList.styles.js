@@ -54,7 +54,9 @@ export const BoardTitle = styled.div`
   line-height: 27px;
 `;
 
-export const WriterBoardBox = styled.div``;
+export const WriterBoardBox = styled.div`
+  display: flex;
+`;
 
 export const WriterBox = styled.div``;
 
@@ -162,3 +164,9 @@ export const BoardLisDay2 = styled.div`
   font-size: 16px;
   color: #4f4f4f;
 `;
+
+export const TitleSearchBox = styled.div`
+  display: flex;
+`;
+
+export const TitleSearch = styled.div``;

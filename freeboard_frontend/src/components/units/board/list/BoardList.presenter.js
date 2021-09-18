@@ -26,6 +26,8 @@ import {
   LeftLeftPageIcon,
   RightRightPageIcon,
   Page,
+  TitleSearchBox,
+  TitleSearch,
 } from "./BoardList.styles";
 
 export default function BoardListPresenter(props) {
@@ -47,15 +49,15 @@ export default function BoardListPresenter(props) {
           </div>
         </WriterBoardBox>
       </BestBoards>
-      <div>
-        <div>
+      <TitleSearchBox>
+        <TitleSearch>
           <img />
           <input />
           제목을 검색해주세요.
-        </div>
+        </TitleSearch>
         <div>년도입력</div>
         <div>검색하기</div>
-      </div>
+      </TitleSearchBox>
       <BoardListBox>
         <BoardListTop>
           <BoardListNumber>번호</BoardListNumber>

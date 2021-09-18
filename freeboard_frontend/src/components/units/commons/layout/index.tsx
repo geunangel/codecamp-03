@@ -1,6 +1,6 @@
 import LayoutHeader from "./header/LayoutHeader.container";
 import LayoutFooter from "./footer/LayoutFooter.container";
-import LayoutBanner from "./banner/LayoutBanner.container";
+import LayoutBanner from "./Banner/LayoutBanner.container";
 
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
