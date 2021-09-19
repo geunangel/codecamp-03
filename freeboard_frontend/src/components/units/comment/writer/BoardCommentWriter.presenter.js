@@ -17,10 +17,14 @@ import {
 export default function BoardCommentPresenter(props) {
   return (
     <Wrapper>
-      <br />
+      {!props.isEdit && (
+        <>
+          <br />
+          <CommentIcon src="/댓글.png" />
+          <CommentText>댓글</CommentText>
+        </>
+      )}
       <CommentBox>
-        <CommentIcon src="/댓글.png" />
-        <CommentText>댓글</CommentText>
         <CommentData>
           <CommentWriter
             type="text"
