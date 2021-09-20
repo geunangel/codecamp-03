@@ -73,8 +73,8 @@ export default function BoardCommentContainer(props) {
     try {
       await updateBoardComment({
         variables: {
-          updateBoardCommentInput: { contents: myContents },
-          password: myPassword,
+          updateBoardCommentInput: { contents: contents },
+          password: pw,
           boardCommentId: event.target.id,
         },
         refetchQueries: [
@@ -86,7 +86,7 @@ export default function BoardCommentContainer(props) {
       });
       props.setIsEdit?.(false);
     } catch (error) {
-      alert(error.message);
+      alert(error);
     }
   }
 

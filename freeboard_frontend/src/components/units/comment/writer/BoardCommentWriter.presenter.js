@@ -45,8 +45,13 @@ export default function BoardCommentPresenter(props) {
           />
           <LengthButton>
             <ContentsLength>0/100</ContentsLength>
-            <ButtonComment onClick={props.onClickComment}>
-              등록하기
+            <ButtonComment
+              id={props.el?._id}
+              onClick={
+                props.isEdit ? props.onClickUpdate : props.onClickComment
+              }
+            >
+              {props.isEdit ? "수정하기" : "등록하기"}
             </ButtonComment>
           </LengthButton>
         </CommentContentsBox>

@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useState } from "react";
 import BoardCommentWriter from "../writer/BoardCommentWriter.container";
 
 import {
@@ -21,6 +22,7 @@ import { useMutation } from "@apollo/client";
 
 export default function ListPresenterItem(props) {
   const router = useRouter();
+  const [isEdit, setIsEdit] = useState(false);
 
   const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
 
@@ -44,21 +46,38 @@ export default function ListPresenterItem(props) {
     }
   }
 
+  //댓글수정
+  function onClickUpdate() {
+    setIsEdit(true);
+  }
+
   return (
-    <CommentWrapeer>
-      <CommentBox>
-        <CommentImg src="/사람.png" />
-        <CommentDtailBox>
-          <CommentName>{props.el?.writer}</CommentName>
-          <CommentContents>{props.el?.contents}</CommentContents>
-        </CommentDtailBox>
-        <CommentStar value={props.el?.rating} />
-        <UpdateIcon src="/연필.png" />
-        <DeleteIcon src="/연필세트엑스.png" onClick={onClickCommentDelete} />
-      </CommentBox>
-      <CommentDate>{props.el?.createdAt}</CommentDate>
-      <br />
-      {/* <BoardCommentWriter el={props.el} /> */}
-    </CommentWrapeer>
+    <>
+      {!isEdit && (
+        <CommentWrapeer>
+          <CommentBox>
+            <CommentImg src="/사람.png" />
+            <CommentDtailBox>
+              <CommentName>{props.el?.writer}</CommentName>
+              <CommentContents>{props.el?.contents}</CommentContents>
+            </CommentDtailBox>
+            <CommentStar value={props.el?.rating} />
+            <UpdateIcon src="/연필.png" onClick={onClickUpdate} />
+            <DeleteIcon
+              src="/연필세트엑스.png"
+              onClick={onClickCommentDelete}
+            />
+          </CommentBox>
+          <CommentDate>{props.el?.createdAt}</CommentDate>
+        </CommentWrapeer>
+      )}
+      {isEdit && (
+        <BoardCommentWriter
+          isEdit={isEdit}
+          setIsEdit={setIsEdit}
+          el={props.el}
+        />
+      )}
+    </>
   );
 }
