@@ -1,12 +1,19 @@
 import { useRouter } from "next/router";
 import { useMutation, useQuery } from "@apollo/client";
-import { FETCH_BOARD, DELETE_BOARD } from "./BoardRead.queries";
+import {
+  FETCH_BOARD,
+  DELETE_BOARD,
+  LIKE_BOARD,
+  DISLIKE_BOARD,
+} from "./BoardRead.queries";
 import BoardReadPresenter from "./BoardRead.presenter";
 
 export default function BoardReadContainer() {
   const router = useRouter();
 
   const [deleteBoard] = useMutation(DELETE_BOARD);
+  const [likeBoard] = useMutation(LIKE_BOARD);
+  const [dislikeBoard] = useMutation(DISLIKE_BOARD);
 
   //data로 응답
   const { data } = useQuery(FETCH_BOARD, {
@@ -39,12 +46,34 @@ export default function BoardReadContainer() {
     router.push(`/boards`);
   }
 
+  //좋아요 버튼
+  function onClickLike() {
+    likeBoard({
+      variables: { boardId: router.query.detail },
+      refetchQueries: [
+        { query: FETCH_BOARD, variables: { boardId: router.query.detail } },
+      ],
+    });
+  }
+
+  //싫어요 버튼
+  function onClickDislike() {
+    dislikeBoard({
+      variables: { boardId: router.query.detail },
+      refetchQueries: [
+        { query: FETCH_BOARD, variables: { boardId: router.query.detail } },
+      ],
+    });
+  }
+
   return (
     <BoardReadPresenter
       data={data}
       onClickDelete={onClickDelete}
       onClickEdit={onClickEdit}
       onClickList={onClickList}
+      onClickLike={onClickLike}
+      onClickDislike={onClickDislike}
     />
   );
 }

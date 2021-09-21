@@ -58,12 +58,12 @@ export default function BoardReadPresenter(props) {
             </Youtube>
             <Likedislike>
               <Likecount>
-                <Like></Like>
-                <Count>1920</Count>
+                <Like onClick={props.onClickLike} />
+                <Count>{props.data?.fetchBoard.likeCount}</Count>
               </Likecount>
               <Dislikecount>
-                <Dislike></Dislike>
-                <Count>1920</Count>
+                <Dislike onClick={props.onClickDislike} />
+                <Count>{props.data?.fetchBoard.dislikeCount}</Count>
               </Dislikecount>
             </Likedislike>
           </Box>
