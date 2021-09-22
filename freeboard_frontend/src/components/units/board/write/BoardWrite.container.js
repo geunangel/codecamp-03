@@ -7,6 +7,8 @@ import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
 export default function BoardWriteContainer(props) {
   const router = useRouter();
 
+  const [isOpen, setIsOpen] = useState(false);
+
   const [buttoncolor, setButtoncolor] = useState();
 
   const [createBoard] = useMutation(CREATE_BOARD);
@@ -17,12 +19,16 @@ export default function BoardWriteContainer(props) {
   const [title, setTitle] = useState("");
   const [contents, setContents] = useState("");
   const [youtube, setYoutobe] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [address, setAddress] = useState("");
+  const [addressDetail, setAddressDetail] = useState("");
 
   const [writerError, setWriterError] = useState("");
   const [pwError, setPwError] = useState("");
   const [titleError, setTitleError] = useState("");
   const [contentsError, setContentsError] = useState("");
 
+  //작성자
   function onChangeWriter(event) {
     setWriter(event.target.value);
     if (
@@ -38,6 +44,7 @@ export default function BoardWriteContainer(props) {
     }
   }
 
+  //패스워드
   function onChangePw(event) {
     setPw(event.target.value);
     if (
@@ -53,6 +60,7 @@ export default function BoardWriteContainer(props) {
     }
   }
 
+  //제목
   function onChangeTitle(event) {
     setTitle(event.target.value);
     if (
@@ -68,6 +76,7 @@ export default function BoardWriteContainer(props) {
     }
   }
 
+  //내용
   function onChangeContents(event) {
     setContents(event.target.value);
     if (
@@ -83,8 +92,24 @@ export default function BoardWriteContainer(props) {
     }
   }
 
+  //유튜브
   function onChangeYoutobe(event) {
     setYoutobe(event.target.value);
+  }
+
+  //주소
+  function onChangeAddressDetail(event) {
+    setAddressDetail(event.target.value);
+  }
+
+  function onClickAddressSearch() {
+    setIsOpen(true);
+  }
+
+  function onCompleteAddressSearch() {
+    setAddress(data.address);
+    setZipcode(data.zonecode);
+    setIsOpen(false);
   }
 
   //수정
@@ -107,7 +132,7 @@ export default function BoardWriteContainer(props) {
     }
   }
 
-  //클릭시 실행
+  //등록
   async function onClickSubmit() {
     if (writer === "") {
       setWriterError("이름을 작성해 주세요.");
@@ -136,6 +161,11 @@ export default function BoardWriteContainer(props) {
               title: title,
               contents: contents,
               youtubeUrl: youtube,
+              boardAddress: {
+                zipcode: zipcode,
+                address: address,
+                addressDetail: addressDetail,
+              },
             },
           },
         });
@@ -157,6 +187,9 @@ export default function BoardWriteContainer(props) {
       onChangeTitle={onChangeTitle}
       onChangeContents={onChangeContents}
       onChangeYoutobe={onChangeYoutobe}
+      onChangeAddressDetail={onChangeAddressDetail}
+      onClickAddressSearch={onClickAddressSearch}
+      onCompleteAddressSearch={onCompleteAddressSearch}
       onClickSubmit={onClickSubmit}
       onClickEdit={onClickEdit}
       writerError={writerError}
@@ -165,6 +198,9 @@ export default function BoardWriteContainer(props) {
       contentsError={contentsError}
       buttoncolor={buttoncolor}
       isEdit={props.isEdit}
+      data={props.data}
+      address={address}
+      zipcode={zipcode}
     />
   );
 }
