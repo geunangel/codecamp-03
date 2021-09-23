@@ -2,8 +2,8 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   width: 1200px;
-  height: 1602px;
-  background-color: white;
+  /* height: 1602px; */
+  /* background-color: white; */
 `;
 
 export const Detail = styled.div`
@@ -15,9 +15,9 @@ export const Detail = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-color: blanchedalmond; */
-  border: 1px solid black;
+  /* border: 1px solid black; */
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+  background-color: rgba(102, 51, 051, 0.5);
 `;
 
 export const Header = styled.div`

@@ -19,14 +19,23 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const SidebarWrapper = styled.div`
-  display: flex;
-`;
-
 const Body = styled.div`
   box-sizing: border-box;
   margin: 30px auto;
   font-size: 100%;
+`;
+
+const WrapperColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+`;
+
+const WrapperRow = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  position: relative;
+  /* margin: auto; */
 `;
 
 export default function Layout(props) {
@@ -39,11 +48,13 @@ export default function Layout(props) {
       <LayoutMain />
       <LayoutHeader />
       <LayoutBanner />
-      <LayoutNavigition />
-      <SidebarWrapper>
-        <Body>{props.children}</Body>
+      <WrapperRow>
+        <WrapperColumn>
+          <LayoutNavigition />
+          <Body>{props.children}</Body>
+        </WrapperColumn>
         <LayoutSidebar />
-      </SidebarWrapper>
+      </WrapperRow>
       <LayoutFooter />
     </Wrapper>
   );
