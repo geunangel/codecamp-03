@@ -1,10 +1,24 @@
-import { Wrapper, LogoImg } from "./LayoutHeader.styles";
+import {
+  Wrapper,
+  LogoImg,
+  LogoName,
+  LogoBox,
+  LogSignBox,
+  Log,
+  Sign,
+} from "./LayoutHeader.styles";
 
 export default function LayoutFooterUI() {
   return (
     <Wrapper>
-      <LogoImg src="/라퐝로고.jpeg" />
-      <h1>라이브 퐝퐝</h1>
+      <LogoBox>
+        <LogoImg src="/맥주.jpeg" />
+        <LogoName>GEUNA Bar</LogoName>
+      </LogoBox>
+      <LogSignBox>
+        <Log>login</Log>
+        <Sign>signup</Sign>
+      </LogSignBox>
     </Wrapper>
   );
 }

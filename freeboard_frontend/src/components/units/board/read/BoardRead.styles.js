@@ -1,10 +1,14 @@
 import styled from "@emotion/styled";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  width: 1200px;
+  height: 1602px;
+  background-color: white;
+`;
 
 export const Detail = styled.div`
   width: 1200px;
-  height: 1602px;
+  /* height: 1602px; */
   padding-left: 102px;
   padding-right: 102px;
   display: flex;

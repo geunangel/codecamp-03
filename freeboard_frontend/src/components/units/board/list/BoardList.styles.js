@@ -21,15 +21,16 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: auto;
 `;
 
-export const Header = styled.div`
-  width: 208px;
-  height: 42px;
-  font-size: 36px;
-  font-weight: bold;
-  text-align: center;
-`;
+// export const Header = styled.div`
+//   width: 208px;
+//   height: 42px;
+//   font-size: 36px;
+//   font-weight: bold;
+//   text-align: center;
+// `;
 
 export const BestBoards = styled.div`
   width: 282px;
@@ -66,7 +67,7 @@ export const WriterName = styled.div``;
 
 export const BoardListBox = styled.div`
   width: 1200px;
-  height: 583px;
+  /* height: 583px; */
   display: flex;
   flex-direction: column;
   border: none;
@@ -106,7 +107,7 @@ export const BoardListwriter = styled.div`
   font-size: 18px;
 `;
 
-export const BoardLisDay = styled.div`
+export const BoardListDay = styled.div`
   text-align: center;
   width: 300px;
   height: 27px;
@@ -116,14 +117,16 @@ export const BoardLisDay = styled.div`
 
 export const BoardListBottom = styled.div`
   width: 1200px;
-  height: 530px;
+  /* height: 70px; */
+  padding: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const BoardListBottom2 = styled.div`
   width: 1200px;
-  height: 53px;
+  height: 70px;
   display: flex;
   flex-direction: row;
   border-bottom: 1px solid #bdbdbdbd;
@@ -156,7 +159,7 @@ export const BoardListwriter2 = styled.div`
   color: #4f4f4f;
 `;
 
-export const BoardLisDay2 = styled.div`
+export const BoardListDay2 = styled.div`
   text-align: center;
   width: 300px;
   height: 27px;

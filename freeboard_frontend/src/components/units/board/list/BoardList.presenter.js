@@ -13,13 +13,13 @@ import {
   BoardListNumber,
   BoardListTitle,
   BoardListwriter,
-  BoardLisDay,
+  BoardListDay,
   BoardListBottom,
   BoardListBottom2,
   BoardListNumber2,
   BoardListTitle2,
   BoardListwriter2,
-  BoardLisDay2,
+  BoardListDay2,
   PageIconBox,
   LeftPageIcon,
   RightPageIcon,
@@ -33,7 +33,7 @@ import {
 export default function BoardListPresenter(props) {
   return (
     <Wrapper>
-      <Header>베스트 게시글</Header>
+      {/* <Header>베스트 게시글</Header> */}
       <BestBoards>
         <BoardsImg />
         <BoardTitle>게시물 제목입니다.</BoardTitle>
@@ -63,7 +63,7 @@ export default function BoardListPresenter(props) {
           <BoardListNumber>번호</BoardListNumber>
           <BoardListTitle>제목</BoardListTitle>
           <BoardListwriter>작성자</BoardListwriter>
-          <BoardLisDay>날짜</BoardLisDay>
+          <BoardListDay>날짜</BoardListDay>
         </BoardListTop>
         <BoardListBottom>
           {props.data?.fetchBoards.map((el, index) => (
@@ -74,7 +74,7 @@ export default function BoardListPresenter(props) {
                   {el.title}
                 </BoardListTitle2>
                 <BoardListwriter2>{el.writer}</BoardListwriter2>
-                <BoardLisDay2>{el.createdAt}</BoardLisDay2>
+                <BoardListDay2>{el.createdAt.slice(0, 10)}</BoardListDay2>
               </BoardListBottom2>
             </div>
           ))}

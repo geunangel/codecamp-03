@@ -201,6 +201,7 @@ export default function BoardWriteContainer(props) {
       data={props.data}
       address={address}
       zipcode={zipcode}
+      isOpen={isOpen}
     />
   );
 }

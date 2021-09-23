@@ -36,13 +36,34 @@ export default function LayoutBannerUI() {
             <MainImg src="./drink/beer/맥주4.jpeg" />
           </div>
           <div>
-            <MainImg src="./drink/beer/와인1.jpeg" />
+            <MainImg src="./drink/wine/와인1.jpeg" />
           </div>
           <div>
-            <MainImg src="./drink/beer/와인2.jpeg" />
+            <MainImg src="./drink/wine/와인2.jpeg" />
           </div>
           <div>
-            <MainImg src="./drink/beer/와인3.jpeg" />
+            <MainImg src="./drink/wine/와인3.jpeg" />
+          </div>
+          <div>
+            <MainImg src="./drink/vodka/보드카1.jpeg" />
+          </div>
+          <div>
+            <MainImg src="./drink/vodka/보드카2.jpeg" />
+          </div>
+          <div>
+            <MainImg src="./drink/vodka/보드카3.jpeg" />
+          </div>
+          <div>
+            <MainImg src="./drink/vodka/칵테일1.jpeg" />
+          </div>
+          <div>
+            <MainImg src="./drink/vodka/칵테일2.jpeg" />
+          </div>
+          <div>
+            <MainImg src="./drink/vodka/칵테일3.jpeg" />
+          </div>
+          <div>
+            <MainImg src="./drink/vodka/칵테일4.jpeg" />
           </div>
         </Slider>
       </Wrapper>

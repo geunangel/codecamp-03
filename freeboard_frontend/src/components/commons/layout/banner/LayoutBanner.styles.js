@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
 `;
 
 export const MainImg = styled.img`
-  width: 650px;
-  height: 650px;
+  width: 1200px;
+  height: 600px;
   margin: auto;
 `;
