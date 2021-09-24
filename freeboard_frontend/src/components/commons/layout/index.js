@@ -22,7 +22,6 @@ const Wrapper = styled.div`
 const Body = styled.div`
   box-sizing: border-box;
   margin: 30px auto;
-  font-size: 100%;
 `;
 
 const WrapperColumn = styled.div`

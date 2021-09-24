@@ -7,7 +7,8 @@ export const Wrapper = styled.div`
   border-radius: 60px;
   padding: 30px;
   position: fixed;
-  margin-right: 1000px;
+  margin-right: 800px;
+  margin-top: 100px;
 `;
 
 export const LayoutSidebar = styled.div`
