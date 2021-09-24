@@ -1,11 +1,13 @@
 // import Head from 'next/head'
 // import Image from 'next/image'
 // import styles from '../styles/Home.module.css'
-// import MainPage from "../src/components/commons/layout/main/Main.presenter";
+import MainPage from "../src/components/commons/layout/main/LayoutMain.container";
 
 export default function Home() {
   return (
-    <>{/* <MainPage /> */}</>
+    <>
+      <MainPage />
+    </>
     // <div className={styles.container}>
     //   <Head>
     //     <title>Create Next App</title>

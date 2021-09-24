@@ -2,7 +2,7 @@ import LayoutHeader from "./header/LayoutHeader.container";
 import LayoutFooter from "./footer/LayoutFooter.container";
 import LayoutBanner from "./banner/LayoutBanner.container";
 import LayoutNavigition from "./navigation/LayoutNavigaition.container";
-import LayoutMain from "./main/LayoutMain.container";
+
 import LayoutSidebar from "./sidebar/LayoutSidebar.container";
 import styled from "@emotion/styled";
 import { useRouter } from "next/router";
@@ -40,21 +40,22 @@ const WrapperRow = styled.div`
 export default function Layout(props) {
   const router = useRouter();
   console.log(router);
-  // const isHidden = includes(router.pathname);
+
+  const HIDDEN_Main = ["/"];
+  const isHidden = HIDDEN_Main.includes(router.pathname);
 
   return (
     <Wrapper>
-      <LayoutMain />
-      <LayoutHeader />
-      <LayoutBanner />
+      {!isHidden && <LayoutHeader />}
+      {!isHidden && <LayoutBanner />}
       <WrapperRow>
         <WrapperColumn>
-          <LayoutNavigition />
+          {!isHidden && <LayoutNavigition />}
           <Body>{props.children}</Body>
         </WrapperColumn>
-        <LayoutSidebar />
+        {!isHidden && <LayoutSidebar />}
       </WrapperRow>
-      <LayoutFooter />
+      {!isHidden && <LayoutFooter />}
     </Wrapper>
   );
 }

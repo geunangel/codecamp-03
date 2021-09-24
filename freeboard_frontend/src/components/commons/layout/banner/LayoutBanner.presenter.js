@@ -7,7 +7,7 @@ export default function LayoutBannerUI() {
   const settings = {
     slide: "div", //슬라이드 되어야 할 태그 ex) div, li
     infinite: true, //무한 반복 옵션
-    dots: true, // 슬라이드 밑에 점 보이게
+    dots: false, // 슬라이드 밑에 점 보이게
     infinite: true, // 무한으로 반복
     speed: 3000,
     autoplay: true, // 자동 스크롤 사용 여부

@@ -5,7 +5,7 @@ export default function LayoutHeader() {
   const router = useRouter();
 
   function onClickMarketList() {
-    router.push(`/market`);
+    router.push(`/all`);
   }
 
   return <LayoutNaigaitionUI onClickMarketList={onClickMarketList} />;

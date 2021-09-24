@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   border-radius: 60px;
   padding: 30px;
   position: fixed;
-  margin-right: 800px;
+  margin-right: 20%;
   margin-top: 100px;
 `;
 

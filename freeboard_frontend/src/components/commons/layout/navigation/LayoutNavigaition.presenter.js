@@ -3,10 +3,18 @@ import { Wrapper, LayoutNavigaition } from "./LayoutNavigaition.styles";
 export default function LayoutNaigaitionUI(props) {
   return (
     <Wrapper>
-      <LayoutNavigaition onClick={props.onClick}>All</LayoutNavigaition>
-      <LayoutNavigaition onClick={props.onClick}>Wine</LayoutNavigaition>
-      <LayoutNavigaition onClick={props.onClick}>Vodka</LayoutNavigaition>
-      <LayoutNavigaition onClick={props.onClick}>Beer</LayoutNavigaition>
+      <LayoutNavigaition onClick={props.onClickMarketList}>
+        All
+      </LayoutNavigaition>
+      <LayoutNavigaition onClick={props.onClickMarketList}>
+        Wine
+      </LayoutNavigaition>
+      <LayoutNavigaition onClick={props.onClickMarketList}>
+        Vodka
+      </LayoutNavigaition>
+      <LayoutNavigaition onClick={props.onClickMarketList}>
+        Beer
+      </LayoutNavigaition>
     </Wrapper>
   );
 }
