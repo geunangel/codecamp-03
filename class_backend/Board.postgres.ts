@@ -14,4 +14,8 @@ export default class Board extends BaseEntity {
 
   @Column({ type: "integer" })
   age!: number;
+
+  //nullable: => null이 들어갈 수 있는지 여부
+  @Column({ type: "timestamp", default: null, nullable: true })
+  deletedAt?: Date;
 }
