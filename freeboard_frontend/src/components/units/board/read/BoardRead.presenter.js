@@ -47,7 +47,10 @@ export default function BoardReadPresenter(props) {
         <Footer>
           <Title>{props.data?.fetchBoard.title}</Title>
           <Box>
-            <Img>사진</Img>
+            <Img
+              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images}`}
+              alt="이미지없음"
+            />
             <Contents>{props.data?.fetchBoard.contents}</Contents>
             <Youtube>
               <ReactPlayer

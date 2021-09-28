@@ -170,9 +170,10 @@ export const ImgBox = styled.div`
   /* background-color: gray; */
 `;
 
-export const ImgTitle = styled.div`
+export const ImgTitle = styled.input`
   width: 78px;
   height: 78px;
+  display: none;
 `;
 
 export const ImgUploadBox = styled.div`

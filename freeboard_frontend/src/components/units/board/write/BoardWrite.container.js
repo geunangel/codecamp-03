@@ -1,8 +1,8 @@
 import { useMutation } from "@apollo/client";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useRouter } from "next/router";
 import BoardWritePresenter from "./BoardWrite.presenter";
-import { CREATE_BOARD, UPDATE_BOARD } from "./BoardWrite.queries";
+import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
 
 export default function BoardWriteContainer(props) {
   const router = useRouter();
@@ -13,6 +13,7 @@ export default function BoardWriteContainer(props) {
 
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
+  const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const [writer, setWriter] = useState("");
   const [pw, setPw] = useState("");
@@ -27,6 +28,9 @@ export default function BoardWriteContainer(props) {
   const [pwError, setPwError] = useState("");
   const [titleError, setTitleError] = useState("");
   const [contentsError, setContentsError] = useState("");
+
+  const [imageUrl, setImageUrl] = useState([]);
+  const fileRef = useRef();
 
   //작성자
   function onChangeWriter(event) {
@@ -112,6 +116,48 @@ export default function BoardWriteContainer(props) {
     setIsOpen(false);
   }
 
+  //이미지 업로드
+  async function onChangeImg(event) {
+    const imgFile = event.target.files[0];
+    console.log(imgFile);
+
+    //검증
+    if (!imgFile) {
+      alert("파일이 없습니다.");
+      return;
+    }
+
+    if (imgFile.size > 10 * 1024 * 1024) {
+      alert("파일 용량이 너무 큽니다.");
+      return;
+    }
+
+    if (!imgFile.type.includes("jpeg") && !imgFile.type.includes("png")) {
+      alert("jpeg나 png만 업로드 가능합니다.");
+      return;
+    }
+
+    const result = await uploadFile({
+      variables: {
+        file: imgFile,
+      },
+    });
+    console.log(result.data.uploadFile.url);
+    setImageUrl(result.data.uploadFile.url);
+    // setImageUrl(imageUrl.concat([result.data.uploadFile.url]));
+  }
+
+  //이미지 업로드
+  function onClickImg1() {
+    fileRef.current?.click();
+  }
+  function onClickImg2() {
+    fileRef.current?.click();
+  }
+  function onClickImg3() {
+    fileRef.current?.click();
+  }
+
   //수정
   async function onClickEdit() {
     try {
@@ -166,6 +212,7 @@ export default function BoardWriteContainer(props) {
                 address: address,
                 addressDetail: addressDetail,
               },
+              images: [imageUrl],
             },
           },
         });
@@ -192,6 +239,11 @@ export default function BoardWriteContainer(props) {
       onCompleteAddressSearch={onCompleteAddressSearch}
       onClickSubmit={onClickSubmit}
       onClickEdit={onClickEdit}
+      onChangeImg={onChangeImg}
+      onClickImg1={onClickImg1}
+      onClickImg2={onClickImg2}
+      onClickImg3={onClickImg3}
+      fileRef={fileRef}
       writerError={writerError}
       pwError={pwError}
       titleError={titleError}

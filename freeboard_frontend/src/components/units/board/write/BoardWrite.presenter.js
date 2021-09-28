@@ -120,17 +120,22 @@ export default function BoardWritePresenter(props) {
           <br />
         </YoutubeBox>
         <ImgBox>
-          <ImgTitle>사진첨부</ImgTitle>
+          <ImgTitle
+            ref={props.fileRef}
+            type="file"
+            onChange={props.onChangeImg}
+          />
+          사진첨부
           <ImgUploadBox>
-            <ImgUpload>
+            <ImgUpload onClick={props.onClickImg1}>
               <ImgText>+</ImgText>
               <ImgText>등록하기</ImgText>
             </ImgUpload>
-            <ImgUpload>
+            <ImgUpload onClick={props.onClickImg2}>
               <ImgText>+</ImgText>
               <ImgText>등록하기</ImgText>
             </ImgUpload>
-            <ImgUpload>
+            <ImgUpload onClick={props.onClickImg3}>
               <ImgText>+</ImgText>
               <ImgText>등록하기</ImgText>
             </ImgUpload>

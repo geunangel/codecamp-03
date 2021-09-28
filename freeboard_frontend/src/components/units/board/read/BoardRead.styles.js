@@ -69,11 +69,11 @@ export const Title = styled.div`
   margin-top: 80px;
 `;
 
-export const Img = styled.div`
+export const Img = styled.img`
   width: 996px;
   height: 480px;
   /* background-color: black; */
-  background-image: url("/좀비손.png");
+  /* background-image: url("/좀비손.png"); */
   margin-top: 40px;
 `;
 
