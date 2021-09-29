@@ -48,7 +48,15 @@ export default function BoardReadPresenter(props) {
           <Title>{props.data?.fetchBoard.title}</Title>
           <Box>
             <Img
-              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images}`}
+              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[0]}`}
+              alt="이미지없음"
+            />
+            <Img
+              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[1]}`}
+              alt="이미지없음"
+            />
+            <Img
+              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[2]}`}
               alt="이미지없음"
             />
             <Contents>{props.data?.fetchBoard.contents}</Contents>

@@ -30,6 +30,7 @@ export default function BoardWriteContainer(props) {
   const [contentsError, setContentsError] = useState("");
 
   const [imageUrl, setImageUrl] = useState([]);
+
   const fileRef = useRef();
 
   //작성자
@@ -143,8 +144,8 @@ export default function BoardWriteContainer(props) {
       },
     });
     console.log(result.data.uploadFile.url);
-    setImageUrl(result.data.uploadFile.url);
-    // setImageUrl(imageUrl.concat([result.data.uploadFile.url]));
+    // setImageUrl(result.data.uploadFile.url);
+    setImageUrl(imageUrl.concat([result.data.uploadFile.url]));
   }
 
   //이미지 업로드
@@ -212,7 +213,7 @@ export default function BoardWriteContainer(props) {
                 address: address,
                 addressDetail: addressDetail,
               },
-              images: [imageUrl],
+              images: imageUrl,
             },
           },
         });
