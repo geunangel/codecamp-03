@@ -176,27 +176,6 @@ export const ImgTitle = styled.input`
   display: none;
 `;
 
-export const ImgUploadBox = styled.div`
-  width: 300px;
-  display: flex;
-  flex-direction: row;
-  /* align-items: center; */
-  justify-content: space-between;
-  /* background-color: mediumturquoise; */
-`;
-
-export const ImgUpload = styled.div`
-  width: 78px;
-  height: 78px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  background-color: #bdbdbd;
-`;
-
-export const ImgText = styled.div``;
-
 export const MainBox = styled.div`
   padding-top: 30px;
   width: 996px;

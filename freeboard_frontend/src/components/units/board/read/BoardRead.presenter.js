@@ -39,7 +39,10 @@ export default function BoardReadPresenter(props) {
             </div>
           </Head1>
           <Head2>
-            <div>위치글자</div>
+            <div>
+              {props.data?.fetchBoard.boardAddress?.address}
+              {props.data?.fetchBoard.boardAddress?.addressDetail}
+            </div>
             <div>아이콘</div>
             <div>아이콘</div>
           </Head2>

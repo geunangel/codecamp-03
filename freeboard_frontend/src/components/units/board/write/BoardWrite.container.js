@@ -1,5 +1,5 @@
 import { useMutation } from "@apollo/client";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useRouter } from "next/router";
 import BoardWritePresenter from "./BoardWrite.presenter";
 import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
@@ -8,6 +8,7 @@ export default function BoardWriteContainer(props) {
   const router = useRouter();
 
   const [isOpen, setIsOpen] = useState(false);
+  const [isActive, setIsActive] = useState(false);
 
   const [buttoncolor, setButtoncolor] = useState();
 
@@ -29,9 +30,7 @@ export default function BoardWriteContainer(props) {
   const [titleError, setTitleError] = useState("");
   const [contentsError, setContentsError] = useState("");
 
-  const [imageUrl, setImageUrl] = useState([]);
-
-  const fileRef = useRef();
+  const [files, setFiles] = useState([null, null, null]);
 
   //작성자
   function onChangeWriter(event) {
@@ -44,8 +43,10 @@ export default function BoardWriteContainer(props) {
     ) {
       setWriterError("");
       setButtoncolor(true);
+      setIsActive(true);
     } else {
       setButtoncolor(false);
+      setIsActive(false);
     }
   }
 
@@ -76,8 +77,10 @@ export default function BoardWriteContainer(props) {
     ) {
       setWriterError("");
       setButtoncolor(true);
+      setIsActive(false);
     } else {
       setButtoncolor(false);
+      setIsActive(false);
     }
   }
 
@@ -92,8 +95,10 @@ export default function BoardWriteContainer(props) {
     ) {
       setWriterError("");
       setButtoncolor(true);
+      setIsActive(false);
     } else {
       setButtoncolor(false);
+      setIsActive(false);
     }
   }
 
@@ -106,77 +111,13 @@ export default function BoardWriteContainer(props) {
   function onChangeAddressDetail(event) {
     setAddressDetail(event.target.value);
   }
-
   function onClickAddressSearch() {
     setIsOpen(true);
   }
-
-  function onCompleteAddressSearch() {
+  function onCompleteAddressSearch(data) {
     setAddress(data.address);
     setZipcode(data.zonecode);
     setIsOpen(false);
-  }
-
-  //이미지 업로드
-  async function onChangeImg(event) {
-    const imgFile = event.target.files[0];
-    console.log(imgFile);
-
-    //검증
-    if (!imgFile) {
-      alert("파일이 없습니다.");
-      return;
-    }
-
-    if (imgFile.size > 10 * 1024 * 1024) {
-      alert("파일 용량이 너무 큽니다.");
-      return;
-    }
-
-    if (!imgFile.type.includes("jpeg") && !imgFile.type.includes("png")) {
-      alert("jpeg나 png만 업로드 가능합니다.");
-      return;
-    }
-
-    const result = await uploadFile({
-      variables: {
-        file: imgFile,
-      },
-    });
-    console.log(result.data.uploadFile.url);
-    // setImageUrl(result.data.uploadFile.url);
-    setImageUrl(imageUrl.concat([result.data.uploadFile.url]));
-  }
-
-  //이미지 업로드
-  function onClickImg1() {
-    fileRef.current?.click();
-  }
-  function onClickImg2() {
-    fileRef.current?.click();
-  }
-  function onClickImg3() {
-    fileRef.current?.click();
-  }
-
-  //수정
-  async function onClickEdit() {
-    try {
-      const result = await updateBoard({
-        variables: {
-          boardId: router.query.detail,
-          password: pw,
-          updateBoardInput: {
-            title: title,
-            contents: contents,
-            youtubeUrl: youtube,
-          },
-        },
-      });
-      router.push(`/boards/${result.data.updateBoard._id}`);
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   //등록
@@ -200,6 +141,11 @@ export default function BoardWriteContainer(props) {
     if (writer !== "" && pw !== "" && title !== "" && contents) {
       //등록
       try {
+        const uploadFiles = files
+          .filter((el) => el)
+          .map((el) => uploadFile({ variables: { file: el } }));
+        const results = await Promise.all(uploadFiles);
+        const myImages = results.map((el) => el.data.uploadFile.url);
         const result = await createBoard({
           variables: {
             createBoardInput: {
@@ -213,7 +159,7 @@ export default function BoardWriteContainer(props) {
                 address: address,
                 addressDetail: addressDetail,
               },
-              images: imageUrl,
+              images: myImages,
             },
           },
         });
@@ -225,6 +171,43 @@ export default function BoardWriteContainer(props) {
       } catch (error) {
         console.log(error);
       }
+    }
+  }
+
+  function onChangeFiles(file, index) {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
+  }
+
+  //수정
+  async function onClickEdit() {
+    if (
+      !title &&
+      false &&
+      !youtubeUrl &&
+      !zipcode &&
+      !address &&
+      !addressDetail
+    ) {
+      alert("수정된 내용이 없습니다.");
+      return;
+    }
+    try {
+      const result = await updateBoard({
+        variables: {
+          boardId: router.query.detail,
+          password: pw,
+          updateBoardInput: {
+            title: title,
+            contents: contents,
+            youtubeUrl: youtube,
+          },
+        },
+      });
+      router.push(`/boards/${result.data.updateBoard._id}`);
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -240,11 +223,7 @@ export default function BoardWriteContainer(props) {
       onCompleteAddressSearch={onCompleteAddressSearch}
       onClickSubmit={onClickSubmit}
       onClickEdit={onClickEdit}
-      onChangeImg={onChangeImg}
-      onClickImg1={onClickImg1}
-      onClickImg2={onClickImg2}
-      onClickImg3={onClickImg3}
-      fileRef={fileRef}
+      onChangeFiles={onChangeFiles}
       writerError={writerError}
       pwError={pwError}
       titleError={titleError}
@@ -255,6 +234,7 @@ export default function BoardWriteContainer(props) {
       address={address}
       zipcode={zipcode}
       isOpen={isOpen}
+      isActive={isActive}
     />
   );
 }

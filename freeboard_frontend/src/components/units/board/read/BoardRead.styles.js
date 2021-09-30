@@ -32,7 +32,6 @@ export const Header = styled.div`
 
 export const Footer = styled.div`
   width: 100%;
-  height: 1441px;
   /* background-color: palegoldenrod; */
 `;
 export const WriterImg = styled.img``;
@@ -52,7 +51,7 @@ export const Head1 = styled.div`
 `;
 
 export const Head2 = styled.div`
-  width: 300px;
+  width: 500px;
   height: 160px;
   /* background-color: palevioletred; */
   display: flex;

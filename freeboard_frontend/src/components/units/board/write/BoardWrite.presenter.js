@@ -25,9 +25,6 @@ import {
   YoutubeText,
   ImgBox,
   ImgTitle,
-  ImgUploadBox,
-  ImgUpload,
-  ImgText,
   MainBox,
   MainName,
   MainCheck,
@@ -36,6 +33,7 @@ import {
 } from "./BoardWrite.styles";
 import { Modal } from "antd";
 import DaumPostcode from "react-daum-postcode";
+import Uploads01 from "../../../commons/uploads/01/Uploads01.container";
 
 export default function BoardWritePresenter(props) {
   return (
@@ -105,9 +103,17 @@ export default function BoardWritePresenter(props) {
             </ButtonAddress>
             <br />
           </AddressSearchBox>
-          <AddressText type="text" />
+          <AddressText
+            readOnly
+            value={
+              props.address || props.data?.fetchBoard.boardAddress?.address
+            }
+          />
           <br />
-          <AddressText type="text" />
+          <AddressText
+            onChange={props.onChangeAddressDetail}
+            defaultValue={props.data?.fetchBoard.boardAddress?.addressDetail}
+          />
           <br />
         </AddressBox>
         <YoutubeBox>
@@ -116,6 +122,7 @@ export default function BoardWritePresenter(props) {
             type="text"
             placeholder="링크를 복사해 주세요."
             onChange={props.onChangeYoutobe}
+            defaultValue={props.data?.fetchBoard.youtubeUrl}
           />
           <br />
         </YoutubeBox>
@@ -126,21 +133,14 @@ export default function BoardWritePresenter(props) {
             onChange={props.onChangeImg}
           />
           사진첨부
-          <ImgUploadBox>
-            <ImgUpload onClick={props.onClickImg1}>
-              <ImgText>+</ImgText>
-              <ImgText>등록하기</ImgText>
-            </ImgUpload>
-            <ImgUpload onClick={props.onClickImg2}>
-              <ImgText>+</ImgText>
-              <ImgText>등록하기</ImgText>
-            </ImgUpload>
-            <ImgUpload onClick={props.onClickImg3}>
-              <ImgText>+</ImgText>
-              <ImgText>등록하기</ImgText>
-            </ImgUpload>
-          </ImgUploadBox>
         </ImgBox>
+        {new Array(3).fill(1).map((el, index) => (
+          <Uploads01
+            key={`${el}_${index}`}
+            index={index}
+            onChangeFiles={props.onChangeFiles}
+          />
+        ))}
         <MainBox>
           <MainName>메인설정</MainName>
           <MainCheck type="radio" />
@@ -157,7 +157,7 @@ export default function BoardWritePresenter(props) {
           </ButtonEnrollent>
         )}
         {props.isEdit && (
-          <ButtonEnrollent onClick={props.onClickEdit}>
+          <ButtonEnrollent onClick={props.onClickEdit} isActive={true}>
             수정하기
           </ButtonEnrollent>
         )}
