@@ -28,7 +28,9 @@ import {
   Page,
   TitleSearchBox,
   TitleSearch,
+  TextColor,
 } from "./BoardList.styles";
+import { v4 as uuidv4 } from "uuid";
 
 export default function BoardListPresenter(props) {
   return (
@@ -52,11 +54,14 @@ export default function BoardListPresenter(props) {
       <TitleSearchBox>
         <TitleSearch>
           <img />
-          <input />
-          제목을 검색해주세요.
+          <input
+            refetch={props.refetch}
+            onChangeKeyword={props.onChangeKeyword}
+            placeholder="제목을 검색해주세요."
+          />
         </TitleSearch>
         <div>년도입력</div>
-        <div>검색하기</div>
+        <button>검색하기</button>
       </TitleSearchBox>
       <BoardListBox>
         <BoardListTop>
@@ -71,7 +76,17 @@ export default function BoardListPresenter(props) {
               <BoardListBottom2>
                 <BoardListNumber2>{10 - index}</BoardListNumber2>
                 <BoardListTitle2 id={el._id} onClick={props.onClickRead}>
-                  {el.title}
+                  {el.title
+                    .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
+                    .split("@#$%")
+                    .map((el) => (
+                      <TextColor
+                        key={uuidv4()}
+                        isMatched={props.keyword === el}
+                      >
+                        {el}
+                      </TextColor>
+                    ))}
                 </BoardListTitle2>
                 <BoardListwriter2>{el.writer}</BoardListwriter2>
                 <BoardListDay2>{el.createdAt.slice(0, 10)}</BoardListDay2>

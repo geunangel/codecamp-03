@@ -173,3 +173,7 @@ export const TitleSearchBox = styled.div`
 `;
 
 export const TitleSearch = styled.div``;
+
+export const TextColor = styled.span`
+  color: ${(props) => (props.isMatched ? "rosybrown" : "black")};
+`;

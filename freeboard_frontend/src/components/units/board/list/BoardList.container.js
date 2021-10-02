@@ -8,6 +8,7 @@ export default function BoardListContainer() {
   const router = useRouter();
 
   const [startPage, setStartPage] = useState(1);
+  const [keyword, setKeyword] = useState("");
 
   //첫페이지 기준으로 설정함
   const { data, refetch } = useQuery(FETCH_BOARDS, {
@@ -34,13 +35,17 @@ export default function BoardListContainer() {
 
   function onClickStartPage() {
     //시작페이지로 이동
-    //setStartPage(1);
+    setStartPage(1);
+  }
+
+  function onChangeKeyword(value) {
+    setKeyword(value);
   }
 
   function onClickEndPage() {
     //끝페이지로 이동
-    //const lastPage = Math.ceil(databoardsCount?.fetchBoardsCount / 10);
-    //setStartPage(lastPage);
+    const lastPage = Math.ceil(databoardsCount?.fetchBoardsCount / 10);
+    setStartPage(lastPage);
   }
 
   //상세페이지로 이동
@@ -57,6 +62,7 @@ export default function BoardListContainer() {
   return (
     <BoardListPresenter
       data={data}
+      refetch={refetch}
       onClickRead={onClickRead}
       onClickNew={onClickNew}
       onClickPage={onClickPage}
@@ -64,6 +70,7 @@ export default function BoardListContainer() {
       onClickNextPage={onClickNextPage}
       onClickStartPage={onClickStartPage}
       onClickEndPage={onClickEndPage}
+      onChangeKeyword={onChangeKeyword}
       startPage={startPage}
       lastPage={lastPage}
     />
