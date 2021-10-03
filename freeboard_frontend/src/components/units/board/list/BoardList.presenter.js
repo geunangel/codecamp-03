@@ -38,7 +38,11 @@ export default function BoardListPresenter(props) {
       {/* <Header>베스트 게시글</Header> */}
       <BestBoards>
         <BoardsImg />
-        <BoardTitle>게시물 제목입니다.</BoardTitle>
+        <BoardTitle>게시물 제목</BoardTitle>
+
+        {/* {props.dataBoardsOfTheBest?.fetchBoardsOfTheBest.map((el) => (
+            < key={el._id} id={el._id} onClick={props.onClickBest}> */}
+
         <WriterBoardBox>
           <WriterBox>
             <WriterImg>사진</WriterImg>
@@ -55,7 +59,7 @@ export default function BoardListPresenter(props) {
         <TitleSearch>
           <img />
           <input
-            refetch={props.refetch}
+            // refetch={props.refetch}
             onChangeKeyword={props.onChangeKeyword}
             placeholder="제목을 검색해주세요."
           />
