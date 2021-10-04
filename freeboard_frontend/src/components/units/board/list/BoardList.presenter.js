@@ -65,7 +65,7 @@ export default function BoardListPresenter(props) {
           />
         </TitleSearch>
         <div>년도입력</div>
-        <button>검색하기</button>
+        <button onClick={props.onClickKeyword}>검색하기</button>
       </TitleSearchBox>
       <BoardListBox>
         <BoardListTop>

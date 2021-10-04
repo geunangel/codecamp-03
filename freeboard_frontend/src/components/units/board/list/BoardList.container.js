@@ -3,19 +3,31 @@ import BoardListPresenter from "./BoardList.presenter";
 import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./BoardList.queries";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import _ from "lodash";
 
 export default function BoardListContainer() {
   const router = useRouter();
 
+  // const { data: dataBoardsCount } = useQuery(FETCH_BOARDS_COUNT);
+  // const { data: dataBoardsOfTheBest } = useQuery(FETCH_BOARDS_OF_THE_BEST);
+
   const [startPage, setStartPage] = useState(1);
   const [keyword, setKeyword] = useState("");
+  const [current, setCurrent] = useState(1);
 
-  // const { data: dataBoardsCount } = useQuery(FETCH_BOARDS_COUNT);
-  const { data: dataBoardsOfTheBest } = useQuery(FETCH_BOARDS_OF_THE_BEST);
+  const getDebounce = _.debounce((data) => {
+    refetch({ search: data, page: 1 });
+    setKeyword(data);
+    setCurrent(1);
+  }, 500);
 
   //검색
-  function onChangeKeyword(value) {
-    setKeyword(value);
+  function onChangeKeyword(event) {
+    getDebounce(event.target.value);
+  }
+
+  function onClickKeyword(event) {
+    refetch({ search: keyword, page: Number(event.target.id) });
   }
 
   //첫페이지 기준으로 설정함
@@ -66,7 +78,7 @@ export default function BoardListContainer() {
   return (
     <BoardListPresenter
       data={data}
-      dataBoardsOfTheBest={dataBoardsOfTheBest}
+      // dataBoardsOfTheBest={dataBoardsOfTheBest}
       onClickRead={onClickRead}
       onClickNew={onClickNew}
       onClickPage={onClickPage}
@@ -75,8 +87,10 @@ export default function BoardListContainer() {
       onClickStartPage={onClickStartPage}
       onClickEndPage={onClickEndPage}
       onChangeKeyword={onChangeKeyword}
+      onClickKeyword={onClickKeyword}
       startPage={startPage}
       lastPage={lastPage}
+      current={current}
     />
   );
 }
