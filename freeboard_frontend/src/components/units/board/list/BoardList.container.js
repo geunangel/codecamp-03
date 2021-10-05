@@ -12,8 +12,9 @@ export default function BoardListContainer() {
   // const { data: dataBoardsOfTheBest } = useQuery(FETCH_BOARDS_OF_THE_BEST);
 
   const [startPage, setStartPage] = useState(1);
-  const [keyword, setKeyword] = useState("");
   const [current, setCurrent] = useState(1);
+  const [mySearch, setMySearch] = useState("");
+  const [myKeyword, setMyKeyword] = useState("");
 
   const getDebounce = _.debounce((data) => {
     refetch({ search: data, page: 1 });
@@ -22,12 +23,23 @@ export default function BoardListContainer() {
   }, 500);
 
   //검색
-  function onChangeKeyword(event) {
-    getDebounce(event.target.value);
+  function onChangeSearch(event) {
+    setMySearch(event.target.value);
   }
 
-  function onClickKeyword(event) {
-    refetch({ search: keyword, page: Number(event.target.id) });
+  function onClickSearch() {
+    //variables 생략가능
+    refetch({ search: mySearch });
+    //검색버튼 눌려야 change되게 만드는 거
+    setMyKeyword(mySearch);
+  }
+
+  function onClickPage(event) {
+    //검색창에만 쳐도 change됨
+    //refetch({ search: mySearch, page: Number(event.target.id) });
+
+    //검색버튼 눌려야 change됨
+    refetch({ search: myKeyword, page: Number(event.target.id) });
   }
 
   //첫페이지 기준으로 설정함
@@ -79,6 +91,9 @@ export default function BoardListContainer() {
     <BoardListPresenter
       data={data}
       // dataBoardsOfTheBest={dataBoardsOfTheBest}
+      startPage={startPage}
+      lastPage={lastPage}
+      current={current}
       onClickRead={onClickRead}
       onClickNew={onClickNew}
       onClickPage={onClickPage}
@@ -86,11 +101,8 @@ export default function BoardListContainer() {
       onClickNextPage={onClickNextPage}
       onClickStartPage={onClickStartPage}
       onClickEndPage={onClickEndPage}
-      onChangeKeyword={onChangeKeyword}
-      onClickKeyword={onClickKeyword}
-      startPage={startPage}
-      lastPage={lastPage}
-      current={current}
+      onChangeSearch={onChangeSearch}
+      onClickSearch={onClickSearch}
     />
   );
 }

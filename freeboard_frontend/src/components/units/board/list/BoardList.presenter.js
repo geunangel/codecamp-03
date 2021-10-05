@@ -59,13 +59,14 @@ export default function BoardListPresenter(props) {
         <TitleSearch>
           <img />
           <input
+            type="text"
             // refetch={props.refetch}
-            onChangeKeyword={props.onChangeKeyword}
+            onChange={props.onChangeSearch}
             placeholder="제목을 검색해주세요."
           />
         </TitleSearch>
-        <div>년도입력</div>
-        <button onClick={props.onClickKeyword}>검색하기</button>
+        <input type="text" placeholder="날짜검색" />
+        <button onClick={props.onClickSearch}>검색하기</button>
       </TitleSearchBox>
       <BoardListBox>
         <BoardListTop>
@@ -81,12 +82,14 @@ export default function BoardListPresenter(props) {
                 <BoardListNumber2>{10 - index}</BoardListNumber2>
                 <BoardListTitle2 id={el._id} onClick={props.onClickRead}>
                   {el.title
-                    .replaceAll(props.keyword, `@#$%${props.keyword}@#$%`)
+                    .replaceAll(props.myKeyword, `@#$%${props.myKeyword}@#$%`)
                     .split("@#$%")
                     .map((el) => (
                       <TextColor
                         key={uuidv4()}
-                        isMatched={props.keyword === el}
+                        id={String(index + 1)}
+                        onClick={props.onClickPage}
+                        isMatched={props.myKeyword === el}
                       >
                         {el}
                       </TextColor>
@@ -110,6 +113,7 @@ export default function BoardListPresenter(props) {
                   key={props.startPage + index}
                   onClick={props.onClickPage}
                   id={String(props.startPage + index)}
+                  current={props.startPage + index === props.current}
                 >
                   {props.startPage + index}
                 </Page>
