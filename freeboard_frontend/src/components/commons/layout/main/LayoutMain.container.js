@@ -5,8 +5,14 @@ export default function LayoutMain() {
   const router = useRouter();
 
   function onClickNonMember() {
-    router.push(`/all`);
+    router.push("/all");
   }
 
-  return <MainUI onClickNonMember={onClickNonMember} />;
+  function onClickSignin() {
+    router.push("/signin");
+  }
+
+  return (
+    <MainUI onClickNonMember={onClickNonMember} onClickSignin={onClickSignin} />
+  );
 }

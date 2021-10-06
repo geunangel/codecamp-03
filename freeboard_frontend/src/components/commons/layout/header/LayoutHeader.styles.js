@@ -30,13 +30,13 @@ export const LogSignBox = styled.div`
   justify-content: space-between;
 `;
 
-export const Log = styled.div`
+export const Signin = styled.div`
   font-size: 40px;
   color: rgba(240, 230, 230, 0.9);
   /* font-family: ; */
 `;
 
-export const Sign = styled.div`
+export const Signup = styled.div`
   font-size: 40px;
   color: rgba(240, 230, 230, 0.9);
 `;

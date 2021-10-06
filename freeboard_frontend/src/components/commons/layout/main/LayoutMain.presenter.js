@@ -14,7 +14,7 @@ export default function Main(props) {
       <MainNonMember onClick={props.onClickNonMember}>
         비회원으로 입장하기
       </MainNonMember>
-      <MainMember>회원으로 입장하기</MainMember>
+      <MainMember onClick={props.onClickSignin}>회원으로 입장하기</MainMember>
     </Wrapper>
   );
 }
