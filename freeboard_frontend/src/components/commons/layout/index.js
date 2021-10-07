@@ -10,11 +10,11 @@ import { useRouter } from "next/router";
 const Wrapper = styled.div`
   font-size: 100%;
   box-sizing: border-box;
-  background-color: magenta;
+  /* background-color: magenta;
   background: radial-gradient(
     rgba(153, 051, 051, 0.2) 20%,
     rgba(102, 51, 051, 0.9) 100%
-  );
+  ); */
   display: flex;
   flex-direction: column;
 `;
@@ -47,10 +47,10 @@ export default function Layout(props) {
   return (
     <Wrapper>
       {!isHidden && <LayoutHeader />}
+      {!isHidden && <LayoutNavigition />}
       {!isHidden && <LayoutBanner />}
       <WrapperRow>
         <WrapperColumn>
-          {!isHidden && <LayoutNavigition />}
           <Body>{props.children}</Body>
         </WrapperColumn>
         {!isHidden && <LayoutSidebar />}

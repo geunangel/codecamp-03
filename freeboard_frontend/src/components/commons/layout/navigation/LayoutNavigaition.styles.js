@@ -2,16 +2,22 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   /* background-color: mediumpurple; */
-  height: 100px;
   display: flex;
-  justify-content: center;
-  font-size: 50px;
+  /* justify-content: center; */
+  align-items: center;
   font-weight: bold;
+  height: 3vh;
+  margin-left: 5%;
 `;
 
 export const LayoutNavigaition = styled.div`
-  width: 400px;
+  width: 20vh;
   margin-top: 25px;
   text-align: center;
-  color: rgba(153, 51, 51, 0.9);
+  font-size: 2vh;
+  /* color: rgba(153, 51, 51, 0.9); */
+`;
+
+export const Search = styled.input`
+  width: 40vh;
 `;

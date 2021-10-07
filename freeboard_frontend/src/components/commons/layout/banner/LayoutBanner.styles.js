@@ -1,15 +1,15 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  height: 700px;
-  margin-top: 200px;
+  /* margin-top: ; */
+  padding: 5%;
   /* background-color: mediumpurple; */
   /* opacity: 0.5; */
   /* background-color: magenta; */
 `;
 
 export const MainImg = styled.img`
-  width: 1200px;
-  height: 600px;
+  width: 100vh;
+  height: 50vh;
   margin: auto;
 `;

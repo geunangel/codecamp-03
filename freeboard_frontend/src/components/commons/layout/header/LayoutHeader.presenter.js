@@ -39,8 +39,8 @@ export default function LayoutFooterUI(props) {
   return (
     <Wrapper>
       <LogoBox>
-        <LogoImg src="/맥주.jpeg" />
-        <LogoName>GEUNA Bar</LogoName>
+        <LogoImg src="/로고.png" />
+        <LogoName></LogoName>
       </LogoBox>
       <LogSignBox>
         {data?.fetchUserLoggedIn.name && (

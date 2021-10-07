@@ -11,32 +11,33 @@ export const Wrapper = styled.div`
 `;
 
 export const LogoImg = styled.img`
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 70px;
 `;
 
 export const LogoName = styled.div`
   font-size: 80px;
   /* color: mintcream; */
-  color: rgba(240, 230, 230, 0.9);
+  /* color: rgba(240, 230, 230, 0.9); */
 `;
 
 export const LogoBox = styled.div`
   display: flex;
 `;
 export const LogSignBox = styled.div`
-  width: 280px;
+  width: 150px;
   display: flex;
   justify-content: space-between;
+  margin-right: 20px;
 `;
 
 export const Signin = styled.div`
-  font-size: 40px;
-  color: rgba(240, 230, 230, 0.9);
+  font-size: 20px;
+  /* color: rgba(240, 230, 230, 0.9); */
   /* font-family: ; */
 `;
 
 export const Signup = styled.div`
-  font-size: 40px;
-  color: rgba(240, 230, 230, 0.9);
+  font-size: 20px;
+  /* color: rgba(240, 230, 230, 0.9); */
 `;

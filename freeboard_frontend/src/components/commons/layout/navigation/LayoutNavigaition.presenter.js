@@ -1,4 +1,4 @@
-import { Wrapper, LayoutNavigaition } from "./LayoutNavigaition.styles";
+import { Wrapper, LayoutNavigaition, Search } from "./LayoutNavigaition.styles";
 
 export default function LayoutNaigaitionUI(props) {
   return (
@@ -7,16 +7,10 @@ export default function LayoutNaigaitionUI(props) {
         Market
       </LayoutNavigaition>
       <LayoutNavigaition onClick={props.onClickMarketList}>
-        All
+        FreeBoard
       </LayoutNavigaition>
-      <LayoutNavigaition onClick={props.onClickMarketList}>
-        Wine
-      </LayoutNavigaition>
-      <LayoutNavigaition onClick={props.onClickMarketList}>
-        Vodka
-      </LayoutNavigaition>
-      <LayoutNavigaition onClick={props.onClickMarketList}>
-        Beer
+      <LayoutNavigaition>
+        <Search placeholder="검색해보세요" />
       </LayoutNavigaition>
     </Wrapper>
   );
