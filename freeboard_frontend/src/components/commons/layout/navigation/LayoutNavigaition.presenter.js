@@ -4,6 +4,9 @@ export default function LayoutNaigaitionUI(props) {
   return (
     <Wrapper>
       <LayoutNavigaition onClick={props.onClickMarketList}>
+        Market
+      </LayoutNavigaition>
+      <LayoutNavigaition onClick={props.onClickMarketList}>
         All
       </LayoutNavigaition>
       <LayoutNavigaition onClick={props.onClickMarketList}>
