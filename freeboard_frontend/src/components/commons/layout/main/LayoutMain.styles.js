@@ -29,17 +29,29 @@ export const Maintitle = styled.div`
 export const Maintitle2 = styled.div`
   /* color: rgba(98, 0, 0, 0.7); */
   margin-top: 20px;
-  font-size: 50px;
+  font-size: 100px;
   font-weight: bold;
-  font-family: "myrainbowfont";
+  font-family: "my2font";
 `;
 
 export const Hobbybutton = styled.button`
-  margin: 50px;
+  margin-top: 30px;
   width: 20vh;
-  height: 20vh;
-  font-size: 30px;
+  height: 10vh;
+  font-size: 5vh;
   border-radius: 30px;
   border: none;
-  font-family: "myBMfont";
+  font-family: "my1font";
+  font-weight: bold;
+  background-color: transparent;
+  :hover {
+    background-color: black;
+    color: white;
+  }
+  cursor: pointer;
+`;
+
+export const Mainbuttonbox = styled.div`
+  display: flex;
+  flex-direction: row;
 `;

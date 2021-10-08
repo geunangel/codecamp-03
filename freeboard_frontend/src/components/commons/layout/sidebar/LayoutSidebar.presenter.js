@@ -1,12 +1,10 @@
-import { Wrapper, LayoutSidebar } from "./LayoutSidebar.styles";
+import { Wrapper, ShoppingCart } from "./LayoutSidebar.styles";
 
 export default function SideBarUI(props) {
   return (
     <Wrapper>
-      <LayoutSidebar onClick={props.onClickMypage}>마이페이지</LayoutSidebar>
-      <LayoutSidebar>장바구니</LayoutSidebar>
-      <LayoutSidebar>Q&A</LayoutSidebar>
-      <LayoutSidebar>FAQ</LayoutSidebar>
+      <ShoppingCart src="/빈카트.png" onClick={props.onClickMarket} />
+      <ShoppingCart src="/꽉찬카트.png" onClick={props.onClickMarket} />
     </Wrapper>
   );
 }

@@ -4,17 +4,8 @@ import SidebarUI from "./LayoutSidebar.presenter";
 export default function SidebarContainer() {
   const router = useRouter();
 
-  function onClickBoardList() {
-    router.push(`/boards`);
+  function onClickMarket() {
+    router.push(`/market`);
   }
-
-  function onClickMypage() {
-    router.push(`/mypage`);
-  }
-  return (
-    <SidebarUI
-      onClickBoardList={onClickBoardList}
-      onClickMypage={onClickMypage}
-    />
-  );
+  return <SidebarUI onClickMarket={onClickMarket} />;
 }

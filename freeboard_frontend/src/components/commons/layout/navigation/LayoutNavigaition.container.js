@@ -5,8 +5,17 @@ export default function LayoutHeader() {
   const router = useRouter();
 
   function onClickMarketList() {
-    router.push(`/all`);
+    router.push("/all");
   }
 
-  return <LayoutNaigaitionUI onClickMarketList={onClickMarketList} />;
+  function onClickBoardList() {
+    router.push("/boards/list");
+  }
+
+  return (
+    <LayoutNaigaitionUI
+      onClickMarketList={onClickMarketList}
+      onClickBoardList={onClickBoardList}
+    />
+  );
 }

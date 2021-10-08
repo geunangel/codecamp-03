@@ -1,17 +1,28 @@
-import { Wrapper, LayoutNavigaition, Search } from "./LayoutNavigaition.styles";
+import {
+  Wrapper,
+  LayoutNavigaitionBox,
+  LayoutNavigaition,
+  Line,
+} from "./LayoutNavigaition.styles";
 
 export default function LayoutNaigaitionUI(props) {
   return (
     <Wrapper>
-      <LayoutNavigaition onClick={props.onClickMarketList}>
-        Market
-      </LayoutNavigaition>
-      <LayoutNavigaition onClick={props.onClickMarketList}>
-        FreeBoard
-      </LayoutNavigaition>
-      <LayoutNavigaition>
-        <Search placeholder="검색해보세요" />
-      </LayoutNavigaition>
+      <Line />
+      <LayoutNavigaitionBox>
+        <LayoutNavigaition onClick={props.onClickMarketList}>
+          최신상품
+        </LayoutNavigaition>
+        <LayoutNavigaition onClick={props.onClickMarketList}>
+          후기
+        </LayoutNavigaition>
+        <LayoutNavigaition onClick={props.onClickMarketList}>
+          추천상품
+        </LayoutNavigaition>
+        <LayoutNavigaition onClick={props.onClickBoardList}>
+          스토리
+        </LayoutNavigaition>
+      </LayoutNavigaitionBox>
     </Wrapper>
   );
 }
