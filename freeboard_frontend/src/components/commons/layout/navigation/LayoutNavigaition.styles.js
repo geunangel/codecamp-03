@@ -19,7 +19,6 @@ export const LayoutNavigaition = styled.div`
   text-align: center;
   font-size: 2vh;
   :hover {
-    color: gray;
   }
 `;
 

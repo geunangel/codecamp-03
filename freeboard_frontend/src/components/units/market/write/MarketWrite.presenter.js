@@ -1,6 +1,6 @@
 import {} from "./MarketWrite.styles";
 
-export default function MarketUI() {
+export default function MarketUI(props) {
   return (
     <div>
       <div>상품등록하기</div>
@@ -52,7 +52,7 @@ export default function MarketUI() {
         <input type="radio" />
         사진 2
       </div>
-      <button>등록하기</button>
+      <button onClick={props.onClickSubmit}>등록하기</button>
     </div>
   );
 }
