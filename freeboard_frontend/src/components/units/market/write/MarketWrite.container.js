@@ -2,10 +2,15 @@ import MarketUI from "./MarketWrite.presenter";
 import { CREATE_USEDITEM } from "./MarketWrite.queries";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
+import { useForm } from "react-hook-form";
 
 export default function Market() {
   const router = useRouter();
   const [createUseditem] = useMutation(CREATE_USEDITEM);
+
+  const { handleSubmit, register, formState } = useForm({
+    mode: "onChange",
+  });
 
   async function onClickSubmit(data) {
     try {
@@ -22,5 +27,12 @@ export default function Market() {
     }
   }
 
-  return <MarketUI onClickSubmit={onClickSubmit} />;
+  return (
+    <MarketUI
+      onClickSubmit={onClickSubmit}
+      handleSubmit={handleSubmit}
+      register={register}
+      formState={formState}
+    />
+  );
 }
