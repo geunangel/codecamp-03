@@ -16,8 +16,8 @@ export default function MarketListPresenter() {
   return (
     <Wrapper>
       <BestItem>
-        <BestImg src="./라이브로고.jpeg" />
-        <BestTitle>와인</BestTitle>
+        <BestImg src="" />
+        <BestTitle>제품이름</BestTitle>
         <BesttitleDetail>detail</BesttitleDetail>
         <BestPriceLikeBox>
           <BestPrice>1,000,000원</BestPrice>

@@ -67,7 +67,13 @@ export const Title = styled.div`
   font-size: 40px;
   margin-top: 80px;
 `;
-
+export const ImgBox = styled.div`
+  /* width: 996px;
+  height: 480px; */
+  /* background-color: black; */
+  /* background-image: url("/좀비손.png"); */
+  /* margin-top: 40px; */
+`;
 export const Img = styled.img`
   width: 996px;
   height: 480px;

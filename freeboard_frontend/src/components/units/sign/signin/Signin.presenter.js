@@ -23,7 +23,7 @@ export default function SigninUI(props) {
         로그인 상태 유지
       </div>
       <div>
-        <button onClick={props.onClickLogin}>로그인하기</button>
+        <button onClick={props.onClickSignin}>로그인하기</button>
       </div>
       <hr />
       <div>

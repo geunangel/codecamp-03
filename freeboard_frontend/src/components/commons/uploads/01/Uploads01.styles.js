@@ -1,13 +1,13 @@
 import styled from "@emotion/styled";
 
-export const ImgUploadBox = styled.div`
-  width: 300px;
-  display: flex;
-  flex-direction: row;
-  /* align-items: center; */
-  /* justify-content: space-between; */
-  /* background-color: mediumturquoise; */
-`;
+// export const ImgUploadBox = styled.div`
+//   width: 300px;
+//   display: flex;
+//   flex-direction: row;
+//   /* align-items: center; */
+//   /* justify-content: space-between; */
+//   /* background-color: mediumturquoise; */
+// `;
 
 export const ImgUpButton = styled.button`
   width: 78px;

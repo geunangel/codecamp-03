@@ -9,6 +9,7 @@ import {
   Head2,
   WriterName,
   Title,
+  ImgBox,
   Img,
   Contents,
   Youtube,
@@ -50,18 +51,13 @@ export default function BoardReadPresenter(props) {
         <Footer>
           <Title>{props.data?.fetchBoard.title}</Title>
           <Box>
-            <Img
-              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[0]}`}
-              alt="이미지없음"
-            />
-            <Img
-              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[1]}`}
-              alt="이미지없음"
-            />
-            <Img
-              src={`https://storage.googleapis.com/${props.data?.fetchBoard.images[2]}`}
-              alt="이미지없음"
-            />
+            <ImgBox alt="이미지없음" />
+            {props.data?.fetchBoard.images
+              ?.filter((el) => el)
+              .map((el) => (
+                <Img key={el} src={`https://storage.googleapis.com/${el}`} />
+              ))}
+
             <Contents>{props.data?.fetchBoard.contents}</Contents>
             <Youtube>
               <ReactPlayer

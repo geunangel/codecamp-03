@@ -2,7 +2,7 @@ import {} from "./MarketWrite.styles";
 
 export default function MarketUI(props) {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
       <div>상품등록하기</div>
       <div>
         <div>상품명</div>

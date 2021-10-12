@@ -3,6 +3,8 @@ import { CREATE_USEDITEM } from "./MarketWrite.queries";
 import { useMutation } from "@apollo/client";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
+import { schema } from "./MarketWrite.validations";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function Market() {
   const router = useRouter();
@@ -10,7 +12,9 @@ export default function Market() {
 
   const { handleSubmit, register, formState } = useForm({
     mode: "onChange",
+    resolver: yupResolver(schema),
   });
+  console.log(formState);
 
   async function onClickSubmit(data) {
     try {

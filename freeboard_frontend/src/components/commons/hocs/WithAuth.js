@@ -9,7 +9,7 @@ export const WithAuth = (Component) => (props) => {
   //accessToken이 있는가!?
   //accessToken이 없다면, login 페이지로 보내기!!!
   useEffect(() => {
-    // const accessToken = localStorage.getItem("accessToken");
+    const accessToken = localStorage.getItem("accessToken");
     console.log(accessToken);
     if (!accessToken) {
       alert("로그인후 이용해주세요");
