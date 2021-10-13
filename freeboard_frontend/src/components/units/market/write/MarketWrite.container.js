@@ -10,7 +10,7 @@ export default function Market() {
   const router = useRouter();
   const [createUseditem] = useMutation(CREATE_USEDITEM);
 
-  const { handleSubmit, register, formState } = useForm({
+  const { handleSubmit, register, formState, setValue, trigger } = useForm({
     mode: "onChange",
     resolver: yupResolver(schema),
   });
@@ -31,12 +31,22 @@ export default function Market() {
     }
   }
 
+  function onChangeMyEditor(value) {
+    console.log(value);
+    //register로 등록하지 않고, 강제로 값을 넣어주는 기능
+    setValue("contents", value === "<p><br/></p>" ? "" : value);
+
+    //onChange 됐는지 react-hook-form에 알려주는 기능
+    trigger("contents");
+  }
+
   return (
     <MarketUI
       onClickSubmit={onClickSubmit}
       handleSubmit={handleSubmit}
       register={register}
       formState={formState}
+      onChangeMyEditor={onChangeMyEditor}
     />
   );
 }
