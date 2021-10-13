@@ -21,7 +21,7 @@ export default function Uploads01(props) {
     fileReader.readAsDataURL(file);
     fileReader.onload = (data) => {
       setImageUrl(data.target?.result);
-      props.onChangeFiles(file, props.index);
+      // props.onChangeFiles(file, props.index);
     };
   }
   return (

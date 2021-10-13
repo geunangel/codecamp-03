@@ -83,6 +83,7 @@ export default function MarketDetailUI(props) {
         <ButtonList />
         <BottonEdit />
       </ButtonBox>
+      <button>목록으로</button>
     </>
   );
 }

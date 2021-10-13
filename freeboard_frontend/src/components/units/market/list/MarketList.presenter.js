@@ -12,7 +12,7 @@ import {
   ProductBox,
 } from "./MarketList.styles";
 
-export default function MarketListPresenter() {
+export default function MarketListUI(props) {
   return (
     <Wrapper>
       <BestItem>
@@ -40,22 +40,24 @@ export default function MarketListPresenter() {
         </div>
       </ProductBox>
       <hr />
-      <div>
-        <img src="./라이브로고.jpeg" width="150px" height="150px" />
-        <div>
-          <div>와인</div>
-          <div>상세정보</div>
+      {props.data?.fetchUseditems.map((el) => (
+        <div key={el._id} onClick={props.onClickPage}>
+          <img src="" width="150px" height="150px" />
           <div>
-            <div>태그</div>
-          </div>
-          <div>
-            <img src="./사람.png" />
-            <div>판매자</div>
-            <div>하뚜</div>
-            <div>좋아요숫자</div>
+            <div>{el.name}</div>
+            <div>{el.remarks}</div>
+            <div>
+              <div>태그</div>
+            </div>
+            <div>
+              <img src="./사람.png" />
+              <div>판매자</div>
+              <div>하뚜</div>
+              <div>{el.pickedCount}</div>
+            </div>
           </div>
         </div>
-      </div>
+      ))}
     </Wrapper>
   );
 }
