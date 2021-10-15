@@ -14,6 +14,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { createUploadLink } from "apollo-upload-client";
 import { createContext, useEffect, useState } from "react";
+// import Head from "next/head";
 
 export const firebaseApp = initializeApp({
   apiKey: "AIzaSyDXffKZN458jg79onQiV0Du8aQCRqjpoK4",
@@ -71,6 +72,13 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
+      {/* <Head> */}
+      {/* 1번째. 다운로드 후 브라우저에 저장 */}
+      {/* <script
+          type="text/javascript"
+          src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e2564702d8f2d72a864d71d0c7163c5c"
+        ></script> */}
+      {/* </Head> */}
       <GlobalContext.Provider value={value}>
         <Global styles={globalStyles} />
 
