@@ -36,25 +36,23 @@ export default function BoardListPresenter(props) {
   return (
     <Wrapper>
       {/* <Header>베스트 게시글</Header> */}
-      <BestBoards>
-        <BoardsImg />
-        <BoardTitle>게시물 제목</BoardTitle>
-
-        {/* {props.dataBoardsOfTheBest?.fetchBoardsOfTheBest.map((el) => (
-            < key={el._id} id={el._id} onClick={props.onClickBest}> */}
-
-        <WriterBoardBox>
-          <WriterBox>
-            <WriterImg>사진</WriterImg>
-            <WriterName>노원두</WriterName>
-          </WriterBox>
-          <div>날짜</div>
-          <div>
-            <div>따봉</div>
-            <div>356</div>
-          </div>
-        </WriterBoardBox>
-      </BestBoards>
+      {props.dataBoardsOfTheBest?.fetchBoardsOfTheBest.map((el) => (
+        <BestBoards key={el._id} id={el._id}>
+          <BoardsImg />
+          <BoardTitle>{el.title}</BoardTitle>
+          <WriterBoardBox>
+            <WriterBox>
+              <WriterImg>사진</WriterImg>
+              <WriterName>{el.writer}</WriterName>
+            </WriterBox>
+            <div>{el.createdAt.slice(0, 10)}</div>
+            <div>
+              <div>따봉</div>
+              <div>{el.likeCount}</div>
+            </div>
+          </WriterBoardBox>
+        </BestBoards>
+      ))}
       <TitleSearchBox>
         <TitleSearch>
           <img />

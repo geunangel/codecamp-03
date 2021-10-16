@@ -1,6 +1,10 @@
 import { useQuery } from "@apollo/client";
 import BoardListPresenter from "./BoardList.presenter";
-import { FETCH_BOARDS, FETCH_BOARDS_COUNT } from "./BoardList.queries";
+import {
+  FETCH_BOARDS,
+  FETCH_BOARDS_COUNT,
+  FETCH_BOARDS_OF_THE_BEST,
+} from "./BoardList.queries";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import _ from "lodash";
@@ -8,8 +12,7 @@ import _ from "lodash";
 export default function BoardListContainer() {
   const router = useRouter();
 
-  // const { data: dataBoardsCount } = useQuery(FETCH_BOARDS_COUNT);
-  // const { data: dataBoardsOfTheBest } = useQuery(FETCH_BOARDS_OF_THE_BEST);
+  const { data: dataBoardsOfTheBest } = useQuery(FETCH_BOARDS_OF_THE_BEST);
 
   const [startPage, setStartPage] = useState(1);
   const [current, setCurrent] = useState(1);
@@ -90,7 +93,7 @@ export default function BoardListContainer() {
   return (
     <BoardListPresenter
       data={data}
-      // dataBoardsOfTheBest={dataBoardsOfTheBest}
+      dataBoardsOfTheBest={dataBoardsOfTheBest}
       startPage={startPage}
       lastPage={lastPage}
       current={current}
