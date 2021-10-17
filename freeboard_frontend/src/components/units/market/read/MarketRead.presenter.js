@@ -32,6 +32,7 @@ import {
   BottonEdit,
   Line,
 } from "./MarketRead.styles";
+import Dompurify from "dompurify";
 export default function MarketDetailUI(props) {
   return (
     <>
@@ -68,7 +69,15 @@ export default function MarketDetailUI(props) {
             <MainImg>물품사진</MainImg>
           </MainImgBox>
           <ContentsBox>
-            <Contents>{props.data?.fetchUseditem.contents}</Contents>
+            {process.browser && (
+              <Contents
+                dangerouslySetInnerHTML={{
+                  __html: Dompurify.sanitize(
+                    props.data?.fetchUseditem.contents
+                  ),
+                }}
+              />
+            )}
           </ContentsBox>
           <TagBox>
             <Tag>{props.data?.fetchUseditem.tags}</Tag>
