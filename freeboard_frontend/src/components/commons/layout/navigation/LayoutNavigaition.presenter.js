@@ -10,6 +10,9 @@ export default function LayoutNaigaitionUI(props) {
     <Wrapper>
       <Line />
       <LayoutNavigaitionBox>
+        <LayoutNavigaition onClick={props.onClickMarketNew}>
+          판매하기
+        </LayoutNavigaition>
         <LayoutNavigaition onClick={props.onClickMarketList}>
           최신상품
         </LayoutNavigaition>

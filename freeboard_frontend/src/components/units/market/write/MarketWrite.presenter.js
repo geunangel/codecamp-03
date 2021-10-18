@@ -19,9 +19,12 @@ import {
 
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
+
+import { WithAuth } from "../../../commons/hocs/WithAuth";
+
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-export default function MarketUI(props) {
+const MarketUI = (props) => {
   return (
     <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
       <Wrapper>
@@ -105,4 +108,6 @@ export default function MarketUI(props) {
       </Wrapper>
     </form>
   );
-}
+};
+
+export default WithAuth(MarketUI);

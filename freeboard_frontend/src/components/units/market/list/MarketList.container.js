@@ -11,7 +11,8 @@ export default function MarketList() {
 
   //상세보기 페이지로 이동
   function onClickPage(event) {
-    router.push(`/market/${event.target.id}`);
+    //currentTarget=>어딜 눌리던 해당페이지로 이동
+    router.push(`/market/${event.currentTarget.id}`);
   }
   console.log(router.id);
 

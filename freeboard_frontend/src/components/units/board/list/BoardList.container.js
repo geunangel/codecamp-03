@@ -42,7 +42,7 @@ export default function BoardListContainer() {
     //refetch({ search: mySearch, page: Number(event.target.id) });
 
     //검색버튼 눌려야 change됨
-    refetch({ search: myKeyword, page: Number(event.target.id) });
+    refetch({ search: myKeyword, page: Number(event.currentTarget.id) });
   }
 
   //첫페이지 기준으로 설정함
@@ -55,7 +55,7 @@ export default function BoardListContainer() {
   const lastPage = Math.ceil(databoardsCount?.fetchBoardsCount / 10);
 
   function onClickPage(event) {
-    refetch({ page: Number(event.target.id) });
+    refetch({ page: Number(event.currentTarget.id) });
   }
 
   function onClickPrevPage() {
@@ -81,7 +81,7 @@ export default function BoardListContainer() {
 
   //상세페이지로 이동
   function onClickRead(event) {
-    router.push(`/boards/${event.target.id}`);
+    router.push(`/boards/${event.currentTarget.id}`);
   }
   console.log(router.id);
 

@@ -44,7 +44,7 @@ export default function BoardCommentContainer(props) {
             contents: contents,
             rating: star,
           },
-          boardId: String(router.query.detail),
+          boardId: router.query.detail,
         },
         refetchQueries: [
           {

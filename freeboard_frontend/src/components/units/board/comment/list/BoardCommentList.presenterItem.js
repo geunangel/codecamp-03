@@ -35,7 +35,7 @@ export default function ListPresenterItem(props) {
     setIsOpenDeleteModal(true);
   }
 
-  //댓글비번
+  //모달띄웠을때 댓글비번
   function onChangePw(event) {
     setPw(event.target.value);
   }
@@ -93,7 +93,7 @@ export default function ListPresenterItem(props) {
               onClick={onClickOpenDeleteModal}
             />
           </CommentBox>
-          <CommentDate>{props.el?.createdAt}</CommentDate>
+          <CommentDate>{props.el?.createdAt.slice(0, 10)}</CommentDate>
         </CommentWrapeer>
       )}
       {isEdit && (

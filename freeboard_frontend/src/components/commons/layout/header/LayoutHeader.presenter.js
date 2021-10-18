@@ -54,7 +54,9 @@ export default function LayoutFooterUI(props) {
         {data?.fetchUserLoggedIn.name && (
           <div>{data?.fetchUserLoggedIn.name}님 환영합니다.</div>
         )}
-        {data?.fetchUserLoggedIn.name && <div>signout</div>}
+        {data?.fetchUserLoggedIn.name && (
+          <div onClick={props.onClickSignout}>signout</div>
+        )}
         {!data?.fetchUserLoggedIn.name && (
           <Signin onClick={props.onClickSignin}>signin</Signin>
         )}
