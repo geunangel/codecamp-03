@@ -21,7 +21,7 @@ export default function Uploads01UI(props) {
       ) : (
         <ImgUpButton onClick={props.onClickImg}>
           <ImgText>+</ImgText>
-          <ImgText>등록하기</ImgText>
+          <ImgText>Upload</ImgText>
         </ImgUpButton>
       )}
       <UploadFileHidden

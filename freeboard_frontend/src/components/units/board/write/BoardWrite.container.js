@@ -1,8 +1,13 @@
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery } from "@apollo/client";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import BoardWritePresenter from "./BoardWrite.presenter";
-import { CREATE_BOARD, UPDATE_BOARD, UPLOAD_FILE } from "./BoardWrite.queries";
+import {
+  CREATE_BOARD,
+  UPDATE_BOARD,
+  FETCH_BOARD,
+  UPLOAD_FILE,
+} from "./BoardWrite.queries";
 
 export default function BoardWriteContainer(props) {
   const router = useRouter();
@@ -10,12 +15,19 @@ export default function BoardWriteContainer(props) {
   const [isOpen, setIsOpen] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
+  //값이 입력되면 색 변하게 하는 state
   const [buttoncolor, setButtoncolor] = useState();
 
   const [createBoard] = useMutation(CREATE_BOARD);
   const [updateBoard] = useMutation(UPDATE_BOARD);
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
+  //data로 응답
+  const { data } = useQuery(FETCH_BOARD, {
+    variables: { boardId: router.query.detail },
+  });
+
+  //입력되는 값을 저장
   const [writer, setWriter] = useState("");
   const [pw, setPw] = useState("");
   const [title, setTitle] = useState("");
@@ -25,11 +37,14 @@ export default function BoardWriteContainer(props) {
   const [address, setAddress] = useState("");
   const [addressDetail, setAddressDetail] = useState("");
 
+  //입력된 값 없을 시 에러
   const [writerError, setWriterError] = useState("");
   const [pwError, setPwError] = useState("");
   const [titleError, setTitleError] = useState("");
   const [contentsError, setContentsError] = useState("");
 
+  //이미지 업로드
+  // const [fileUrls, setFileUrls] = useState(["", "", ""]); // 이미지 1차실습
   const [files, setFiles] = useState([null, null, null]);
 
   //작성자
@@ -116,11 +131,26 @@ export default function BoardWriteContainer(props) {
   }
   function onCompleteAddressSearch(data) {
     setAddress(data.address);
-    setZipcode(data.zonecode);
+    setZipcode(data.zipcode);
     setIsOpen(false);
   }
 
-  //등록
+  //이미지업로드
+  // **************** 1차 이미지 실습 *****************
+  // function onChangeFileUrls(fileUrl, index) {
+  //   const newFileUrls = [...fileUrls];
+  //   newFileUrls[index] = fileUrl;
+  //   console.log(newFileUrls);
+  //   setFileUrls(newFileUrls);
+  // }
+  // **************** 2차 이미지 실습 *****************
+  function onChangeFiles(file, index) {
+    const newFiles = [...files];
+    newFiles[index] = file;
+    setFiles(newFiles);
+  }
+
+  //등록버튼 클릭시 입력이 되지 않았으면 에러
   async function onClickSubmit() {
     if (writer === "") {
       setWriterError("이름을 작성해 주세요.");
@@ -159,6 +189,7 @@ export default function BoardWriteContainer(props) {
                 address: address,
                 addressDetail: addressDetail,
               },
+              // images: [...fileUrls], // * 이미지 1차실습
               images: myImages,
             },
           },
@@ -174,18 +205,12 @@ export default function BoardWriteContainer(props) {
     }
   }
 
-  function onChangeFiles(file, index) {
-    const newFiles = [...files];
-    newFiles[index] = file;
-    setFiles(newFiles);
-  }
-
   //수정
   async function onClickEdit() {
     if (
       !title &&
-      false &&
-      !youtubeUrl &&
+      !contents &&
+      !youtube &&
       !zipcode &&
       !address &&
       !addressDetail
@@ -193,16 +218,39 @@ export default function BoardWriteContainer(props) {
       alert("수정된 내용이 없습니다.");
       return;
     }
+    const updateboardInput = {};
+    if (title) updateboardInput.title = title;
+    if (contents) updateboardInput.contents = contents;
+    if (youtube) updateboardInput.youtubeUrl = youtube;
+    if (zipcode || address || addressDetail) {
+      updateboardInput.boardAddress = {};
+      if (zipcode) updateboardInput.boardAddress.zipcode = zipcode;
+      if (address) updateboardInput.boardAddress.address = address;
+      if (addressDetail)
+        updateboardInput.boardAddress.addressDetail = addressDetail;
+    }
+
+    const uploadFiles = files.map((el) =>
+      el ? uploadFile({ variables: { file: el } }) : null
+    );
+    const results = await Promise.all(uploadFiles);
+    const nextImages = results.map((el) => el?.data.uploadFile.url || "");
+    updateboardInput.images = nextImages;
+
+    if (props.data?.fetchBoard.images?.length) {
+      const prevImages = [...props.data?.fetchBoard.images];
+      updateboardInput.images = prevImages.map(
+        (el, index) => nextImages[index] || el
+      );
+    } else {
+      updateboardInput.images = nextImages;
+    }
     try {
       const result = await updateBoard({
         variables: {
           boardId: router.query.detail,
           password: pw,
-          updateBoardInput: {
-            title: title,
-            contents: contents,
-            youtubeUrl: youtube,
-          },
+          updateBoardInput: updateboardInput,
         },
       });
       router.push(`/boards/${result.data.updateBoard._id}`);
@@ -211,8 +259,13 @@ export default function BoardWriteContainer(props) {
     }
   }
 
+  function onClickList() {
+    router.push(`/boards`);
+  }
+
   return (
     <BoardWritePresenter
+      data={data}
       onChangeWriter={onChangeWriter}
       onChangePw={onChangePw}
       onChangeTitle={onChangeTitle}
@@ -223,6 +276,9 @@ export default function BoardWriteContainer(props) {
       onCompleteAddressSearch={onCompleteAddressSearch}
       onClickSubmit={onClickSubmit}
       onClickEdit={onClickEdit}
+      onCLickList={onClickList}
+      // onChangeFileUrls={onChangeFileUrls}
+      // fileUrls={fileUrls}
       onChangeFiles={onChangeFiles}
       writerError={writerError}
       pwError={pwError}

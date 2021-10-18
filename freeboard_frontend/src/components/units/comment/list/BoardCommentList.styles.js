@@ -43,3 +43,5 @@ export const CommentDate = styled.div`
   padding-top: 15px;
   padding-left: 60px;
 `;
+
+export const PasswordInput = styled.input``;

@@ -10,16 +10,19 @@ export const CREATE_BOARD = gql`
 
 export const UPDATE_BOARD = gql`
   mutation updateBoard(
-    $boardId: ID!
-    $password: String
     $updateBoardInput: UpdateBoardInput!
+    $password: String
+    $boardId: ID!
   ) {
     updateBoard(
-      boardId: $boardId
-      password: $password
       updateBoardInput: $updateBoardInput
+      password: $password
+      boardId: $boardId
     ) {
       _id
+      writer
+      title
+      contents
     }
   }
 `;
@@ -28,6 +31,24 @@ export const UPLOAD_FILE = gql`
   mutation uploadFile($file: Upload!) {
     uploadFile(file: $file) {
       url
+    }
+  }
+`;
+
+export const FETCH_BOARD = gql`
+  query fetchBoard($boardId: ID!) {
+    fetchBoard(boardId: $boardId) {
+      _id
+      writer
+      title
+      contents
+      youtubeUrl
+      images
+      boardAddress {
+        zipcode
+        address
+        addressDetail
+      }
     }
   }
 `;

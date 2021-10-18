@@ -1,5 +1,6 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useMutation } from "@apollo/client";
 import BoardCommentWriter from "../writer/BoardCommentWriter.container";
 
 import {
@@ -13,26 +14,44 @@ import {
   DeleteIcon,
   CommentContents,
   CommentDate,
+  PasswordInput,
 } from "./BoardCommentList.styles";
 import {
   FETCH_BOARD_COMMENTS,
   DELETE_BOARD_COMMENT,
 } from "./BoardCommentList.queries";
-import { useMutation } from "@apollo/client";
+import { Modal } from "antd";
 
 export default function ListPresenterItem(props) {
   const router = useRouter();
   const [isEdit, setIsEdit] = useState(false);
+  const [isOpenDeleteModal, setIsOpenDeleteModal] = useState(false);
 
   const [deleteBoardComment] = useMutation(DELETE_BOARD_COMMENT);
+  const [pw, setPw] = useState("");
+
+  //모달띄워서 삭제
+  function onClickOpenDeleteModal() {
+    setIsOpenDeleteModal(true);
+  }
+
+  //댓글비번
+  function onChangePw(event) {
+    setPw(event.target.value);
+  }
+
+  //모달닫기
+  function closeModal() {
+    setIsOpenDeleteModal(false);
+  }
 
   async function onClickCommentDelete() {
-    const pw = prompt("비밀번호를 입력해 주세요.");
+    // const pw = prompt("비밀번호를 입력해 주세요.");
     try {
       await deleteBoardComment({
         variables: {
-          password: pw,
           boardCommentId: props.el?._id,
+          password: pw,
         },
         refetchQueries: [
           {
@@ -53,6 +72,12 @@ export default function ListPresenterItem(props) {
 
   return (
     <>
+      {isOpenDeleteModal && (
+        <Modal visible={true} onOk={onClickCommentDelete} onCancel={closeModal}>
+          <div>비밀번호 입력: </div>
+          <PasswordInput type="password" onChange={onChangePw} />
+        </Modal>
+      )}
       {!isEdit && (
         <CommentWrapeer>
           <CommentBox>
@@ -65,7 +90,7 @@ export default function ListPresenterItem(props) {
             <UpdateIcon src="/연필.png" onClick={onClickUpdate} />
             <DeleteIcon
               src="/연필세트엑스.png"
-              onClick={onClickCommentDelete}
+              onClick={onClickOpenDeleteModal}
             />
           </CommentBox>
           <CommentDate>{props.el?.createdAt}</CommentDate>

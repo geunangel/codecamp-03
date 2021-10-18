@@ -101,7 +101,6 @@ export default function BoardWritePresenter(props) {
             <ButtonAddress onClick={props.onClickAddressSearch}>
               우편번호 검색
             </ButtonAddress>
-            <br />
           </AddressSearchBox>
           <AddressText
             readOnly
@@ -134,11 +133,22 @@ export default function BoardWritePresenter(props) {
           />
           사진첨부
         </ImgBox>
+        {/* 
+        // 1차 이미지 실습
+        {props.fileUrls.map((el, index) => (
+          <Uploads01
+            key={`${el}_${index}`}
+            index={index}
+            fileUrl={el}
+            onChangeFileUrls={props.onChangeFileUrls}
+          />
+        ))} */}
         {new Array(3).fill(1).map((el, index) => (
           <Uploads01
             key={`${el}_${index}`}
             index={index}
             onChangeFiles={props.onChangeFiles}
+            defaultFileUrl={props.data?.fetchBoard.images?.[index]}
           />
         ))}
         <MainBox>
@@ -148,6 +158,7 @@ export default function BoardWritePresenter(props) {
           <MainCheck type="radio" />
           사진
         </MainBox>
+        <ButtonEnrollent onClick={props.onClickList}>취소하기</ButtonEnrollent>
         {!props.isEdit && (
           <ButtonEnrollent
             onClick={props.onClickSubmit}
