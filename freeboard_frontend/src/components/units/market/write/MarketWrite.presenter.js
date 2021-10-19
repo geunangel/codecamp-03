@@ -16,25 +16,33 @@ import {
   ProductImg,
   AddressGPS,
 } from "./MarketWrite.styles";
-
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-
+import UpLoads02 from "../../../../commons/uploads/02/Uploads02.container";
 import { WithAuth } from "../../../commons/hocs/WithAuth";
 
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 const MarketUI = (props) => {
   return (
-    <form onSubmit={props.handleSubmit(props.onClickSubmit)}>
+    <form
+      onSubmit={props.handleSubmit(
+        props.isEdit ? props.onClickUpdate : props.onClickSubmit
+      )}
+    >
       <Wrapper>
-        <MainTitle>상품 등록하기</MainTitle>
+        {props.isEdit ? (
+          <MainTitle>상품 수정하기</MainTitle>
+        ) : (
+          <MainTitle>상품 등록하기</MainTitle>
+        )}
         <ProductBox>
           <Product>상품명</Product>
           <ProductContents
             type="text"
             placeholder="상품명을 작성해주세요."
             {...props.register("name")}
+            defaultValue={props.data?.fetchUseditem.name}
           />
         </ProductBox>
         <ProductBox>
@@ -43,6 +51,7 @@ const MarketUI = (props) => {
             type="text"
             placeholder="상품명을 작성해주세요."
             {...props.register("remarks")}
+            defaultValue={props.data?.fetchUseditem.remarks}
           />
         </ProductBox>
         <ProductContentsBox>
@@ -53,7 +62,10 @@ const MarketUI = (props) => {
         </ProductContentsBox>
         <div>
           <Product>상품설명</Product>
-          <ReactQuill onChange={props.onChangeMyEditor} />
+          <ReactQuill
+            onChange={props.onChangeMyEditor}
+            defaultValue={props.data?.fetchUseditem.contents}
+          />
         </div>
         <ProductBox>
           <Product>판매가격</Product>
@@ -61,6 +73,7 @@ const MarketUI = (props) => {
             type="text"
             placeholder="판매가격을 입력해주세요."
             {...props.register("price")}
+            defaultValue={props.data?.fetchUseditem.price}
           />
         </ProductBox>
         <ProductBox>
@@ -79,9 +92,9 @@ const MarketUI = (props) => {
           <AddressGPSInputBox>
             <div>
               <Product>GPS</Product>
-              <AddressGPS placeholder="위도(LAT)" />
+              <AddressGPS placeholder="위도(LAT)">위도(LAT)</AddressGPS>
               <img />
-              <AddressGPS placeholder="경도(LNG)" />
+              <AddressGPS placeholder="경도(LNG)">경도(LNG)</AddressGPS>
             </div>
             <AddressInputBox>
               <Product>주소</Product>
@@ -93,7 +106,15 @@ const MarketUI = (props) => {
         <div>
           <Product>사진 첨부</Product>
           <ProductImg src="" />
-          <ProductImg src="" />
+          {new Array(2).fill(1).map((el, index) => (
+            <UpLoads02
+              defaultFile={props.data?.fetchUseditem.images?.[index]}
+              key={el.index}
+              onChangeFile={props.onChangeFile}
+              index={index}
+              register={props.register("images")}
+            />
+          ))}
         </div>
         <div>
           <Product>메일 사진 설정</Product>
@@ -102,9 +123,20 @@ const MarketUI = (props) => {
           <input type="radio" />
           사진 2
         </div>
-        <ButtonProduct type="submit" onClick={props.onClickSubmit}>
-          등록하기
-        </ButtonProduct>
+        {props.isEdit ? (
+          <>
+            <ButtonProduct onClick={props.onClickCancel}>
+              취소하기
+            </ButtonProduct>
+            <ButtonProduct isValid={props.formState.isValid}>
+              수정하기
+            </ButtonProduct>
+          </>
+        ) : (
+          <ButtonProduct isValid={props.formState.isValid}>
+            등록하기
+          </ButtonProduct>
+        )}
       </Wrapper>
     </form>
   );
