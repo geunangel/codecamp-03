@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+// import dynamic from "next/dynamic";
+// const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
 export const Wrapper = styled.div`
   width: 1200px;
@@ -158,12 +160,6 @@ export const AddressInput2 = styled.input`
   margin-top: 10px;
 `;
 
-export const ProductImg = styled.img`
-  width: 180px;
-  height: 180px;
-  background: #bdbdbd;
-`;
-
 export const AddressInputBox = styled.div`
   display: flex;
   flex-direction: column;
@@ -184,3 +180,10 @@ export const AddressGPS = styled.input`
   border-radius: 30px;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 `;
+
+// export const ReactQuillBox = styled(ReactQuill)`
+//   width: 996px;
+//   height: 320px;
+//   margin-top: 10px;
+//   margin-bottom: 40px;
+// `;

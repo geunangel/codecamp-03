@@ -1,5 +1,7 @@
 import MarketWrite from "../../../src/components/units/market/write/MarketWrite.container";
+import { WithAuth } from "../../../src/components/commons/hocs/WithAuth";
 
-export default function MarketNew() {
+const MarketNew = () => {
   return <MarketWrite />;
-}
+};
+export default WithAuth(MarketNew);

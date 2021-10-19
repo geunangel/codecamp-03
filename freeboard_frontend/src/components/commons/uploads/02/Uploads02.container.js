@@ -15,7 +15,7 @@ export default function Uploads02(props) {
   async function onChangeImg(event) {
     const file = event.target.files?.[0];
     console.log(file);
-    if (!fileValidation(file)) return;
+    if (!file) return;
 
     const fileReader = new FileReader();
     fileReader.readAsDataURL(file);

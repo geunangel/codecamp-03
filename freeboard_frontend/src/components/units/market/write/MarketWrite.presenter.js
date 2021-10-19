@@ -13,17 +13,15 @@ import {
   AddressInput1,
   AddressInput2,
   AddressGPSInputBox,
-  ProductImg,
   AddressGPS,
 } from "./MarketWrite.styles";
 import "react-quill/dist/quill.snow.css";
 import dynamic from "next/dynamic";
-import UpLoads02 from "../../../../commons/uploads/02/Uploads02.container";
-import { WithAuth } from "../../../commons/hocs/WithAuth";
-
 const ReactQuill = dynamic(() => import("react-quill"), { ssr: false });
 
-const MarketUI = (props) => {
+import Uploads02 from "../../../commons/uploads/02/Uploads02.container";
+
+export default function MarketUI(props) {
   return (
     <form
       onSubmit={props.handleSubmit(
@@ -92,9 +90,9 @@ const MarketUI = (props) => {
           <AddressGPSInputBox>
             <div>
               <Product>GPS</Product>
-              <AddressGPS placeholder="위도(LAT)">위도(LAT)</AddressGPS>
+              <AddressGPS placeholder="위도(LAT)" />
               <img />
-              <AddressGPS placeholder="경도(LNG)">경도(LNG)</AddressGPS>
+              <AddressGPS placeholder="경도(LNG)" />
             </div>
             <AddressInputBox>
               <Product>주소</Product>
@@ -105,12 +103,11 @@ const MarketUI = (props) => {
         </AddressBox>
         <div>
           <Product>사진 첨부</Product>
-          <ProductImg src="" />
-          {new Array(2).fill(1).map((el, index) => (
-            <UpLoads02
+          {new Array(4).fill(1).map((el, index) => (
+            <Uploads02
               defaultFile={props.data?.fetchUseditem.images?.[index]}
               key={el.index}
-              onChangeFile={props.onChangeFile}
+              onChangeFile={props.onChangeFiles}
               index={index}
               register={props.register("images")}
             />
@@ -140,6 +137,4 @@ const MarketUI = (props) => {
       </Wrapper>
     </form>
   );
-};
-
-export default WithAuth(MarketUI);
+}

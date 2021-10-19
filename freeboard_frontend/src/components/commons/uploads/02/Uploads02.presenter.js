@@ -1,5 +1,4 @@
 import {
-  ImgUploadBox,
   ImgUpButton,
   ImgUpload,
   ImgText,
