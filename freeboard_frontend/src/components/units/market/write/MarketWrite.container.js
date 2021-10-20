@@ -14,6 +14,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 export default function MarketWrite(props) {
   const router = useRouter();
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
 
   const { data } = useQuery(FETCH_USEDITEM, {
     variables: { useditemId: router.query.useditemId },
@@ -24,8 +26,6 @@ export default function MarketWrite(props) {
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
   const [files, setFiles] = useState([null, null, null]);
-  const [lat, setLat] = useState();
-  const [lng, setLng] = useState();
 
   const { handleSubmit, register, formState, setValue, trigger } = useForm({
     mode: "onChange",
@@ -125,6 +125,10 @@ export default function MarketWrite(props) {
             console.log(latlng);
             // 마커 위치를 클릭한 위치로 옮깁니다
             marker.setPosition(latlng);
+            // setValue("lat", latlng.La);
+            // setValue("lng", latlng.Ma);
+            setLat(latlng.La);
+            setLng(latlng.Ma);
           }
         );
       });
@@ -143,6 +147,8 @@ export default function MarketWrite(props) {
       onChangeMyEditor={onChangeMyEditor}
       onClickUpdate={onClickUpdate}
       onClickCancel={onClickCancel}
+      lng={lng}
+      lat={lat}
     />
   );
 }

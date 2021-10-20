@@ -85,14 +85,14 @@ export default function MarketUI(props) {
         <AddressBox>
           <AddressImgBox>
             <Product>거래위치</Product>
-            <AddressImg src="" />
+            <AddressImg id="map"></AddressImg>
           </AddressImgBox>
           <AddressGPSInputBox>
             <div>
               <Product>GPS</Product>
-              <AddressGPS placeholder="위도(LAT)" />
+              <AddressGPS placeholder="위도(LAT)" value={props.lat} />
               <img />
-              <AddressGPS placeholder="경도(LNG)" />
+              <AddressGPS placeholder="경도(LNG)" value={props.lng} />
             </div>
             <AddressInputBox>
               <Product>주소</Product>
@@ -107,7 +107,7 @@ export default function MarketUI(props) {
             <Uploads02
               defaultFile={props.data?.fetchUseditem.images?.[index]}
               key={el.index}
-              onChangeFile={props.onChangeFiles}
+              onChangeFile={props.onChangeFile}
               index={index}
               register={props.register("images")}
             />
