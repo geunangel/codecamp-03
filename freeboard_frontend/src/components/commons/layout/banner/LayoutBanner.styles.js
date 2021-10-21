@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
   /* margin-top: ; */
-  padding: 5%;
+  margin: 5%;
   /* background-color: mediumpurple; */
   /* opacity: 0.5; */
   /* background-color: magenta; */

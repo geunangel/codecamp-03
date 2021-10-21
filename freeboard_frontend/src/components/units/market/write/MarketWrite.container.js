@@ -25,7 +25,7 @@ export default function MarketWrite(props) {
   const [updateUseditem] = useMutation(UPDATE_USEDITEM);
   const [uploadFile] = useMutation(UPLOAD_FILE);
 
-  const [files, setFiles] = useState([null, null, null]);
+  const [files, setFiles] = useState([null, null, null, null]);
 
   const { handleSubmit, register, formState, setValue, trigger } = useForm({
     mode: "onChange",
@@ -90,7 +90,7 @@ export default function MarketWrite(props) {
   function onClickCancel() {
     router.push(`/market/detail/${router.query.detail}`);
   }
-
+  //지도
   useEffect(() => {
     const script = document.createElement("script");
     script.src =

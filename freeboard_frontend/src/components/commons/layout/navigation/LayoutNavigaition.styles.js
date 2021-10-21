@@ -18,6 +18,7 @@ export const LayoutNavigaition = styled.div`
   margin-top: 25px;
   text-align: center;
   font-size: 2vh;
+  cursor: pointer;
   :hover {
   }
 `;

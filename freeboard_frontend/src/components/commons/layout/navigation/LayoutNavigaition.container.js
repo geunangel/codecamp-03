@@ -5,6 +5,7 @@ export default function LayoutHeader() {
   const router = useRouter();
 
   function onClickMarketNew() {
+    console.log("왜안돼!!!!");
     router.push("/market/new");
   }
 

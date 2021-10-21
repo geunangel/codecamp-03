@@ -18,7 +18,7 @@ export default function Uploads02UI(props) {
           }
         />
       ) : (
-        <ImgUpButton onClick={props.onClickImg}>
+        <ImgUpButton type="button" onClick={props.onClickImg}>
           <ImgText>+</ImgText>
           <ImgText>Upload</ImgText>
         </ImgUpButton>
