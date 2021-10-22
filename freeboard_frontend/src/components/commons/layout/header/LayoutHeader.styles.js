@@ -7,12 +7,13 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   justify-content: space-between;
+  margin-left: 15%;
+  margin-right: 15%;
   //font-family: "myfont"; //글로벌스타일에서 적용한 폰트
 `;
 
 export const LogoImg = styled.img`
   margin-top: 20px;
-  margin-left: 100px;
   width: 200px;
   height: 80px;
 `;
@@ -34,20 +35,23 @@ export const LogSignBox = styled.div`
 `;
 
 export const Signin = styled.div`
+  margin-top: 40px;
   font-size: 20px;
   /* color: rgba(240, 230, 230, 0.9); */
   /* font-family: ; */
 `;
 
 export const Signup = styled.div`
+  margin-top: 40px;
   font-size: 20px;
   /* color: rgba(240, 230, 230, 0.9); */
 `;
 
 export const SearchBox = styled.div`
-  margin-top: 30px;
-  width: 400px;
-  height: 30px;
+  margin-top: 40px;
+  margin-left: 200px;
+  width: 600px;
+  height: 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -55,9 +59,11 @@ export const SearchBox = styled.div`
 
 export const Search = styled.input`
   padding-left: 10px;
-  width: 300px;
-  height: 30px;
-  font-size: 15px;
+  width: 400px;
+  height: 40px;
+  font-size: 30px;
+  font-family: "my2font";
+  font-weight: bold;
   border: none;
   background: transparent;
   display: inline-block;

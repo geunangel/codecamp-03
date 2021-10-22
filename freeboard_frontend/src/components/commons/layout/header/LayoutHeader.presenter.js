@@ -55,13 +55,13 @@ export default function LayoutFooterUI(props) {
           <div>{data?.fetchUserLoggedIn.name}님 환영합니다.</div>
         )}
         {data?.fetchUserLoggedIn.name && (
-          <div onClick={props.onClickSignout}>signout</div>
+          <div onClick={props.onClickSignout}>로그아웃</div>
         )}
         {!data?.fetchUserLoggedIn.name && (
-          <Signin onClick={props.onClickSignin}>signin</Signin>
+          <Signin onClick={props.onClickSignin}>로그인</Signin>
         )}
         {!data?.fetchUserLoggedIn.name && (
-          <Signup onClick={props.onClickSignup}>signup</Signup>
+          <Signup onClick={props.onClickSignup}>회원가입</Signup>
         )}
       </LogSignBox>
     </Wrapper>

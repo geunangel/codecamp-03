@@ -3,8 +3,6 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   /* background-color: mediumpurple; */
   height: 3vh;
-  margin-left: 5%;
-  margin-right: 5%;
 `;
 
 export const LayoutNavigaitionBox = styled.div`
@@ -15,11 +13,17 @@ export const LayoutNavigaitionBox = styled.div`
 `;
 export const LayoutNavigaition = styled.div`
   width: 20vh;
-  margin-top: 25px;
+  margin-top: 10px;
   text-align: center;
-  font-size: 2vh;
+  font-size: 4vh;
   cursor: pointer;
+  font-family: "my2font";
+  font-weight: bold;
   :hover {
+    border-radius: 30px;
+    opacity: 50%;
+    font-size: 3vh;
+    color: black;
   }
 `;
 
