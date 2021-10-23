@@ -12,6 +12,7 @@ import { createContext, useState, useEffect } from "react";
 import { Global } from "@emotion/react";
 import { globalStyles } from "../src/commons/styles/globalstyles";
 import { getAccessToken } from "../src/commons/libraries/validations/getAccessToken";
+import { onError } from "@apollo/client/link/error";
 
 export const GlobalContext = createContext(null);
 // function MyApp({ Component, pageProps }: AppProps)
