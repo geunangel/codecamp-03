@@ -1,106 +1,46 @@
+import MarketCommentWriterUI from "./MarketCommentWriter.presenter";
+import { useMutation, useQuery } from "@apollo/client";
+import {
+  CREATE_USED_ITEM_QUESTION,
+  FETCH_USED_ITEM_QUESTIONS,
+  UPDATE_USED_ITEM_QUESTION,
+} from "./MarketCommentWriter.queries";
 import { useRouter } from "next/router";
 import { useState } from "react";
-import { useMutation } from "@apollo/client";
-import BoardCommentPresenter from "./BoardCommentWriter.presenter";
-import {
-  CREATE_BOARD_COMMENT,
-  UPDATE_BOARD_COMMENT,
-} from "./BoardCommentWriter.queries";
-import { FETCH_BOARD_COMMENTS } from "../list/BoardCommentList.queries";
 
-export default function BoardCommentContainer(props) {
+export default function MarketCommentWrite() {
   const router = useRouter();
 
-  const [createBoardComment] = useMutation(CREATE_BOARD_COMMENT);
-  const [updateBoardComment] = useMutation(UPDATE_BOARD_COMMENT);
-
-  const [writer, setWriter] = useState("");
-  const [pw, setPw] = useState("");
   const [contents, setContents] = useState("");
-  const [star, setStar] = useState(0);
+  const [createUseditemQuestion] = useMutation(CREATE_USED_ITEM_QUESTION);
+  // const [updateUseditemQuestion] = useMutation(UPDATE_USED_ITEM_QUESTION);
 
-  function onChangeWriter(event) {
-    setWriter(event.target.value);
-  }
-  function onChangePassword(event) {
-    setPw(event.target.value);
-  }
-  function onChangeContents(event) {
+  function onChangeCommentContents(event) {
     setContents(event.target.value);
   }
 
-  function onChangeStar(value) {
-    setStar(value);
-  }
-
-  //댓글등록
-  async function onClickComment() {
-    try {
-      await createBoardComment({
-        variables: {
-          createBoardCommentInput: {
-            writer: writer,
-            password: pw,
-            contents: contents,
-            rating: star,
-          },
-          boardId: router.query.detail,
+  function onClickComment() {
+    createUseditemQuestion({
+      variables: {
+        createUseditemQuestionInput: {
+          contents,
         },
-        refetchQueries: [
-          {
-            query: FETCH_BOARD_COMMENTS,
-            variables: { boardId: router.query.detail },
-          },
-          console.log(router),
-        ],
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
-
-  //댓글수정
-  async function onClickUpdate(event) {
-    if (!contents) {
-      alert("내용이 수정되지 않았습니다.");
-      return;
-    }
-    if (!pw) {
-      alert("비밀번호가 입력되지 않았습니다.");
-      return;
-    }
-
-    try {
-      await updateBoardComment({
-        variables: {
-          updateBoardCommentInput: { contents: contents },
-          password: pw,
-          boardCommentId: event.target.id,
+        useditemId: router.query.detail,
+      },
+      refetchQueries: [
+        {
+          query: FETCH_USED_ITEM_QUESTIONS,
+          variables: { useditemId: router.query.detail },
         },
-        refetchQueries: [
-          {
-            query: FETCH_BOARD_COMMENTS,
-            variables: { boardId: router.query.detail },
-          },
-        ],
-      });
-      props.setIsEdit?.(false);
-    } catch (error) {
-      alert(error);
-    }
+      ],
+    });
+    console.log(router.query.detail);
   }
 
   return (
-    <BoardCommentPresenter
-      data={props.data}
+    <MarketCommentWriterUI
+      onChangeCommentContents={onChangeCommentContents}
       onClickComment={onClickComment}
-      onChangeWriter={onChangeWriter}
-      onChangePassword={onChangePassword}
-      onChangeContents={onChangeContents}
-      onClickUpdate={onClickUpdate}
-      onChangeStar={onChangeStar}
-      isEdit={props.isEdit}
-      el={props.el}
     />
   );
 }

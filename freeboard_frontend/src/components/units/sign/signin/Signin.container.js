@@ -33,10 +33,11 @@ export default function Signin() {
       console.log(result.data?.loginUser.accessToken);
 
       //임시로 만듬(새로고침 할때마다 지워져서)
-      localStorage.setItem("accessToken", result.data?.loginUser.accessToken);
+      // localStorage.setItem("accessToken", result.data?.loginUser.accessToken);
 
       setAccessToken(result.data?.loginUser.accessToken);
-      router.push("/market/new");
+      localStorage.setItem("refreshToken", "true");
+      router.push("/market/success");
     } catch (error) {
       alert("회원가입을 먼저 해주세요.");
     }

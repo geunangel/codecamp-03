@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }) {
         if (err.extensions?.code === "UNAUTHENTICATED") {
           // operation=>기존에 날렸던 쿼리
           operation.setContext({
-            Headers: {
+            headers: {
               ...operation.getContext().headers,
               authorization: `Bearer ${getAccessToken(setAccessToken)}`,
             },

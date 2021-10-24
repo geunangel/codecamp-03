@@ -16,6 +16,7 @@ import { onError } from "@apollo/client/link/error";
 
 export const GlobalContext = createContext(null);
 // function MyApp({ Component, pageProps }: AppProps)
+
 function MyApp({ Component, pageProps }) {
   const [accessToken, setAccessToken] = useState("");
   const [userInfo, setUserInfo] = useState("");
@@ -39,7 +40,7 @@ function MyApp({ Component, pageProps }) {
         if (err.extensions?.code === "UNAUTHENTICATED") {
           // operation=>기존에 날렸던 쿼리
           operation.setContext({
-            Headers: {
+            headers: {
               ...operation.getContext().headers,
               authorization: `Bearer ${getAccessToken(setAccessToken)}`,
             },
