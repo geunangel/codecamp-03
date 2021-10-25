@@ -3,6 +3,8 @@ import { useContext, useEffect } from "react";
 import { GlobalContext } from "../../../../../pages/_app";
 import { useQuery } from "@apollo/client";
 import { withAuth } from "../../../src/components/commons/hocs/WithAuth";
+import MarketList from "../../../src/components/units/market/list/MarketList.presenter";
+// import { useRouter } from "next/router";
 
 const FETCH_USER_LOGGED_IN = gql`
   query fetchUserLoggedIn {
@@ -15,6 +17,7 @@ const FETCH_USER_LOGGED_IN = gql`
 `;
 
 export const SigninSuccess = (props) => {
+  // const { router } = useRouter();
   const { userInfo, setUserInfo } = useContext(GlobalContext);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
 
@@ -28,7 +31,12 @@ export const SigninSuccess = (props) => {
   }, [data]);
   console.log(userInfo);
 
-  return <div>{data?.fetchUserLoggedIn.name}님</div>;
+  return (
+    <>
+      <div>{data?.fetchUserLoggedIn.name}님</div>
+      <MarketList />
+    </>
+  );
 };
 
 export default withAuth(SigninSuccess);

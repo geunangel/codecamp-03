@@ -37,7 +37,7 @@ export default function Signin() {
 
       setAccessToken(result.data?.loginUser.accessToken);
       localStorage.setItem("refreshToken", "true");
-      router.push("/market/success");
+      router.push("/market/");
     } catch (error) {
       alert("회원가입을 먼저 해주세요.");
     }
