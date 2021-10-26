@@ -3,12 +3,21 @@ import { FETCH_USER_LOGGED_IN } from "./LayoutHeader.queries";
 import { useQuery } from "@apollo/client";
 import { useRouter } from "next/router";
 import { GlobalContext } from "../../../../../pages/_app";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 export default function LayoutHeader() {
   const router = useRouter();
-  const { setAccessToken } = useContext(GlobalContext);
+  const { accessToken, setUserInfo } = useContext(GlobalContext);
   const { data } = useQuery(FETCH_USER_LOGGED_IN);
+
+  useEffect(() => {
+    if (accessToken) return;
+    setUserInfo({
+      email: data?.fetchUserLoggedIn.email,
+      name: data?.fetchUserLoggedIn.name,
+      picture: data?.fetchUserLoggedIn.picture,
+    });
+  }, [data]);
 
   function onClickSignin() {
     router.push("/signin");
@@ -20,13 +29,14 @@ export default function LayoutHeader() {
 
   function onClickSignout() {
     localStorage.removeItem("refreshToken");
-    setAccessToken("");
-    router.push("/market");
+    setUserInfo("");
+    router.push("/market/list");
   }
 
   return (
     <LayoutHeaderUI
       data={data}
+      accessToken={accessToken}
       onClickSignin={onClickSignin}
       onClickSignup={onClickSignup}
       onClickSignout={onClickSignout}

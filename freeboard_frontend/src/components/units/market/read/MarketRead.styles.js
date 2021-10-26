@@ -118,9 +118,9 @@ export const MainImgBox = styled.div`
   margin-top: 80px;
 `;
 export const MainImg = styled.div`
-  width: 384px;
-  height: 384px;
-  background-color: gray;
+  width: 504px;
+  height: 482px;
+  margin-bottom: 150px;
 `;
 export const ContentsBox = styled.div`
   margin-top: 80px;
@@ -167,5 +167,18 @@ export const Line = styled.hr`
   width: 792px;
   height: 0px;
   margin-top: 30px;
+  background-color: #bdbdbd;
+`;
+
+export const SliderImg = styled.img`
+  width: 504px;
+  height: 482px;
+  margin-top: 80px;
+`;
+
+export const Slider_Img = styled.div`
+  width: 504px;
+  height: 482px;
+  margin-top: 80px;
   background-color: #bdbdbd;
 `;
