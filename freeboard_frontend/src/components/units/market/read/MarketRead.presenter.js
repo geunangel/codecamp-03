@@ -56,9 +56,7 @@ export default function MarketDetailUI(props) {
             <SellerUser>
               <UserImg src="" />
               <UserBox>
-                <SellerName>
-                  {props.data?.fetchUseditem.seller?.name}
-                </SellerName>
+                <SellerName>{props.data?.fetchUseditem.seller.name}</SellerName>
                 <DayDate>
                   Date :{props.data?.fetchUseditem.createdAt.slice(0, 10) + " "}
                   {props.data?.fetchUseditem.createdAt.slice(11, 19)}{" "}
@@ -79,7 +77,11 @@ export default function MarketDetailUI(props) {
               <Tile2>{props.data?.fetchUseditem.name}</Tile2>
             </MainTitle>
             <LikeBox>
-              <LikeIcon src="" />
+              {props.isPicked ? (
+                <LikeIcon src="" onClick={props.onClickPick} />
+              ) : (
+                <LikeIcon src="" onClick={props.onClickPick} />
+              )}
               <LikeCount>{props.data?.fetchUseditem.pickedCount}</LikeCount>
             </LikeBox>
           </TitleBox>
@@ -95,12 +97,12 @@ export default function MarketDetailUI(props) {
                       src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[0]}`}
                     />
                   ) : (
-                    <SliderImg></SliderImg>
+                    <Slider_Img></Slider_Img>
                   )}
                 </div>
                 <div>
                   {props.data?.fetchUseditem.images[1] ? (
-                    <SliderImage
+                    <SliderImg
                       src={`https://storage.googleapis.com/${props.data?.fetchUseditem.images[1]}`}
                     />
                   ) : (
@@ -123,9 +125,33 @@ export default function MarketDetailUI(props) {
           </ContentsBox>
           <TagBox>
             <Tag>
-              <div>{props.data?.fetchUseditem.tags[0]}</div>
-              <div>{props.data?.fetchUseditem.tags[1]}</div>
-              <div>{props.data?.fetchUseditem.tags[2]}</div>
+              {props.data?.fetchUseditem.tags.length ? (
+                <>
+                  <div>
+                    {props.data?.fetchUseditem.tags[0]?.split("")[0] === "#" ? (
+                      props.data?.fetchUseditem.tags[0]
+                    ) : (
+                      <div>#{props.data?.fetchUseditem.tags[0]}</div>
+                    )}
+                  </div>
+                  <div>
+                    {props.data?.fetchUseditem.tags[1]?.split("")[0] === "#" ? (
+                      props.data?.fetchUseditem.tags[1]
+                    ) : (
+                      <div>#{props.data?.fetchUseditem.tags[1]}</div>
+                    )}
+                  </div>
+                  <div>
+                    {props.data?.fetchUseditem.tags[2]?.split("")[0] === "#" ? (
+                      props.data?.fetchUseditem.tags[2]
+                    ) : (
+                      <div>#{props.data?.fetchUseditem.tags[2]}</div>
+                    )}
+                  </div>
+                </>
+              ) : (
+                <div></div>
+              )}
             </Tag>
           </TagBox>
           <Line />
@@ -135,12 +161,20 @@ export default function MarketDetailUI(props) {
         </Body>
       </Wrapper>
       <ButtonBox>
-        <ButtonList />
-        <BottonEdit />
+        {props.data?.fetchUseditem.seller.email ===
+        props.userdata?.fetchUserLoggedIn.email ? (
+          <>
+            <ButtonList onClick={props.onClickList}>목록으로</ButtonList>
+            <BottonEdit onClick={props.onClickIsEdit}>수정하기</BottonEdit>
+            <button onClick={props.onClickDelete}>삭제하기</button>
+          </>
+        ) : (
+          <>
+            <ButtonList onClick={props.onClickList}>목록으로</ButtonList>
+            <button onClick={props.onClickPurchase}>구매하기</button>
+          </>
+        )}
       </ButtonBox>
-      <button onClick={props.onClickList}>목록으로</button>
-      <button onClick={props.onClickIsEdit}>수정하기</button>
-      <button onClick={props.onClickDelete}>삭제하기</button>
     </>
   );
 }

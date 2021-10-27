@@ -122,17 +122,13 @@ export default function MarketUI(props) {
         </div>
         {props.isEdit ? (
           <>
-            <ButtonProduct onClick={props.onClickCancel}>
+            <ButtonProduct type="button" onClick={props.onClickCancel}>
               취소하기
             </ButtonProduct>
-            <ButtonProduct isValid={props.formState.isValid}>
-              수정하기
-            </ButtonProduct>
+            <ButtonProduct>수정하기</ButtonProduct>
           </>
         ) : (
-          <ButtonProduct isValid={props.formState.isValid}>
-            등록하기
-          </ButtonProduct>
+          <ButtonProduct>등록하기</ButtonProduct>
         )}
       </Wrapper>
     </form>

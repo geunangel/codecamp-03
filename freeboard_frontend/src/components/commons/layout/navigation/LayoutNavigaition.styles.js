@@ -30,15 +30,5 @@ export const LayoutNavigaition = styled.div`
 export const Line = styled.div`
   width: 100%;
   height: 3px;
-  background-image: linear-gradient(
-    90deg,
-    red,
-    orange,
-    yellow,
-    green,
-    blue,
-    navy,
-    purple
-  );
-  color: transparent;
+  background-color: green;
 `;

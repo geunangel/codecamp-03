@@ -3,7 +3,7 @@ import { useMutation, useQuery } from "@apollo/client";
 import {
   CREATE_USED_ITEM_QUESTION,
   FETCH_USED_ITEM_QUESTIONS,
-  UPDATE_USED_ITEM_QUESTION,
+  // UPDATE_USED_ITEM_QUESTION,
 } from "./MarketCommentWriter.queries";
 import { useRouter } from "next/router";
 import { useState } from "react";

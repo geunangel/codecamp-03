@@ -18,7 +18,7 @@ export default function MarketWrite(props) {
   const [lng, setLng] = useState("");
 
   const { data } = useQuery(FETCH_USEDITEM, {
-    variables: { useditemId: router.query.useditemId },
+    variables: { useditemId: router.query.detail },
   });
 
   const [createUseditem] = useMutation(CREATE_USEDITEM);
@@ -77,19 +77,38 @@ export default function MarketWrite(props) {
   }
 
   //수정
-  function onClickUpdate(data) {
-    updateUseditem({
-      variables: {
-        updateUseditemInput: { ...data },
-        useditemId: router.query.detail,
-      },
-    });
-    router.push(`/market/detail/${router.query.detail}`);
+  async function onClickUpdate(data) {
+    console.log(router.query.detail);
+    try {
+      const uploadFiles = files
+        .filter((el) => el)
+        .map((el) => uploadFile({ variables: { file: el } }));
+      const results = await Promise.all(uploadFiles);
+      const images = results.map((el) => el.data.uploadFile.url);
+      const result = await updateUseditem({
+        variables: {
+          updateUseditemInput: {
+            ...data,
+            useditemAddress: {
+              lng: lng,
+              lat: lat,
+            },
+            images: images,
+          },
+          useditemId: router.query.detail,
+        },
+      });
+      router.push(`/market/${router.query.detail}`);
+    } catch (error) {
+      console.log(error.message);
+    }
   }
 
+  //취소
   function onClickCancel() {
-    router.push(`/market/detail/${router.query.detail}`);
+    router.push(`/market/${router.query.detail}`);
   }
+
   //지도
   useEffect(() => {
     const script = document.createElement("script");

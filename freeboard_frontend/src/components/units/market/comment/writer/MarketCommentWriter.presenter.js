@@ -38,13 +38,13 @@ export default function ProductCommentWriteUI(props) {
           <CommentButtonBox>
             <CommentTextLength>100</CommentTextLength>
             {!props.isEdit ? (
-              <CommentButton onClick={props.onClickQuestion}>
+              <CommentButton onClick={props.onClickComment}>
                 문의하기
               </CommentButton>
             ) : (
               <CommentButton
                 id={props.el._id}
-                onClick={props.onClickQuestionEdit}
+                // onClick={}
               >
                 수정하기
               </CommentButton>

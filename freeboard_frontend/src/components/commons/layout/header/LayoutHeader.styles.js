@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
 
 export const LogoImg = styled.img`
   margin-top: 20px;
-  width: 200px;
+  width: 50px;
   height: 80px;
 `;
 
@@ -71,21 +71,4 @@ export const Search = styled.input`
     opacity: 1;
     transform: scale(1);
   }
-`;
-
-export const Line = styled.div`
-  width: 10px;
-
-  background-image: linear-gradient(
-    90deg,
-    red,
-    orange,
-    yellow,
-    green,
-    blue,
-    navy,
-    purple
-  );
-  background-clip: text;
-  color: transparent;
 `;

@@ -35,7 +35,6 @@ export default function BoardReadContainer() {
   //수정하기 페이지로 이동
   function onClickEdit() {
     //상세보기 페이지 이동
-    //실무에서 많이 쓰임
     router.push(`/boards/${router.query.detail}/edit`);
     //위와 똑같음
     //router.push(`/boardsEdit/${router.query.detail}`)

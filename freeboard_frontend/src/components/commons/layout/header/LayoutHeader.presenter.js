@@ -16,12 +16,12 @@ export default function LayoutHeaderUI(props) {
   return (
     <Wrapper>
       <LogoBox>
-        <LogoImg src="/로고.png" />
+        <LogoImg src="/상추.png" />
         <LogoName></LogoName>
       </LogoBox>
       <SearchBox>
         <SearchSharpIcon />
-        <Search placeholder="취미용품 찾아보세요" />
+        <Search placeholder="검색" />
       </SearchBox>
       <LogSignBox>
         {props.accessToken && (
