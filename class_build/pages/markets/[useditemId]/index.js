@@ -24,7 +24,7 @@ export default function MarketsPage(props) {
 }
 
 const FETCH_USEDITEM = gql`
-  query fetchUseditem($useditemId: ID) {
+  query fetchUseditem($useditemId: ID!) {
     fetchUseditem(useditemId: $useditemId) {
       name
       remarks
