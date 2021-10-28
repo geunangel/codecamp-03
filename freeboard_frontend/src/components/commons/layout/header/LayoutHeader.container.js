@@ -37,6 +37,10 @@ export default function LayoutHeader() {
     router.push("/");
   };
 
+  const onClickMyPage = () => {
+    router.push("/mypage");
+  };
+
   return (
     <LayoutHeaderUI
       data={data}
@@ -45,6 +49,7 @@ export default function LayoutHeader() {
       onClickSignup={onClickSignup}
       onClickSignout={onClickSignout}
       onClickLogo={onClickLogo}
+      onClickMyPage={onClickMyPage}
     />
   );
 }

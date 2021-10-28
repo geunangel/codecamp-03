@@ -39,7 +39,6 @@ export default function MarketListUI(props) {
           <button>검색</button>
         </div> */}
       </ProductBox>
-      <hr />
       {props.data?.fetchUseditems.map((el) => (
         <div key={el._id} id={el._id} onClick={props.onClickPage}>
           {el.images[0] ? (

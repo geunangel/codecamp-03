@@ -6,10 +6,7 @@ import {
   BestTitle,
   BesttitleDetail,
   BestPrice,
-  BestPriceLikeBox,
   BestLikeIcon,
-  BestLikeCount,
-  BestLikeBox,
 } from "./MarketBest.styles";
 
 export default function MarketBestUI(props) {

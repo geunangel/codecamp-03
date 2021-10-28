@@ -26,7 +26,9 @@ export default function LayoutHeaderUI(props) {
       <LogSignBox>
         {props.accessToken && (
           <>
-            <div>{props.data?.fetchUserLoggedIn.name}님</div>
+            <div onClick={props.onClickMyPage}>
+              {props.data?.fetchUserLoggedIn.name}님
+            </div>
             <div onClick={props.onClickSignout}>로그아웃</div>
           </>
         )}

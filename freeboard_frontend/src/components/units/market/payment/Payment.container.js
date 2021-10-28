@@ -4,7 +4,7 @@ import PaymentUI from "./Payment.presenter";
 import { CREATE_POINT_TRANSACTION_OF_LOADING } from "./Payment.queries";
 
 export default function Payment() {
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
 
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING

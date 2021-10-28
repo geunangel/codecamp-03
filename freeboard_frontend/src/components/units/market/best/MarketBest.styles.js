@@ -1,33 +1,36 @@
 import styled from "@emotion/styled";
 
 export const Wrapper = styled.div`
-  /* width: 1200px; */
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
-export const Header = styled.div`
-  padding-top: 100px;
-  padding-bottom: 100px;
-  width: 175px;
-  height: 42px;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: bold;
-  margin: auto;
-  text-align: center;
-`;
+// export const Header = styled.div`
+//   padding-top: 100px;
+//   padding-bottom: 100px;
+//   width: 175px;
+//   height: 42px;
+//   font-size: 36px;
+//   font-style: normal;
+//   font-weight: bold;
+//   margin: auto;
+//   text-align: center;
+// `;
 
 export const BestItem = styled.div`
-  width: 282px;
-  height: 391px;
+  width: 40vh;
+  height: 60vh;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  padding: 20px;
+  margin: 30px;
 `;
 
 export const BestImg = styled.img`
-  width: 242px;
-  height: 242px;
+  width: 40vh;
+  height: 40vh;
 `;
 
 export const Best_Img = styled.div`
