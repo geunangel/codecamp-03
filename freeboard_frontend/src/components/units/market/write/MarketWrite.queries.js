@@ -8,18 +8,6 @@ export const CREATE_USEDITEM = gql`
   }
 `;
 
-export const FETCH_USEDITEM = gql`
-  query fetchUseditem($useditemId: ID!) {
-    fetchUseditem(useditemId: $useditemId) {
-      name
-      remarks
-      contents
-      price
-      images
-    }
-  }
-`;
-
 export const UPDATE_USEDITEM = gql`
   mutation updateUseditem(
     $updateUseditemInput: UpdateUseditemInput!

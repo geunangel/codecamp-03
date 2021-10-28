@@ -19,7 +19,7 @@ export const schema = yup.object().shape({
   price: yup
     .number()
     .typeError("판매가격은 숫자를 입력해주세요.")
-    .positive("판매가격은 0보다 큽니다.")
+    .positive("판매가격은 1이상 적어주세요..")
     .required("판매가격을 반드시 입력해주세요."),
   // tags: yup.string(),
   // images: yup.string(),

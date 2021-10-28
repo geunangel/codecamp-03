@@ -47,20 +47,21 @@ export default function MarketUI(props) {
           <Product>한줄요약</Product>
           <ProductContents
             type="text"
-            placeholder="상품명을 작성해주세요."
+            placeholder="한줄요약을 작성해주세요."
             {...props.register("remarks")}
             defaultValue={props.data?.fetchUseditem.remarks}
           />
         </ProductBox>
         <ProductContentsBox>
           <Product
-            placeholder="상품을 설명해주세요.."
+            placeholder="상품을 설명해주세요."
             {...props.register("contents")}
           />
         </ProductContentsBox>
         <div>
           <Product>상품설명</Product>
           <ReactQuill
+            placeholder="상품설명을 작성해주세요."
             onChange={props.onChangeMyEditor}
             defaultValue={props.data?.fetchUseditem.contents}
           />
@@ -79,7 +80,7 @@ export default function MarketUI(props) {
           <ProductContents
             type="text"
             placeholder="#태그 #태그 #태그"
-            {...props.register("tags")}
+            onChange={props.onChangeTags}
           />
         </ProductBox>
         <AddressBox>
@@ -90,9 +91,17 @@ export default function MarketUI(props) {
           <AddressGPSInputBox>
             <div>
               <Product>GPS</Product>
-              <AddressGPS placeholder="위도(LAT)" value={props.lat} />
+              <AddressGPS
+                type="text"
+                placeholder="위도(LAT)"
+                value={props.lat}
+              />
               <img />
-              <AddressGPS placeholder="경도(LNG)" value={props.lng} />
+              <AddressGPS
+                type="text"
+                placeholder="경도(LNG)"
+                value={props.lng}
+              />
             </div>
             <AddressInputBox>
               <Product>주소</Product>
@@ -125,10 +134,10 @@ export default function MarketUI(props) {
             <ButtonProduct type="button" onClick={props.onClickCancel}>
               취소하기
             </ButtonProduct>
-            <ButtonProduct>수정하기</ButtonProduct>
+            <ButtonProduct type="submit">수정하기</ButtonProduct>
           </>
         ) : (
-          <ButtonProduct>등록하기</ButtonProduct>
+          <ButtonProduct type="submit">등록하기</ButtonProduct>
         )}
       </Wrapper>
     </form>

@@ -47,6 +47,7 @@ export default function MarKetRead() {
   // }, [pickeddata]);
 
   useEffect(() => {
+    console.log("data", data?.fetchUseditem);
     const script = document.createElement("script");
     script.src =
       "//dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=f2400c45d63389ba72ae0f127645b6ec&libraries=services";
@@ -57,11 +58,11 @@ export default function MarKetRead() {
         const options = {
           // 지도를 생성할 때 필요한 기본 옵션
           center: new window.kakao.maps.LatLng(
-            Number(data?.fetchUseditem.useditemAddress?.lat) || 37.485148,
-            Number(data?.fetchUseditem.useditemAddress?.lng) || 126.895113
+            data?.fetchUseditem.useditemAddress?.lat || 37.485155689411144,
+            data?.fetchUseditem.useditemAddress?.lng || 126.89519472508692
           ), // 지도의 중심좌표.
           level: 3, // 지도의 레벨(확대, 축소 정도)
-          draggable: false,
+          // draggable: false,
         };
 
         const map = new window.kakao.maps.Map(container, options);
@@ -75,7 +76,10 @@ export default function MarKetRead() {
         window.kakao.maps.event.addListener(map, "click");
       });
     };
-  }, [data]);
+  }, [
+    data?.fetchUseditem.useditemAddress?.lat,
+    data?.fetchUseditem.useditemAddress?.lng,
+  ]);
 
   //찜
   async function onClickPick() {

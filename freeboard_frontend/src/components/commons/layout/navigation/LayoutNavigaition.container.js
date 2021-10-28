@@ -12,6 +12,10 @@ export default function LayoutHeader() {
     router.push("/market/list");
   }
 
+  function onClickMarketBest() {
+    router.push("/market/best");
+  }
+
   function onClickBoardList() {
     router.push("/boards");
   }
@@ -20,6 +24,7 @@ export default function LayoutHeader() {
     <LayoutNaigaitionUI
       onClickMarketList={onClickMarketList}
       onClickBoardList={onClickBoardList}
+      onClickMarketBest={onClickMarketBest}
       onClickMarketNew={onClickMarketNew}
     />
   );

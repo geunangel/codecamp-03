@@ -3,14 +3,13 @@ import { useQuery } from "@apollo/client";
 import {
   FETCH_USEDITEMS,
   FETCH_USEDITEMS_OF_THE_BEST,
-} from "./MarketList.queries";
-import MarKetListUI from "./MarketList.presenter";
+} from "./MarketBest.queries";
+import MarKetBestUI from "./MarketBest.presenter";
 
-export default function MarketList() {
+export default function MarketBest() {
   const router = useRouter();
-  const { data } = useQuery(FETCH_USEDITEMS, {
-    variables: { page: 1 },
-  });
+
+  const { data, fetchMore } = useQuery(FETCH_USEDITEMS);
   const { data: bestdata } = useQuery(FETCH_USEDITEMS_OF_THE_BEST);
 
   //상세보기 페이지로 이동
@@ -20,16 +19,7 @@ export default function MarketList() {
   }
   console.log(router.id);
 
-  //등록하기 페이지로 이동
-  function onClickNew() {
-    router.push("/market/new");
-  }
   return (
-    <MarKetListUI
-      data={data}
-      bestdata={bestdata}
-      onClickPage={onClickPage}
-      onClickNew={onClickNew}
-    />
+    <MarKetBestUI data={data} bestdata={bestdata} onClickPage={onClickPage} />
   );
 }

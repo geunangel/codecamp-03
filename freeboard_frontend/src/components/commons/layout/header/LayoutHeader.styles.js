@@ -13,15 +13,18 @@ export const Wrapper = styled.div`
 `;
 
 export const LogoImg = styled.img`
-  margin-top: 20px;
-  width: 50px;
-  height: 80px;
+  margin-top: 10px;
+  width: 70px;
+  height: 90px;
 `;
 
 export const LogoName = styled.div`
-  font-size: 80px;
-  /* color: mintcream; */
-  /* color: rgba(240, 230, 230, 0.9); */
+  /* margin-top: 0px; */
+  margin-left: 10px;
+  font-size: 70px;
+  font-weight: 900;
+  color: green;
+  font-family: "my2font";
 `;
 
 export const LogoBox = styled.div`
@@ -48,8 +51,7 @@ export const Signup = styled.div`
 `;
 
 export const SearchBox = styled.div`
-  margin-top: 40px;
-  margin-left: 200px;
+  margin-top: 30px;
   width: 600px;
   height: 40px;
   display: flex;
@@ -59,9 +61,9 @@ export const SearchBox = styled.div`
 
 export const Search = styled.input`
   padding-left: 10px;
-  width: 400px;
-  height: 40px;
-  font-size: 30px;
+  width: 500px;
+  height: 50px;
+  font-size: 50px;
   font-family: "my2font";
   font-weight: bold;
   border: none;

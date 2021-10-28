@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   /* background-color: mediumpurple; */
   height: 3vh;
+  margin-bottom: 100px;
 `;
 
 export const LayoutNavigaitionBox = styled.div`
@@ -20,7 +21,6 @@ export const LayoutNavigaition = styled.div`
   font-family: "my2font";
   font-weight: bold;
   :hover {
-    border-radius: 30px;
     opacity: 50%;
     font-size: 3vh;
     color: black;
@@ -28,7 +28,9 @@ export const LayoutNavigaition = styled.div`
 `;
 
 export const Line = styled.div`
+  margin-top: 10px;
   width: 100%;
   height: 3px;
   background-color: green;
+  opacity: 0.5;
 `;

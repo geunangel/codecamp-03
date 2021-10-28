@@ -16,11 +16,11 @@ export default function LayoutNaigaitionUI(props) {
         <LayoutNavigaition onClick={props.onClickMarketList}>
           최신상품
         </LayoutNavigaition>
-        <LayoutNavigaition onClick={props.onClickMarketList}>
-          후기
+        <LayoutNavigaition onClick={props.onClickMarketBest}>
+          베스트상품
         </LayoutNavigaition>
         <LayoutNavigaition onClick={props.onClickMarketList}>
-          추천상품
+          후기
         </LayoutNavigaition>
         <LayoutNavigaition onClick={props.onClickBoardList}>
           스토리

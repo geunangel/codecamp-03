@@ -19,19 +19,23 @@ export default function LayoutHeader() {
     });
   }, [data]);
 
-  function onClickSignin() {
+  const onClickSignin = () => {
     router.push("/signin");
-  }
+  };
 
-  function onClickSignup() {
+  const onClickSignup = () => {
     router.push("/signup");
-  }
+  };
 
-  function onClickSignout() {
+  const onClickSignout = () => {
     localStorage.removeItem("refreshToken");
     setUserInfo("");
     router.push("/market/list");
-  }
+  };
+
+  const onClickLogo = (event) => {
+    router.push("/");
+  };
 
   return (
     <LayoutHeaderUI
@@ -40,6 +44,7 @@ export default function LayoutHeader() {
       onClickSignin={onClickSignin}
       onClickSignup={onClickSignup}
       onClickSignout={onClickSignout}
+      onClickLogo={onClickLogo}
     />
   );
 }
