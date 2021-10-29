@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   /* background-color: mediumpurple; */
   height: 3vh;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
 `;
 
 export const LayoutNavigaitionBox = styled.div`

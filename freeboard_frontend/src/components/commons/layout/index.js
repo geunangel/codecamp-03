@@ -41,11 +41,11 @@ export default function Layout(props) {
   const router = useRouter();
   console.log(router);
 
-  // const HIDDEN_Main = ["/"];
-  // const isHidden = HIDDEN_Main.includes(router.pathname);
+  const HIDDEN_Main = ["/"];
+  const isHidden = HIDDEN_Main.includes(router.pathname);
 
-  const HIDDEN_Banner = ["/"];
-  const isHidden = HIDDEN_Banner.includes(router.pathname);
+  // const HIDDEN_Banner = ["/"];
+  // const isHidden = HIDDEN_Banner.includes(router.pathname);
 
   return (
     <Wrapper>
@@ -56,9 +56,9 @@ export default function Layout(props) {
         <WrapperColumn>
           <Body>{props.children}</Body>
         </WrapperColumn>
-        <LayoutSidebar />
+        {!isHidden && <LayoutSidebar />}
       </WrapperRow>
-      <LayoutFooter />
+      {!isHidden && <LayoutFooter />}
     </Wrapper>
   );
 }

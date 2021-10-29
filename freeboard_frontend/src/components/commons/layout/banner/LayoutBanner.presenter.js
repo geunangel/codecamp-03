@@ -23,10 +23,10 @@ export default function LayoutBannerUI() {
     <>
       <Wrapper>
         <Slider {...settings}>
-          <MainImg src="/캠핑.jpeg" />
-          <MainImg src="/취미브이로그.jpeg" />
-          <MainImg src="/신상.jpeg" />
-          <MainImg src="/신상1.jpeg" />
+          <MainImg src="/main_img/메인1.png" />
+          <MainImg src="/main_img/메인2.png" />
+          <MainImg src="/main_img/메인1.png" />
+          <MainImg src="/main_img/메인2.png" />
         </Slider>
       </Wrapper>
     </>
