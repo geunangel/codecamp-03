@@ -1,5 +1,5 @@
 import MarketCommentWriterUI from "./MarketCommentWriter.presenter";
-import { useMutation, useQuery } from "@apollo/client";
+import { useMutation } from "@apollo/client";
 import {
   CREATE_USED_ITEM_QUESTION,
   FETCH_USED_ITEM_QUESTIONS,
@@ -15,11 +15,11 @@ export default function MarketCommentWrite() {
   const [createUseditemQuestion] = useMutation(CREATE_USED_ITEM_QUESTION);
   // const [updateUseditemQuestion] = useMutation(UPDATE_USED_ITEM_QUESTION);
 
-  function onChangeCommentContents(event) {
+  const onChangeCommentContents = (event) => {
     setContents(event.target.value);
-  }
+  };
 
-  function onClickComment() {
+  const onClickComment = () => {
     createUseditemQuestion({
       variables: {
         createUseditemQuestionInput: {
@@ -35,7 +35,7 @@ export default function MarketCommentWrite() {
       ],
     });
     console.log(router.query.detail);
-  }
+  };
 
   return (
     <MarketCommentWriterUI

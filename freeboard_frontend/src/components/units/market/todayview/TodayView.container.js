@@ -11,9 +11,9 @@ export default function TodayView() {
   });
 
   //클릭하면 상세보기 페이지로 이동
-  function onClickPage(event) {
+  const onClickPage = (event) => {
     router.push(`/market/${event.currentTarget.id}`);
-  }
+  };
 
   return <TodayViewUI data={data} onClickPage={onClickPage} />;
 }

@@ -2,14 +2,55 @@ export default function PaymentUI(props) {
   return (
     <>
       결제금액을 선택해주세요.
-      <div onChange={props.onChangeAmount}>
-        <input type="select" value="100" defaultValue />
-        <input type="select" value="200" />
-        <input type="select" value="300" />
-        <input type="select" value="400" />
-        <input type="select" value="500" />
+      <div>
+        <div>
+          <input
+            onChange={props.onChangeAmount}
+            name="rate"
+            type="radio"
+            id="100"
+            checked
+          />
+          100
+        </div>
+        <div>
+          <input
+            onChange={props.onChangeAmount}
+            name="rate"
+            type="radio"
+            id="200"
+          />
+          200
+        </div>
+        <div>
+          <input
+            onChange={props.onChangeAmount}
+            name="rate"
+            type="radio"
+            id="300"
+          />
+          300
+        </div>
+        <div>
+          <input
+            onChange={props.onChangeAmount}
+            name="rate"
+            type="radio"
+            id="400"
+          />
+          400
+        </div>
+        <div>
+          <input
+            onChange={props.onChangeAmount}
+            name="rate"
+            type="radio"
+            id="500"
+          />
+          500
+        </div>
       </div>
-      <button onClick={onClickPayment}>결제하기</button>
+      <button onClick={props.onClickPayment}>결제하기</button>
     </>
   );
 }

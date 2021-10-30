@@ -23,14 +23,11 @@ export default function MarketWrite(props) {
 
   const [files, setFiles] = useState([null, null, null, null]);
 
-  const onChangeTags = (event) => {
-    setTags(event.target.value.split(" "));
-  };
-
-  const { handleSubmit, register, formState, setValue, trigger } = useForm({
-    mode: "onChange",
-    resolver: yupResolver(schema),
-  });
+  const { handleSubmit, register, formState, setValue, trigger, watch } =
+    useForm({
+      mode: "onChange",
+      resolver: yupResolver(schema),
+    });
   console.log(formState);
 
   //contents에 라이브러리 적용
@@ -42,6 +39,21 @@ export default function MarketWrite(props) {
     //onChange 됐는지 react-hook-form에 알려주는 기능
     trigger("contents");
   }
+
+  //위치 경도,위도
+  function onChangeLAT(value) {
+    setValue("lat", value || "");
+    trigger("lat");
+  }
+  function onChangeLNG(value) {
+    setValue("len", value || "");
+    trigger("lng");
+  }
+
+  //태그
+  const onChangeTags = (event) => {
+    setTags(event.target.value.split(" "));
+  };
 
   //이미지
   function onChangeFile(file, index) {
@@ -188,6 +200,7 @@ export default function MarketWrite(props) {
       onClickCancel={onClickCancel}
       lng={lng}
       lat={lat}
+      contents={watch("contents") || ""}
     />
   );
 }

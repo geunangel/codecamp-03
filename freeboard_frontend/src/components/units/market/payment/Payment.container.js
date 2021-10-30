@@ -1,20 +1,22 @@
 import Head from "next/head";
 import { useState } from "react";
 import PaymentUI from "./Payment.presenter";
+import { useMutation } from "@apollo/client";
+
 import { CREATE_POINT_TRANSACTION_OF_LOADING } from "./Payment.queries";
 
 export default function Payment() {
   const [amount, setAmount] = useState("");
-
   const [createPointTransactionOfLoading] = useMutation(
     CREATE_POINT_TRANSACTION_OF_LOADING
   );
 
-  function onChangeAmount(value) {
-    setAmount(value);
-  }
+  const onChangeAmount = (e) => {
+    setAmount(e.target.id);
+  };
 
-  function onClickPayment() {
+  const onClickPayment = () => {
+    console.log(amount);
     const IMP = window.IMP; // 생략 가능
     // IMP.init("{가맹점 식별코드}"); // 예: imp00000000
     IMP.init("imp49910675");
@@ -34,7 +36,7 @@ export default function Payment() {
         buyer_addr: "서울특별시 강남구 신사동",
         buyer_postcode: "01181",
       },
-      async function () {
+      async function (rsp) {
         // callback
         if (rsp.success) {
           console.log(rsp);
@@ -55,7 +57,7 @@ export default function Payment() {
         }
       }
     );
-  }
+  };
   return (
     <>
       <Head>

@@ -82,7 +82,7 @@ export default function MarKetRead() {
   ]);
 
   //찜
-  async function onClickPick() {
+  const onClickPick = async () => {
     const result = await toggleUseditemPick({
       variables: { useditemId: router.query.detail },
       refetchQueries: [
@@ -93,30 +93,30 @@ export default function MarKetRead() {
       ],
     });
     setIsPicked((prev) => !prev);
-  }
+  };
 
   //리스트로 이동
-  function onClickList() {
+  const onClickList = () => {
     router.push(`/market/list`);
-  }
+  };
 
   //수정하기
-  function onClickIsEdit() {
+  const onClickIsEdit = () => {
     router.push(`/market/${router.query.detail}/edit`);
-  }
+  };
 
   //삭제하기
-  function onClickDelete() {
+  const onClickDelete = () => {
     deleteUseditem({
       variables: {
         useditemId: router.query.detail,
       },
     });
     router.push("/market/list");
-  }
+  };
 
   //구매하기
-  async function onClickPurchase() {
+  const onClickPurchase = async () => {
     try {
       const result = await createPointTransactionOfBuyingAndSelling({
         variables: {
@@ -128,7 +128,7 @@ export default function MarKetRead() {
     } catch (err) {
       alert(err);
     }
-  }
+  };
 
   return (
     <MarketReadUI

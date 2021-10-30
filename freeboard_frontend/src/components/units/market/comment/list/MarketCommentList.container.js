@@ -14,11 +14,11 @@ export default function MarketCommentList(props) {
   const { data } = useQuery(FETCH_USED_ITEM_QUESTIONS);
   const [deleteUseditemQuestion] = useMutation(DELETE_USED_ITEM_QUESTION);
 
-  function onClickIsEdit() {
+  const onClickIsEdit = () => {
     setIsEdit(true);
-  }
+  };
 
-  function onClickDelete(event) {
+  const onClickDelete = (event) => {
     deleteUseditemQuestion({
       variables: {
         useditemQuestionId: event.target.id,
@@ -30,7 +30,7 @@ export default function MarketCommentList(props) {
         },
       ],
     });
-  }
+  };
 
   return (
     <MarketCommentListUI

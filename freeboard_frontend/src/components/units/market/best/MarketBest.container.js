@@ -13,10 +13,10 @@ export default function MarketBest() {
   const { data: bestdata } = useQuery(FETCH_USEDITEMS_OF_THE_BEST);
 
   //상세보기 페이지로 이동
-  function onClickPage(event) {
+  const onClickPage = (event) => {
     //currentTarget=>어딜 눌리던 해당페이지로 이동
     router.push(`/market/${event.currentTarget.id}`);
-  }
+  };
   console.log(router.id);
 
   return (

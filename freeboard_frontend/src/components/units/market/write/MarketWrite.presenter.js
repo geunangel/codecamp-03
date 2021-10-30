@@ -56,6 +56,7 @@ export default function MarketUI(props) {
           <Product
             placeholder="상품을 설명해주세요."
             {...props.register("contents")}
+            value={props.contents || ""}
           />
         </ProductContentsBox>
         <div>
@@ -63,7 +64,7 @@ export default function MarketUI(props) {
           <ReactQuill
             placeholder="상품설명을 작성해주세요."
             onChange={props.onChangeMyEditor}
-            defaultValue={props.data?.fetchUseditem.contents}
+            contents={props?.contents}
           />
         </div>
         <ProductBox>

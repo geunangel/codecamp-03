@@ -12,7 +12,8 @@ export const LayoutNavigaitionBox = styled.div`
   align-items: center;
   font-weight: bold;
 `;
-export const LayoutNavigaition = styled.div`
+
+export const LayoutNavigaitionTitle = styled.div`
   width: 20vh;
   margin-top: 10px;
   text-align: center;
@@ -20,6 +21,7 @@ export const LayoutNavigaition = styled.div`
   cursor: pointer;
   font-family: "my2font";
   font-weight: bold;
+  /* border-bottom: ; */
   :hover {
     opacity: 50%;
     font-size: 3vh;
