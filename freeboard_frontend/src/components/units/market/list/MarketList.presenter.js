@@ -59,6 +59,7 @@ export default function MarketListUI(props) {
               <img src="./사람.png" />
               <div>판매자</div>
               <div>하뚜</div>
+              <div>{el.price}</div>
               <div>{el.pickedCount}</div>
             </div>
           </div>
