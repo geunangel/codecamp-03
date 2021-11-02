@@ -10,6 +10,7 @@ import {
   BestLikeCount,
   BestLikeBox,
   ProductBox,
+  Product,
 } from "./MarketList.styles";
 
 export default function MarketListUI(props) {
@@ -28,10 +29,10 @@ export default function MarketListUI(props) {
         </BestPriceLikeBox>
       </BestItem> */}
       <ProductBox>
-        <div>
+        <Product>
           <div>판매중상품</div>
           <div>판매된상품</div>
-        </div>
+        </Product>
         {/* <div>
           <img src="./위치모양.svg" width="20px" height="20px" />
           <input type="text" placeholder="제품을 검색해주세요." />

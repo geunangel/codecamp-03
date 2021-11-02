@@ -84,3 +84,7 @@ export const ProductBox = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
+export const Product = styled.div`
+  display: flex;
+`;
