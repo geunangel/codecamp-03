@@ -11,6 +11,7 @@ import {
   BestLikeBox,
   ProductBox,
   Product,
+  ProductName,
 } from "./MarketList.styles";
 
 export default function MarketListUI(props) {
@@ -51,7 +52,7 @@ export default function MarketListUI(props) {
             <img src="" />
           )}
           <div>
-            <div>{el.name}</div>
+            <ProductName>{el.name}</ProductName>
             <div>{el.remarks}</div>
             <div>
               <div>태그</div>

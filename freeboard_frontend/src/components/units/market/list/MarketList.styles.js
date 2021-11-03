@@ -88,3 +88,7 @@ export const ProductBox = styled.div`
 export const Product = styled.div`
   display: flex;
 `;
+
+export const ProductName = styled.div`
+  font-size: 30px;
+`;
