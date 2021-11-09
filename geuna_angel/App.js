@@ -1,44 +1,38 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
-import React from 'react';
 import type {Node} from 'react';
-import {Button} from 'react-native';
-import firestore from '@react-native-firebase/firestore';
+import * as React from 'react';
+import auth from '@react-native-firebase/auth';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import Home from './screens/Home';
+import LoginScreen from './screens/LoginScreen';
+import {TextInput, View} from 'react-native';
 
 const App: () => Node = () => {
-  function writeData() {
-    firestore()
-      .collection('Users')
-      .add({name: '근아', age: 10, school: '토끼초등학교'});
-
-    // firestore().collection('Board').add({
-    //   title: '안녕하세요',
-    //   contents: '내용입니다',
-    //   userId: 'document에 있는 아이디=users에 있는 아이디를 넣어주면 됨',
-    // });
-  }
-
-  function aaa() {
-    const id = 'JbTyGw2Wow0ZpEBlWCu5';
-    firestore().collection('Community').add({
-      title: '안녕하세요',
-      contents: '내용입니다',
-      userId: id,
+  React.useEffect(() => {
+    GoogleSignin.configure({
+      webClientId:
+        '564110210252-ure2bchd987v4fvmj7oraq7dhila9sp1.apps.googleusercontent.com',
     });
+  }, []);
+
+  async function onGoogleButtonPress() {
+    const {idToken} = await GoogleSignin.signIn();
+    const googleCredential = auth().GoogleAuthProvider.credential(idToken);
+    return auth().signInWithCredential(googleCredential);
   }
 
-  return (
-    <>
-      <Button onPress={writeData} title="회원가입" />
-      <Button onPress={aaa} title="커뮤니티 생성하기" />
-    </>
-  );
-};
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
+  auth().onAuthStateChanged(user => {
+    if (user) {
+      setLoggedIn(true);
+    } else {
+      setLoggedIn(false);
+    }
+  });
+
+  if (loggedIn) {
+    return <Home />;
+  }
+  return <LoginScreen onGoogleButtonPress={onGoogleButtonPress} />;
+};
 export default App;
