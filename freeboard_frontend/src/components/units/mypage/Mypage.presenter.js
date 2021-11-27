@@ -19,6 +19,7 @@ export default function MyPageUI(props) {
       {props.data?.fetchUserLoggedIn.userPoint.amount}
       <div>내프로필</div>
       <Pay onClick={props.onClickPayment}></Pay>
+      <div>구매내역</div>
     </div>
   );
 }
