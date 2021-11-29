@@ -16,3 +16,8 @@ export const UserName = styled.div`
   font-size: 20px;
   font-weight: bold;
 `;
+
+export const PointPay = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+`;
