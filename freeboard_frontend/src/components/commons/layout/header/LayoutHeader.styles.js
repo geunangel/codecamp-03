@@ -74,3 +74,17 @@ export const Search = styled.input`
     transform: scale(1);
   }
 `;
+
+export const UserName = styled.div`
+  width: 200px;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 20px;
+`;
+
+export const Signout = styled.div`
+  width: 200px;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 20px;
+`;

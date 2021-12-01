@@ -9,6 +9,8 @@ import {
   Signin,
   Signup,
   Line,
+  UserName,
+  Signout,
 } from "./LayoutHeader.styles";
 import SearchSharpIcon from "@mui/icons-material/SearchSharp";
 
@@ -26,10 +28,10 @@ export default function LayoutHeaderUI(props) {
       <LogSignBox>
         {props.accessToken && (
           <>
-            <div onClick={props.onClickMyPage}>
+            <UserName onClick={props.onClickMyPage}>
               {props.data?.fetchUserLoggedIn.name}님
-            </div>
-            <div onClick={props.onClickSignout}>로그아웃</div>
+            </UserName>
+            <Signout onClick={props.onClickSignout}>로그아웃</Signout>
           </>
         )}
         {!props.accessToken && (
