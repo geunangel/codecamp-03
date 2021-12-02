@@ -33,7 +33,7 @@ export default function LayoutHeader() {
     router.push("/market/list");
   };
 
-  const onClickLogo = (event) => {
+  const onClickLogo = () => {
     router.push("/");
   };
 

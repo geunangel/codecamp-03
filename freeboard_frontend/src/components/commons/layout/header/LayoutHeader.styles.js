@@ -16,6 +16,10 @@ export const LogoImg = styled.img`
   margin-top: 10px;
   width: 70px;
   height: 90px;
+  :hover {
+    opacity: 50%;
+  }
+  cursor: pointer;
 `;
 
 export const LogoName = styled.div`
@@ -25,29 +29,36 @@ export const LogoName = styled.div`
   font-weight: 900;
   color: green;
   font-family: "my2font";
+  :hover {
+    opacity: 50%;
+  }
+  cursor: pointer;
 `;
 
 export const LogoBox = styled.div`
   display: flex;
 `;
 export const LogSignBox = styled.div`
-  width: 150px;
+  width: 300px;
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-right: 20px;
 `;
 
 export const Signin = styled.div`
   margin-top: 40px;
   font-size: 20px;
+  margin-right: 20px;
   /* color: rgba(240, 230, 230, 0.9); */
   /* font-family: ; */
+  cursor: pointer;
 `;
 
 export const Signup = styled.div`
   margin-top: 40px;
   font-size: 20px;
   /* color: rgba(240, 230, 230, 0.9); */
+  cursor: pointer;
 `;
 
 export const SearchBox = styled.div`
@@ -76,15 +87,16 @@ export const Search = styled.input`
 `;
 
 export const UserName = styled.div`
-  width: 200px;
   font-weight: bold;
   font-size: 20px;
-  margin: 20px;
+  margin-top: 40px;
+  margin-right: 20px;
+  cursor: pointer;
 `;
 
 export const Signout = styled.div`
-  width: 200px;
   font-weight: bold;
   font-size: 20px;
-  margin: 20px;
+  margin-top: 40px;
+  cursor: pointer;
 `;
