@@ -1,9 +1,9 @@
 import { Modal } from "antd";
-import { Pay, UserInfo, UserName, PointPay } from "./Mypage.styles";
+import { Wrapper, Pay, UserInfo, UserName, PointPay } from "./Mypage.styles";
 import Payment from "../market/payment/Payment.container";
 export default function MyPageUI(props) {
   return (
-    <div>
+    <Wrapper>
       {props.isOpen && (
         <Modal
           visible={props.isOpen}
@@ -20,6 +20,6 @@ export default function MyPageUI(props) {
       {props.data?.fetchUserLoggedIn.userPoint.amount}
       <div>내프로필</div>
       <div>구매내역</div>
-    </div>
+    </Wrapper>
   );
 }

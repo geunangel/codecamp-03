@@ -12,7 +12,6 @@ export default function MyprofilePage() {
   // };
 
   const onClickPayment = () => {
-    console.log("눌려지니?");
     setIsOpen(true);
   };
 
