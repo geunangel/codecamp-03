@@ -13,6 +13,9 @@ export default function MyPageUI(props) {
           <Payment />
         </Modal>
       )}
+      <div>내상품</div>
+      <div>|</div>
+      <div>마이찜</div>
       <UserInfo>나의 신상정보</UserInfo>
       <UserName>이름:{props.data?.fetchUserLoggedIn.name}</UserName>
       <PointPay>포인트</PointPay>
