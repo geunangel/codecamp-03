@@ -1,41 +1,45 @@
 import { gql } from "@apollo/client";
 
-export const CREATE_USED_ITEM_QUESTION = gql`
-  mutation createUseditemQuestion(
-    $createUseditemQuestionInput: CreateUseditemQuestionInput!
-    $useditemId: ID!
+export const CREATE_USEDITEM_QUESTION_ANSWER = gql`
+  mutation createUseditemQuestionAnswer(
+    $createUseditemQuestionAnswerInput: CreateUseditemQuestionAnswerInput!
+    $useditemQuestionId: ID!
   ) {
-    createUseditemQuestion(
-      createUseditemQuestionInput: $createUseditemQuestionInput
-      useditemId: $useditemId
+    createUseditemQuestionAnswer(
+      createUseditemQuestionAnswerInput: $createUseditemQuestionAnswerInput
+      useditemQuestionId: $useditemQuestionId
     ) {
       _id
     }
   }
 `;
 
-export const UPDATE_USED_ITEM_QUESTION = gql`
-  mutation updateUseditemQuestion(
-    $updateUseditemQuestionInput: UpdateUseditemQuestionInput!
-    $useditemQuestionId: ID!
-  ) {
-    updateUseditemQuestion(
-      updateUseditemQuestionInput: $updateUseditemQuestionInput
+export const FETCH_USED_ITEM_QUESTION_ANSWERS = gql`
+  query fetchUseditemQuestionAnswers($page: Int, $useditemQuestionId: ID!) {
+    fetchUseditemQuestionAnswers(
+      page: $page
       useditemQuestionId: $useditemQuestionId
     ) {
       _id
       contents
+      user {
+        name
+      }
+      createdAt
     }
   }
 `;
 
-export const FETCH_USED_ITEM_QUESTIONS = gql`
-  query fetchUseditemQuestions($useditemId: ID!) {
-    fetchUseditemQuestions(useditemId: $useditemId) {
-      user {
-        name
-      }
-      contents
+export const UPDATE_USEDITEM_QUESTION_ANSWER = gql`
+  mutation updateUseditemQuestionAnswer(
+    $updateUseditemQuestionAnswerInput: UpdateUseditemQuestionAnswerInput!
+    $useditemQuestionAnswerId: ID!
+  ) {
+    updateUseditemQuestionAnswer(
+      updateUseditemQuestionAnswerInput: $updateUseditemQuestionAnswerInput
+      useditemQuestionAnswerId: $useditemQuestionAnswerId
+    ) {
+      _id
     }
   }
 `;
