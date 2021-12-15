@@ -23,3 +23,11 @@ export const PointPay = styled.div`
   font-size: 20px;
   font-weight: bold;
 `;
+
+export const Profile = styled.div`
+  font-size: 20px;
+`;
+
+export const PointHistory = styled.div`
+  font-size: 20px;
+`;

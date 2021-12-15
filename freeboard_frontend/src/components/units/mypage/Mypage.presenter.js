@@ -1,5 +1,13 @@
 import { Modal } from "antd";
-import { Wrapper, Pay, UserInfo, UserName, PointPay } from "./Mypage.styles";
+import {
+  Wrapper,
+  Pay,
+  UserInfo,
+  UserName,
+  PointPay,
+  Profile,
+  PointHistory,
+} from "./Mypage.styles";
 import Payment from "../market/payment/Payment.container";
 export default function MyPageUI(props) {
   return (
@@ -21,8 +29,8 @@ export default function MyPageUI(props) {
       <PointPay>포인트</PointPay>
       <Pay onClick={props.onClickPayment}>포인트충전하기</Pay>
       {props.data?.fetchUserLoggedIn.userPoint.amount}
-      <div>내프로필</div>
-      <div>구매내역</div>
+      <Profile>내프로필</Profile>
+      <PointHistory>구매내역</PointHistory>
     </Wrapper>
   );
 }
