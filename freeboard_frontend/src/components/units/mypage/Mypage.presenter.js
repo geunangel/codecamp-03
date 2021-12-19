@@ -7,6 +7,8 @@ import {
   PointPay,
   Profile,
   PointHistory,
+  MyProduct,
+  MyWish,
 } from "./Mypage.styles";
 import Payment from "../market/payment/Payment.container";
 export default function MyPageUI(props) {
@@ -21,9 +23,9 @@ export default function MyPageUI(props) {
           <Payment />
         </Modal>
       )}
-      <div>내상품</div>
+      <MyProduct>내상품</MyProduct>
       <div>|</div>
-      <div>마이찜</div>
+      <MyWish>마이찜</MyWish>
       <UserInfo>나의 신상정보</UserInfo>
       <UserName>이름:{props.data?.fetchUserLoggedIn.name}</UserName>
       <PointPay>포인트</PointPay>

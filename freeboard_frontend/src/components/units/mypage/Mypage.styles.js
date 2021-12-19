@@ -31,3 +31,11 @@ export const Profile = styled.div`
 export const PointHistory = styled.div`
   font-size: 20px;
 `;
+
+export const MyProduct = styled.div`
+  font-size: 20px;
+`;
+
+export const MyWish = styled.div`
+  font-size: 20px;
+`;
