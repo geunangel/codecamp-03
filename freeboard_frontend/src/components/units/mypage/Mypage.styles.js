@@ -40,5 +40,6 @@ export const MyWish = styled.div`
   font-size: 20px;
 `;
 
-export const Line = styled.div`s
+export const Line = styled.div`
+  font-size: 30px;
 `;
