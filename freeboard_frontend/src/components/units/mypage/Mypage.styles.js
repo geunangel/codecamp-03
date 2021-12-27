@@ -26,6 +26,7 @@ export const PointPay = styled.div`
 
 export const Profile = styled.div`
   font-size: 20px;
+  font-weight: bold;
 `;
 
 export const PointHistory = styled.div`
@@ -41,5 +42,5 @@ export const MyWish = styled.div`
 `;
 
 export const Line = styled.div`
-  font-size: 30px;
+  font-size: 40px;
 `;
