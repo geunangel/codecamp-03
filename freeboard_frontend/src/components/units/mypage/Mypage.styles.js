@@ -35,6 +35,7 @@ export const PointHistory = styled.div`
 
 export const MyProduct = styled.div`
   font-size: 20px;
+  font-weight: bold;
 `;
 
 export const MyWish = styled.div`
