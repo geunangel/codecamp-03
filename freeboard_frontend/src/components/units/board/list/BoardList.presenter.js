@@ -1,6 +1,7 @@
 import {
   Wrapper,
   Header,
+  BestList,
   BestBoards,
   BoardsImg,
   BoardTitle,
@@ -36,23 +37,25 @@ export default function BoardListPresenter(props) {
   return (
     <Wrapper>
       {/* <Header>베스트 게시글</Header> */}
-      {props.dataBoardsOfTheBest?.fetchBoardsOfTheBest.map((el) => (
-        <BestBoards key={el._id} id={el._id}>
-          <BoardsImg />
-          <BoardTitle>{el.title}</BoardTitle>
-          <WriterBoardBox>
-            <WriterBox>
-              <WriterImg>사진</WriterImg>
-              <WriterName>{el.writer}</WriterName>
-            </WriterBox>
-            <div>{el.createdAt.slice(0, 10)}</div>
-            <div>
-              <div>따봉</div>
-              <div>{el.likeCount}</div>
-            </div>
-          </WriterBoardBox>
-        </BestBoards>
-      ))}
+      <BestList>
+        {props.dataBoardsOfTheBest?.fetchBoardsOfTheBest.map((el) => (
+          <BestBoards key={el._id} id={el._id}>
+            <BoardsImg />
+            <BoardTitle>{el.title}</BoardTitle>
+            <WriterBoardBox>
+              <WriterBox>
+                <WriterImg>사진</WriterImg>
+                <WriterName>{el.writer}</WriterName>
+              </WriterBox>
+              <div>{el.createdAt.slice(0, 10)}</div>
+              <div>
+                <div>따봉</div>
+                <div>{el.likeCount}</div>
+              </div>
+            </WriterBoardBox>
+          </BestBoards>
+        ))}
+      </BestList>
       <TitleSearchBox>
         <TitleSearch>
           <img />

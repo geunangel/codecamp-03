@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 export const Wrapper = styled.div`
   /* background-color: maroon; */
   height: 100px;
+  /* width: 100vh; */
   font-size: 30px;
   display: flex;
   justify-content: flex-start;
@@ -50,7 +51,8 @@ export const Signin = styled.div`
   font-size: 20px;
   margin-right: 20px;
   /* color: rgba(240, 230, 230, 0.9); */
-  /* font-family: ; */
+  font-family: "my2font";
+  font-weight: bold;
   cursor: pointer;
 `;
 
@@ -58,6 +60,8 @@ export const Signup = styled.div`
   margin-top: 40px;
   font-size: 20px;
   /* color: rgba(240, 230, 230, 0.9); */
+  font-family: "my2font";
+  font-weight: bold;
   cursor: pointer;
 `;
 
@@ -92,6 +96,7 @@ export const UserName = styled.div`
   margin-top: 40px;
   margin-right: 20px;
   cursor: pointer;
+  font-family: "my2font";
 `;
 
 export const Signout = styled.div`
@@ -99,4 +104,5 @@ export const Signout = styled.div`
   font-size: 20px;
   margin-top: 40px;
   cursor: pointer;
+  font-family: "my2font";
 `;

@@ -32,6 +32,14 @@ export const Wrapper = styled.div`
 //   text-align: center;
 // `;
 
+export const BestList = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 1200px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+`;
+
 export const BestBoards = styled.div`
   width: 282px;
   height: 257px;
