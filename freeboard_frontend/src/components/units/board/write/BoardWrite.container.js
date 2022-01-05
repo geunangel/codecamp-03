@@ -198,7 +198,7 @@ export default function BoardWriteContainer(props) {
         console.log(result);
         alert("등록완료");
         //alert("버튼클릭확인")
-        router.push(`/boards/${result.data.createBoard._id}`);
+        router.push(`/boards/${router.query.boardId}`);
       } catch (error) {
         console.log(error);
       }
@@ -259,8 +259,14 @@ export default function BoardWriteContainer(props) {
     }
   }
 
+  //등록하는 페이지에서 취소버튼 눌렸을때
   function onClickList() {
-    router.push(`/boards`);
+    router.push("/boards/list");
+  }
+
+  //수정하는 페이지에서 취소버튼 눌렸을때
+  function onClickCancle() {
+    router.push(`/boards/${router.query.boardId}`);
   }
 
   return (
@@ -276,7 +282,8 @@ export default function BoardWriteContainer(props) {
       onCompleteAddressSearch={onCompleteAddressSearch}
       onClickSubmit={onClickSubmit}
       onClickEdit={onClickEdit}
-      onCLickList={onClickList}
+      onClickList={onClickList}
+      onClickCancle={onClickCancle}
       // onChangeFileUrls={onChangeFileUrls}
       // fileUrls={fileUrls}
       onChangeFiles={onChangeFiles}

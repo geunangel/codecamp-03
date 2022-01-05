@@ -158,19 +158,29 @@ export default function BoardWritePresenter(props) {
           <MainCheck type="radio" />
           사진
         </MainBox>
-        <ButtonEnrollent onClick={props.onClickList}>취소하기</ButtonEnrollent>
+        {/* <ButtonEnrollent onClick={props.onClickList}>취소하기</ButtonEnrollent> */}
         {!props.isEdit && (
-          <ButtonEnrollent
-            onClick={props.onClickSubmit}
-            buttoncolor={props.buttoncolor}
-          >
-            등록하기
-          </ButtonEnrollent>
+          <>
+            <ButtonEnrollent
+              onClick={props.onClickSubmit}
+              buttoncolor={props.buttoncolor}
+            >
+              등록하기
+            </ButtonEnrollent>
+            <ButtonEnrollent onClick={props.onClickList}>
+              최소하기
+            </ButtonEnrollent>
+          </>
         )}
         {props.isEdit && (
-          <ButtonEnrollent onClick={props.onClickEdit} isActive={true}>
-            수정하기
-          </ButtonEnrollent>
+          <>
+            <ButtonEnrollent onClick={props.onClickEdit} isActive={true}>
+              수정하기
+            </ButtonEnrollent>
+            <ButtonEnrollent onClick={props.onClickCancle}>
+              취소하기
+            </ButtonEnrollent>
+          </>
         )}
       </Wrapper>
     </>
