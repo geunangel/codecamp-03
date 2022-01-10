@@ -29,7 +29,9 @@ export default function LayoutHeader() {
 
   const onClickSignout = () => {
     localStorage.removeItem("refreshToken");
+    // localStorage.removeItem("isLogedIn");
     setUserInfo("");
+    alert("로그아웃");
     router.push("/market/list");
   };
 
