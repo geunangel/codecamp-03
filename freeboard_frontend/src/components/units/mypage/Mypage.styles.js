@@ -43,5 +43,5 @@ export const MyWish = styled.div`
 `;
 
 export const Line = styled.div`
-  font-size: 40px;
+  font-size: 20px;
 `;
