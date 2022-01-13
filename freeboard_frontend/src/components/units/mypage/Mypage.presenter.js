@@ -32,7 +32,7 @@ export default function MyPageUI(props) {
       <PointPay>포인트</PointPay>
       <Pay onClick={props.onClickPayment}>포인트충전하기</Pay>
       {props.data?.fetchUserLoggedIn.userPoint.amount}
-      <Profile>내프로필</Profile>
+      <Profile>프로필수정</Profile>
       <PointHistory>구매내역</PointHistory>
     </Wrapper>
   );
